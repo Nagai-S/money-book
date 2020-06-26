@@ -1,0 +1,10 @@
+<h1>会員登録</h1>
+<%= form_for(@user) do |f| %>
+  <p><%= f.label :email, "メールアドレス" %></p>
+  <p><%= f.text_field :email %></p>
+  <p><%= f.label :password, "パスワード" %></p>
+  <p><%= f.text_field :password %></p>
+  <p><%= f.label :password_confirmation, "パスワードをもう一度入力して下さい" %></p>
+  <p><%= f.text_field :password_confirmation %></p>
+  <p><%= f.submit "新規会員登録" %></p>
+<% end %>

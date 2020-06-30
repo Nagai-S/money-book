@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bname: MyString
+  aname: MyString
+  value: 1
+  date: 2020-06-29
+  user: one
+
+two:
+  bname: MyString
+  aname: MyString
+  value: 1
+  date: 2020-06-29
+  user: two

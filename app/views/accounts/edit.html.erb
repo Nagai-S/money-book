@@ -1,0 +1,18 @@
+<h1>アカウント編集</h1>
+<%= form_for :account, url:user_account_path do |f| %>
+  <div class="">
+    <%= f.label :name, "名前を入力してください" %>
+  </div>
+  <div class="">
+    <%= f.text_field :name %>
+  </div>
+  <div class="">
+    <%= f.label :value, "初期値を入力してください" %>
+  </div>
+  <div class="">
+    <%= f.text_field :value %>
+  </div>
+  <div class="">
+    <%= f.submit "アカウント編集" %>
+  </div>
+<% end %>

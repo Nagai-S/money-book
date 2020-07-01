@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <h1><%= link_to "Money Book", root_path %></h1>
     <% if user_signed_in? %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

@@ -16,13 +16,13 @@
     <%= f.label :bname, "振替もとアカウントを選択してください" %>
   </div>
   <div class="">
-    <%= f.select :bname, names %>
+    <%= f.select :bname, names, {include_blank: '選択ボックス'} %>
   </div>
   <div class="">
     <%= f.label :aname, "振替先アカウントを入力してください" %>
   </div>
   <div class="">
-    <%= f.select :aname, names %>
+    <%= f.select :aname, names, {include_blank: '選択ボックス'} %>
   </div>
   <div class="">
     <%= f.label :value, "振替金額を入力してください" %>
@@ -34,3 +34,6 @@
     <%= f.submit "新規振替" %>
   </div>
 <% end %>
+<div class="">
+  <%= link_to "アカウント一覧へ戻る", user_accounts_path %>
+</div>

@@ -1,1 +1,48 @@
 <h1>振替を編集</h1>
+<% names=[] %>
+<% @accounts.each do |account| %>
+  <% name=["#{account.name}","#{account.name}"] %>
+  <% names.push(name) %>
+<% end %>
+
+
+<%= form_for :account_exchange, url:user_account_exchange_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+  <div class="">
+    <%= f.label :date, "日付を選択してください" %>
+  </div>
+  <div class="">
+    <%= f.date_select :date, selected: @account_exchange.date %>
+  </div>
+
+  <% names.delete([@account_exchange.bname,@account_exchange.bname]) %>
+  <% names.unshift([@account_exchange.bname,@account_exchange.bname]) %>
+
+  <div class="">
+    <%= f.label :bname, "振替もとアカウントを選択してください" %>
+  </div>
+  <div class="">
+    <%= f.select :bname, names %>
+  </div>
+
+  <% names.delete([@account_exchange.aname,@account_exchange.aname]) %>
+  <% names.unshift([@account_exchange.aname,@account_exchange.aname]) %>
+
+  <div class="">
+    <%= f.label :aname, "振替先アカウントを入力してください" %>
+  </div>
+  <div class="">
+    <%= f.select :aname, names %>
+  </div>
+  <div class="">
+    <%= f.label :value, "振替金額を入力してください" %>
+  </div>
+  <div class="">
+    <%= f.text_field :value, value: @account_exchange.value %>
+  </div>
+  <div class="">
+    <%= f.submit "振替を編集する" %>
+  </div>
+<% end %>
+<div class="">
+  <%= link_to "振替履歴一覧へ戻る", user_account_exchanges_path %>
+</div>

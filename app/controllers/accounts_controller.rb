@@ -15,6 +15,7 @@ class AccountsController < ApplicationController
     if @account.save
       redirect_to user_accounts_path
     else
+      flash[:danger]="正しい値を入力してください"
       render "new"
     end
   end

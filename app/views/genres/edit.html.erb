@@ -1,0 +1,21 @@
+<h1>ジャンルを編集</h1>
+<%= form_for :genre, url:user_genre_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+  <div class="">
+    <%= f.label :iae, "収入か支出か選択してください" %>
+  </div>
+  <div class="">
+    <%= f.select :iae, @selects %>
+  </div>
+  <div class="">
+    <%= f.label :name, "名前を入力してください" %>
+  </div>
+  <div class="">
+    <%= f.text_field :name, value: @genre.name %>
+  </div>
+  <div>
+    <%= f.submit "ジャンル編集" %>
+  </div>
+<% end %>
+<div class="">
+  <%= link_to "ジャンル一覧へ戻る", user_genres_path(params[:user_id]) %>
+</div>

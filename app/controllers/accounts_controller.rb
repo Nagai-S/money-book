@@ -21,7 +21,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    Account.find(params[:id]).destroy
+    Account.find_by(:user_id => params[:user_id], :id => params[:id]).destroy
     redirect_to user_accounts_path
   end
 

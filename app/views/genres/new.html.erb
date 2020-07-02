@@ -1,0 +1,21 @@
+<h1>新規ジャンル作成</h1>
+<%= form_for :genre, url:user_genres_path do |f| %>
+  <div class="">
+    <%= f.label :iae, "収入か支出か選択してください" %>
+  </div>
+  <div class="">
+    <%= f.select :iae, [["支出",false],["収入",true]] %>
+  </div>
+  <div class="">
+    <%= f.label :name, "名前を入力してください" %>
+  </div>
+  <div class="">
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.submit "ジャンル作成" %>
+  </div>
+<% end %>
+<div class="">
+  <%= link_to "ジャンル一覧へ戻る", user_genres_path(params[:user_id]) %>
+</div>

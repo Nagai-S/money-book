@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources:user do
+    resources:genres
     resources:accounts
     resources:account_exchanges
   end

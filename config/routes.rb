@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources:genres
     resources:accounts
     resources:account_exchanges
+    resources:events
   end
 
   devise_for :users

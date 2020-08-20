@@ -5,6 +5,7 @@ class AccountsController < ApplicationController
   def index
     # 変数定義
     this_year=Date.today.year
+    this_month=Date.today.month
     @total=0
 
     @accounts=current_user.accounts
@@ -27,23 +28,37 @@ class AccountsController < ApplicationController
     each_year=Hash.new
     (min_year..this_year).each do |year|
       each_month=Hash.new
-      @events.each do |event|
-        if event.date.year==year
-          (1..12).each do |month|
-            events=[]
-            if event.date.month==month
-              events.push(event)
-              each_month.store(month,events)
-            end
+      (1..12).each do |month|
+        events=[]
+        @events.each do |event|
+          if event.date.year==year && event.date.month==month
+            events.push(event)
           end
         end
+        each_month.store(month,events)
       end
       each_year.store(year,each_month)
     end
 
     # pmは収支
-    pm_month=[]
-    each_year[:this_year][:]
+    @pm_year=Hash.new
+    (min_year..this_year).each do |year|
+      pm_month=Hash.new
+      (1..12).each do |month|
+        pm=0.0
+        @events.each do |event|
+          if event.date.year==year && event.date.month==month
+            if event.iae==false
+              pm=pm-event.value
+            else
+              pm=pm+event.value
+            end
+          end
+        end
+        pm_month.store(month,pm)
+      end
+      @pm_year.store(year,pm_month)
+    end
 
   end
 

@@ -19,16 +19,14 @@ class EventsController < ApplicationController
     each_year=Hash.new
     (min_year..this_year).each do |year|
       each_month=Hash.new
-      @events.each do |event|
-        if event.date.year==year
-          (1..12).each do |month|
-            events=[]
-            if event.date.month==month
-              events.push(event)
-              each_month.store(month,events)
-            end
+      (1..12).each do |month|
+        events=[]
+        @events.each do |event|
+          if event.date.year==year && event.date.month==month
+            events.push(event)
           end
         end
+        each_month.store(month,events)
       end
       each_year.store(year,each_month)
     end

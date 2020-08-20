@@ -27,3 +27,14 @@
 </div>
 
 <h2>月ごとの収支</h2>
+<div class="">
+  <% @pm_year.each do |pm_month| %>
+    <%= pm_month[0] %>年
+    <% pm_month[1].each do |pm| %>
+      <div class="">
+        <%= pm[0] %>月
+        <%= pm[1].to_i %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,2 +1,200 @@
-<h1>Events#edit</h1>
-<p>Find me in app/views/events/edit.html.erb</p>
+<h1>イベント編集</h1>
+    <% if @event.iae==false %>
+    <div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active" role="presentation">
+          <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">支出</a>
+        </li>
+        <li role="presentation">
+          <a aria-controls="tab_b" data-toggle="tab" href="#tab_b" role="tab">収入</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab_a" role="tabpanel">
+          <p>
+            <%= form_for :event, url:user_events_up1_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="">
+              <%= f.label :date, "日付を選択してください" %>
+            </div>
+            <div class="">
+              <%= f.date_select :date, selected: @event.date %>
+            </div>
+
+            <div class="">
+              <%= f.label :genre, "ジャンルを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :genre, @genres_e %>
+            </div>
+
+            <div class="">
+              <%= f.label :account, "アカウントを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :account, @accounts %>
+            </div>
+            <div class="">
+              <%= f.label :memo, "メモ" %>
+            </div>
+            <div class="">
+              <%= f.text_field :memo, memo: @event.memo %>
+            </div>
+            <div class="">
+              <%= f.label :value, "金額を入力してください" %>
+            </div>
+            <div class="">
+              <%= f.text_field :value, value: @event.value %>
+            </div>
+            <div class="">
+              <%= f.submit "イベント登録" %>
+            </div>
+            <% end %>
+          </p>
+        </div>
+
+        <div class="tab-pane" id="tab_b" role="tabpanel">
+          <p>
+            <%= form_for :event, url:user_events_up2_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="">
+              <%= f.label :date, "日付を選択してください" %>
+            </div>
+            <div class="">
+              <%= f.date_select :date, selected: @event.date %>
+            </div>
+
+            <div class="">
+              <%= f.label :genre, "ジャンルを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :genre, @genres_i %>
+            </div>
+
+            <div class="">
+              <%= f.label :account, "アカウントを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :account, @accounts %>
+            </div>
+            <div class="">
+              <%= f.label :memo, "メモ" %>
+            </div>
+            <div class="">
+              <%= f.text_field :memo, memo: @event.memo %>
+            </div>
+            <div class="">
+              <%= f.label :value, "金額を入力してください" %>
+            </div>
+            <div class="">
+              <%= f.text_field :value, value: @event.value %>
+            </div>
+            <div class="">
+              <%= f.submit "イベント登録" %>
+            </div>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% else %>
+    <div>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation">
+          <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">支出</a>
+        </li>
+        <li class="active" role="presentation">
+          <a aria-controls="tab_b" data-toggle="tab" href="#tab_b" role="tab">収入</a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div class="tab-pane" id="tab_a" role="tabpanel">
+          <p>
+            <%= form_for :event, url:user_events_up1_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="">
+              <%= f.label :date, "日付を選択してください" %>
+            </div>
+            <div class="">
+              <%= f.date_select :date, selected: @event.date %>
+            </div>
+
+            <div class="">
+              <%= f.label :genre, "ジャンルを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :genre, @genres_e %>
+            </div>
+
+            <div class="">
+              <%= f.label :account, "アカウントを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :account, @accounts %>
+            </div>
+            <div class="">
+              <%= f.label :memo, "メモ" %>
+            </div>
+            <div class="">
+              <%= f.text_field :memo, memo: @event.memo %>
+            </div>
+            <div class="">
+              <%= f.label :value, "金額を入力してください" %>
+            </div>
+            <div class="">
+              <%= f.text_field :value, value: @event.value %>
+            </div>
+            <div class="">
+              <%= f.submit "イベント登録" %>
+            </div>
+            <% end %>
+          </p>
+        </div>
+
+        <div class="tab-pane active" id="tab_b" role="tabpanel">
+          <p>
+            <%= form_for :event, url:user_events_up2_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="">
+              <%= f.label :date, "日付を選択してください" %>
+            </div>
+            <div class="">
+              <%= f.date_select :date, selected: @event.date %>
+            </div>
+
+            <div class="">
+              <%= f.label :genre, "ジャンルを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :genre, @genres_i %>
+            </div>
+
+            <div class="">
+              <%= f.label :account, "アカウントを選択してください" %>
+            </div>
+            <div class="">
+              <%= f.select :account, @accounts %>
+            </div>
+            <div class="">
+              <%= f.label :memo, "メモ" %>
+            </div>
+            <div class="">
+              <%= f.text_field :memo, memo: @event.memo %>
+            </div>
+            <div class="">
+              <%= f.label :value, "金額を入力してください" %>
+            </div>
+            <div class="">
+              <%= f.text_field :value, value: @event.value %>
+            </div>
+            <div class="">
+              <%= f.submit "イベント登録" %>
+            </div>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+<div class="">
+  <%= link_to "イベント一覧へ戻る", user_events_path %>
+</div>

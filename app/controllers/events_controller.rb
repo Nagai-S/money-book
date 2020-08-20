@@ -3,19 +3,19 @@ class EventsController < ApplicationController
   before_action :correct_user
 
   def index
-  end
-
-  def edit
+    @events=current_user.events
   end
 
   def new
+    @event=current_user.events.build
     @genres_e=[]
     @genres_i=[]
     current_user.genres.each do |genre|
-      a=["#{genre.name}", "#{genre.name}"]
       if genre.iae==false
+        a=["#{genre.name}", "#{genre.name}"]
         @genres_e.push(a)
       else
+        a=["#{genre.name}", "#{genre.name}"]
         @genres_i.push(a)
       end
     end
@@ -27,8 +27,241 @@ class EventsController < ApplicationController
     end
   end
 
-  def create
+  def create1
+    # ----------------------------------------------------
+    @genres_e=[]
+    @genres_i=[]
+    current_user.genres.each do |genre|
+      if genre.iae==false
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_e.push(a)
+      else
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_i.push(a)
+      end
+    end
 
+    @accounts=[]
+    current_user.accounts.each do |account|
+      a=["#{account.name}", "#{account.name}"]
+      @accounts.push(a)
+    end
+    # ----------------------------------------------------
+
+    @event=current_user.events.build(events_params)
+    if @event.save
+      @event.update(iae: false)
+      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+      account.update(value: account.value-@event.value)
+      redirect_to user_events_path
+    else
+      flash.now[:danger]="正しい値を入力してください"
+      render "new"
+    end
+  end
+
+  def create2
+    # ----------------------------------------------------
+    @genres_e=[]
+    @genres_i=[]
+    current_user.genres.each do |genre|
+      if genre.iae==false
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_e.push(a)
+      else
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_i.push(a)
+      end
+    end
+
+    @accounts=[]
+    current_user.accounts.each do |account|
+      a=["#{account.name}", "#{account.name}"]
+      @accounts.push(a)
+    end
+    # ----------------------------------------------------
+
+    @event=current_user.events.build(events_params)
+    if @event.save
+      @event.update(iae: true)
+      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+      account.update(value: account.value+@event.value)
+      redirect_to user_events_path
+    else
+      flash.now[:danger]="正しい値を入力してください"
+      render "new"
+    end
+  end
+
+  def destroy
+    @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
+    account=Account.find_by(:user_id => params[:user_id], :name => @event.account)
+    if account
+      if @event.iae==false
+        account.update(value: account.value+@event.value)
+      else
+        account.update(value: account.value-@event.value)
+      end
+    end
+    @event.destroy
+    redirect_to user_events_path
+  end
+
+  def edit
+    @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
+    @genres_e=[]
+    @genres_i=[]
+    current_user.genres.each do |genre|
+      if genre.iae==false
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_e.push(a)
+      else
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_i.push(a)
+      end
+    end
+
+    @accounts=[]
+    current_user.accounts.each do |account|
+      a=["#{account.name}", "#{account.name}"]
+      @accounts.push(a)
+    end
+
+    if Genre.find_by(:user_id => current_user.id, :name => @event.genre)
+      if @event.iae==false
+        @genres_e.delete([@event.genre, @event.genre])
+        @genres_e.unshift([@event.genre, @event.genre])
+      else
+        @genres_i.delete([@event.genre, @event.genre])
+        @genres_i.unshift([@event.genre, @event.genre])
+      end
+    else
+      flash.now[:danger]="このジャンルは削除されています"
+    end
+    if Account.find_by(:user_id => current_user.id, :name => @event.account)
+      @accounts.delete([@event.account, @event.account])
+      @accounts.unshift([@event.account, @event.account])
+    else
+      flash.now[:danger]="このアカウントは削除されています"
+    end
+  end
+
+  def update1
+    # ----------------------------------------------------
+    @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
+    @genres_e=[]
+    @genres_i=[]
+    current_user.genres.each do |genre|
+      if genre.iae==false
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_e.push(a)
+      else
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_i.push(a)
+      end
+    end
+
+    @accounts=[]
+    current_user.accounts.each do |account|
+      a=["#{account.name}", "#{account.name}"]
+      @accounts.push(a)
+    end
+
+    if Genre.find_by(:user_id => current_user.id, :name => @event.genre)
+      if @event.iae==false
+        @genres_e.delete([@event.genre, @event.genre])
+        @genres_e.unshift([@event.genre, @event.genre])
+      else
+        @genres_i.delete([@event.genre, @event.genre])
+        @genres_i.unshift([@event.genre, @event.genre])
+      end
+    else
+      flash.now[:danger]="このジャンルは削除されています"
+    end
+    if Account.find_by(:user_id => current_user.id, :name => @event.account)
+      @accounts.delete([@event.account, @event.account])
+      @accounts.unshift([@event.account, @event.account])
+    else
+      flash.now[:danger]="このアカウントは削除されています"
+    end
+    # ----------------------------------------------------
+
+    account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+    if account
+      if @event.iae==false
+        account.update(value: account.value+@event.value)
+      else
+        account.update(value: account.value-@event.value)
+      end
+    end
+    if @event.update(events_params)
+      @event.update(iae: false)
+      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+      account.update(value: account.value-@event.value)
+      redirect_to user_events_path
+    else
+      flash.now[:danger]="正しい値を入力してください"
+      render "edit"
+    end
+  end
+
+  def update2
+    # ----------------------------------------------------
+    @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
+    @genres_e=[]
+    @genres_i=[]
+    current_user.genres.each do |genre|
+      if genre.iae==false
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_e.push(a)
+      else
+        a=["#{genre.name}", "#{genre.name}"]
+        @genres_i.push(a)
+      end
+    end
+
+    @accounts=[]
+    current_user.accounts.each do |account|
+      a=["#{account.name}", "#{account.name}"]
+      @accounts.push(a)
+    end
+
+    if Genre.find_by(:user_id => current_user.id, :name => @event.genre)
+      if @event.iae==false
+        @genres_e.delete([@event.genre, @event.genre])
+        @genres_e.unshift([@event.genre, @event.genre])
+      else
+        @genres_i.delete([@event.genre, @event.genre])
+        @genres_i.unshift([@event.genre, @event.genre])
+      end
+    else
+      flash.now[:danger]="このジャンルは削除されています"
+    end
+    if Account.find_by(:user_id => current_user.id, :name => @event.account)
+      @accounts.delete([@event.account, @event.account])
+      @accounts.unshift([@event.account, @event.account])
+    else
+      flash.now[:danger]="このアカウントは削除されています"
+    end
+    # ----------------------------------------------------
+
+    account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+    if account
+      if @event.iae==false
+        account.update(value: account.value+@event.value)
+      else
+        account.update(value: account.value-@event.value)
+      end
+    end
+    if @event.update(events_params)
+      @event.update(iae: true)
+      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+      account.update(value: account.value+@event.value)
+      redirect_to user_events_path
+    else
+      flash.now[:danger]="正しい値を入力してください"
+      render "edit"
+    end
   end
 
   private
@@ -41,6 +274,6 @@ class EventsController < ApplicationController
     end
 
     def events_params
-      params.require(:event).permit(:date, :genre, :value, :account, :memo, :iae)
+      params.require(:event).permit(:date, :genre, :account, :value, :memo)
     end
 end

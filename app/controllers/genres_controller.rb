@@ -24,6 +24,7 @@ class GenresController < ApplicationController
     if @genre.save
       redirect_to user_genres_path(current_user.id)
     else
+      flash.now[:danger]="正しい値を入力してください"
       render 'new'
     end
   end
@@ -47,6 +48,7 @@ class GenresController < ApplicationController
     if @genre.update(genres_params)
       redirect_to user_genres_path(params[:user_id])
     else
+      flash.now[:danger]="正しい値を入力してください"
       render "edit"
     end
   end

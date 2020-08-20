@@ -1,4 +1,26 @@
 <h1>イベント一覧</h1>
+  <% @events.each do |event| %>
+  <div class="">
+    <% if event.iae==false %>
+      <%= event.date %>
+      <%= event.genre %>
+      <%= event.memo %>
+      <%= event.account %>
+      ¥<%= -event.value %>
+      <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
+      <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
+    <% else %>
+      <%= event.date %>
+      <%= event.genre %>
+      <%= event.memo %>
+      <%= event.account %>
+      ¥<%= event.value %>
+      <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
+      <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
+    <% end %>
+  </div>
+  <% end %>
+
 <p><%= link_to "新規イベント作成", new_user_event_path(params[:user_id]) %></p>
 <p><%= link_to "アカウント一覧", user_accounts_path(params[:user_id]) %></p>
 <p><%= link_to "ジャンル一覧", user_genres_path(params[:user_id]) %></p>

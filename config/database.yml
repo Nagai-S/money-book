@@ -22,4 +22,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  # database: db/production.sqlite3 デプロイのため消した
+  encoding: unicode
+  pool: 10

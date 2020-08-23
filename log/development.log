@@ -31442,3 +31442,27 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 64ms (Views: 60.8ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/user/1/accounts" for ::1 at 2020-08-23 23:44:27 +0900
+Processing by AccountsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC[0m  [["user_id", 1]]
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."user_id" = ?[0m  [["user_id", 1]]
+  Rendering accounts/index.html.erb within layouts/application
+  Rendered accounts/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 66ms (Views: 58.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/user/1/events" for ::1 at 2020-08-23 23:44:33 +0900
+Processing by EventsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered events/index.html.erb within layouts/application (40.8ms)
+Completed 200 OK in 105ms (Views: 97.9ms | ActiveRecord: 0.8ms)
+
+

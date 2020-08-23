@@ -28,13 +28,49 @@
 
 <h2>月ごとの収支</h2>
 <div class="">
-  <% @pm_year.each do |pm_month| %>
-    <%= pm_month[0] %>年
-    <% pm_month[1].each do |pm| %>
+  <% a=0 %>
+  <% @month_pm_paginate.each do |month_pm_genre| %>
+
+    <% if a != month_pm_genre[:year] %>
+      <%= month_pm_genre[:year] %>年
+    <% end %>
+
+    <div class="">
+      <%= month_pm_genre[:month] %>月
+      ¥<%= month_pm_genre[:pm] %>
+    </div>
+
+    <% @genres.each do |genre| %>
       <div class="">
-        <%= pm[0] %>月
-        <%= pm[1].to_i %>
+        <%= genre.name %>
+        ¥<%= month_pm_genre[genre.name] %>
       </div>
     <% end %>
+
+    <% a=month_pm_genre[:year] %>
+
   <% end %>
+
+  <%= will_paginate @month_pm_paginate, :param_name => 'month', class: "center" %>
+</div>
+
+<h2>年ごとの収支</h2>
+<div class="">
+  <% @year_pm_paginate.each do |year_pm_genre| %>
+
+    <div class="">
+      <%= year_pm_genre[:year] %>年
+      ¥<%= year_pm_genre[:pm] %>
+    </div>
+
+    <% @genres.each do |genre| %>
+      <div class="">
+        <%= genre.name %>
+        ¥<%= year_pm_genre[genre.name] %>
+      </div>
+    <% end %>
+
+  <% end %>
+
+  <%= will_paginate @year_pm_paginate, :param_name => 'year', class: "center" %>
 </div>

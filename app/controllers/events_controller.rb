@@ -4,32 +4,32 @@ class EventsController < ApplicationController
 
   def index
     # 変数定義
-    @events=current_user.events
-    this_year=Date.today.year
+    @events=current_user.events.paginate(page: params[:page])
 
-    # 最小年を求める
-    min_year=Date.today.year
-    @events.each do |event|
-      if event.date.year<this_year
-        min_year=account.date.year
-      end
-    end
+    # # 最小年を求める
+    # min_year=Date.today.year
+    # @events.each do |event|
+    #   if event.date.year<this_year
+    #     min_year=account.date.year
+    #   end
+    # end
 
-    # {年:{月:[events],月:[events]...}, 年:{月:[events],月:[events]...}}　作成
-    each_year=Hash.new
-    (min_year..this_year).each do |year|
-      each_month=Hash.new
-      (1..12).each do |month|
-        events=[]
-        @events.each do |event|
-          if event.date.year==year && event.date.month==month
-            events.push(event)
-          end
-        end
-        each_month.store(month,events)
-      end
-      each_year.store(year,each_month)
-    end
+    # # {年:{月:[events],月:[events]...}, 年:{月:[events],月:[events]...}}　作成
+    # each_year=Hash.new
+    # (min_year..this_year).each do |year|
+    #   each_month=Hash.new
+    #   (1..12).each do |month|
+    #     events=[]
+    #     @events.each do |event|
+    #       if event.date.year==year && event.date.month==month
+    #         events.push(event)
+    #       end
+    #     end
+    #     each_month.store(month,events)
+    #   end
+    #   each_year.store(year,each_month)
+    # end
+
   end
 
   def new

@@ -1,4 +1,11 @@
-<h1>アカウント一覧</h1>
+<h1>統計情報</h1>
+
+<h2>残高</h2>
+<div class="">
+  ¥<%= @total %>
+</div>
+
+<h2>アカウント残高</h2>
 <% @accounts.each do |account| %>
   <div class="">
     <%= account.name %>
@@ -17,4 +24,53 @@
 
 <div class="">
   <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %>
+</div>
+
+<h2>月ごとの収支</h2>
+<div class="">
+  <% a=0 %>
+  <% @month_pm_paginate.each do |month_pm_genre| %>
+
+    <% if a != month_pm_genre[:year] %>
+      <%= month_pm_genre[:year] %>年
+    <% end %>
+
+    <div class="">
+      <%= month_pm_genre[:month] %>月
+      ¥<%= month_pm_genre[:pm] %>
+    </div>
+
+    <% @genres.each do |genre| %>
+      <div class="">
+        <%= genre.name %>
+        ¥<%= month_pm_genre[genre.name] %>
+      </div>
+    <% end %>
+
+    <% a=month_pm_genre[:year] %>
+
+  <% end %>
+
+  <%= will_paginate @month_pm_paginate, :param_name => 'month', class: "center" %>
+</div>
+
+<h2>年ごとの収支</h2>
+<div class="">
+  <% @year_pm_paginate.each do |year_pm_genre| %>
+
+    <div class="">
+      <%= year_pm_genre[:year] %>年
+      ¥<%= year_pm_genre[:pm] %>
+    </div>
+
+    <% @genres.each do |genre| %>
+      <div class="">
+        <%= genre.name %>
+        ¥<%= year_pm_genre[genre.name] %>
+      </div>
+    <% end %>
+
+  <% end %>
+
+  <%= will_paginate @year_pm_paginate, :param_name => 'year', class: "center" %>
 </div>

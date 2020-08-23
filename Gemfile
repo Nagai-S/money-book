@@ -15,6 +15,8 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.6.4'
 gem 'rails-i18n'
 gem 'twitter-bootstrap-rails' 
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'

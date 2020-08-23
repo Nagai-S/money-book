@@ -53,9 +53,6 @@ class GenresController < ApplicationController
     end
   end
 
-  def show
-    @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id])
-  end
 
   private
     def correct_user

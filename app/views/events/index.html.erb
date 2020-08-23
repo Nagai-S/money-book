@@ -1,26 +1,35 @@
 <h1>イベント一覧</h1>
+  <% a=0 %>
   <% @events.each do |event| %>
-  <div class="">
-    <% if event.iae==false %>
-      <%= event.date %>
+    <div class="">
+
+      <% if event.date != a %>
+        <div class="">
+          <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
+        </div>
+      <% end %>
+
       <%= event.genre %>
       <%= event.memo %>
       <%= event.account %>
-      ¥<%= -event.value %>
+
+      <% if event.iae==false %>
+        ¥<%= -event.value %>
+      <% else %>
+        ¥<%= event.value %>
+      <% end %>
+
       <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
       <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
-    <% else %>
-      <%= event.date %>
-      <%= event.genre %>
-      <%= event.memo %>
-      <%= event.account %>
-      ¥<%= event.value %>
-      <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
-      <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
+    </div>
+    <% a=event.date %>
     <% end %>
-  </div>
-  <% end %>
+  <%= will_paginate @events %>
 
 <p><%= link_to "新規イベント作成", new_user_event_path(params[:user_id]) %></p>
-<p><%= link_to "アカウント一覧", user_accounts_path(params[:user_id]) %></p>
+<p><%= link_to "残高", user_accounts_path(params[:user_id]) %></p>
 <p><%= link_to "ジャンル一覧", user_genres_path(params[:user_id]) %></p>
+<p><%= link_to "新規ジャンル作成", new_user_genre_path(params[:user_id]) %></p>
+<p><%= link_to "新規アカウント作成", new_user_account_path(params[:user_id]) %></p>
+<p><%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]) %></p>
+<p><%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %></p>

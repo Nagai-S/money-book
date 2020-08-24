@@ -20,13 +20,14 @@
         <% if user_signed_in? %>
 
           <h1><%= link_to "Money Book", user_events_path(current_user) %></h1>
-
-          <%= link_to "新規アカウント作成", new_user_account_path(params[:user_id]) %>
-          <%= link_to "新規ジャンル作成", new_user_genre_path(params[:user_id]) %>
-          <%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]) %>
-          <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %>
-          <%= link_to "ジャンル一覧", user_genres_path(params[:user_id]) %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <ul>
+            <li><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
+            <li<%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
+            <li<%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
+            <li<%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
+            <li<%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
+            <li<%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          </ul>
 
         <% else %>
 

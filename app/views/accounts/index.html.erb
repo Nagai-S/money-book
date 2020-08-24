@@ -40,10 +40,10 @@
       ¥<%= month_pm_genre[:pm] %>
     </div>
 
-    <% @genres.each do |genre| %>
+    <% @genres_array.each do |genre| %>
       <div class="">
-        <%= genre.name %>
-        ¥<%= month_pm_genre[genre.name] %>
+        <%= genre %>
+        ¥<%= month_pm_genre[genre] %>
       </div>
     <% end %>
 
@@ -63,10 +63,10 @@
       ¥<%= year_pm_genre[:pm] %>
     </div>
 
-    <% @genres.each do |genre| %>
+    <% @genres_array.each do |genre| %>
       <div class="">
-        <%= genre.name %>
-        ¥<%= year_pm_genre[genre.name] %>
+        <%= genre %>
+        ¥<%= year_pm_genre[genre] %>
       </div>
     <% end %>
 

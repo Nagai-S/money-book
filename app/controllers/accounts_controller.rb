@@ -4,8 +4,8 @@ class AccountsController < ApplicationController
 
   def index
     # 変数定義
-    this_year=Date.today.year
-    this_month=Date.today.month
+    # this_year=Date.today.year
+    # this_month=Date.today.month
     @total=0
 
     @accounts=current_user.accounts
@@ -42,6 +42,18 @@ class AccountsController < ApplicationController
     #   each_year.store(year,each_month)
     # end
     # ------------------------------------------------------------------------------------
+
+    @genres_array=[]
+    @genres.each do |genre|
+      if genre.iae==false
+        @genres_array << genre.name
+      end
+    end
+    @genres.each do |genre|
+      if genre.iae==true
+        @genres_array << genre.name
+      end
+    end
 
     # 月ごとの収支
     a=0

@@ -121,6 +121,10 @@ header .btn{
   margin: auto;
 }
 
+#pm_value{
+  font-weight: bold;
+}
+
 #account_exchanges{
   width: 50%;
   margin: auto;

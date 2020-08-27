@@ -29,6 +29,7 @@
               Menu
             </button>
             <div class="dropdown-menu dropdown-menu-left">
+                <li class="nav-list-item"><%= link_to "HOME", user_events_path(current_user) %></li>
                 <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
                 <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
                 <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
@@ -54,14 +55,12 @@
     <ul class="nav-list">
       <li class="nav-list-item">
         <button type="button" class="btn btn-primary">
-          <div class="zandaka">
             <%= link_to "残高", user_accounts_path(current_user) %>
-          </div>
         </button>
       </li>
 
       <li class="nav-list-item">
-        <button type="button" class="btn btn-primary btn_lg">
+        <button type="button" class="btn btn-primary">
           <%= link_to "新規イベント作成", new_user_event_path(current_user) %>
         </button>
       </li>
@@ -86,6 +85,7 @@
     </footer>
   </body>
 </html>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

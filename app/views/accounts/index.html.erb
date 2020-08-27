@@ -76,7 +76,7 @@
         <% end %>
 
         <td><%= month_pm_genre[:month] %>月</td>
-        <td>¥<%= month_pm_genre[:pm] %></td>
+        <td id="pm_value">¥<%= month_pm_genre[:pm] %></td>
 
         <% @genres_array.each do |genre| %>
           <td>¥<%= month_pm_genre[genre] %></td>
@@ -113,7 +113,7 @@
     <tbody>
       <tr>
         <td><%= year_pm_genre[:year] %>年</td>
-        <td>¥<%= year_pm_genre[:pm] %></td>
+        <td id="pm_value">¥<%= year_pm_genre[:pm] %></td>
 
         <% @genres_array.each do |genre| %>
           <td>¥<%= year_pm_genre[genre] %></td>

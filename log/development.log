@@ -34462,3 +34462,5 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 153ms (Views: 149.0ms | ActiveRecord: 1.1ms)
 
 
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')

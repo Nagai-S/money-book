@@ -21,7 +21,7 @@
         <% if user_signed_in? %>
 
           <h1 class="headline">
-            <%= link_to "Money Book", user_events_path(current_user) %>
+            <%= link_to "Money Book", user_events_path(current_user), data: {"turbolinks" => false} %>
           </h1>
 
           <div class="dropdown">
@@ -29,22 +29,22 @@
               Menu
             </button>
             <div class="dropdown-menu dropdown-menu-left">
-                <li class="nav-list-item"><%= link_to "HOME", user_events_path(current_user) %></li>
-                <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
-                <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
-                <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
-                <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
-                <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
-                <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                <li class="nav-list-item"><%= link_to "HOME", user_events_path(current_user), data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user), data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user), data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user), data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user), data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user), data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false} %></li>
             </div>
           </div>
 
         <% else %>
 
-        <h1 class="headline"><%= link_to "Money Book", root_path %></h1>
+        <h1 class="headline"><%= link_to "Money Book", root_path, data: {"turbolinks" => false} %></h1>
         <ul class="nav-list">
-              <li class="nav-list-item"><%= link_to "新規会員登録", new_user_registration_path %></li>
-              <li class="nav-list-item"><%= link_to "ログイン", new_user_session_path %></li>
+              <li class="nav-list-item"><%= link_to "新規会員登録", new_user_registration_path, data: {"turbolinks" => false} %></li>
+              <li class="nav-list-item"><%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %></li>
         </ul>
 
         <% end %>
@@ -55,13 +55,13 @@
       <ul class="nav-list">
         <li class="nav-list-item">
           <button type="button" class="btn btn-primary">
-              <%= link_to "残高", user_accounts_path(current_user) %>
+              <%= link_to "残高", user_accounts_path(current_user), data: {"turbolinks" => false} %>
           </button>
         </li>
 
         <li class="nav-list-item">
           <button type="button" class="btn btn-primary">
-            <%= link_to "新規イベント作成", new_user_event_path(current_user) %>
+            <%= link_to "新規イベント作成", new_user_event_path(current_user), data: {"turbolinks" => false} %>
           </button>
         </li>
       </ul>
@@ -72,14 +72,17 @@
     <footer>
       <% if user_signed_in? %>
       <ul class="nav-list">
-        <li class="nav-list-item"><%= link_to "新規イベント作成", new_user_event_path(current_user) %></li>
+        <li class="nav-list-item" id="footer_home"><%= link_to "HOME", user_events_path(current_user), data: {"turbolinks" => false} %></li>
+      </ul>
+      <ul class="nav-list">
+        <li class="nav-list-item"><%= link_to "新規イベント作成", new_user_event_path(current_user), data: {"turbolinks" => false} %></li>
         <li class="nav-list-item"><%= link_to "残高", user_accounts_path(current_user) %></li>
-        <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
-        <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
-        <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
-        <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
-        <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
-        <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false} %></li>
       </ul>
       <% end %>
     	<p>© All rights reserved by Nagai Shogo</p>

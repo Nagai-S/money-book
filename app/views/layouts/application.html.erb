@@ -51,20 +51,21 @@
 
       </div>
     </header>
+    <% if user_signed_in? %>
+      <ul class="nav-list">
+        <li class="nav-list-item">
+          <button type="button" class="btn btn-primary">
+              <%= link_to "残高", user_accounts_path(current_user) %>
+          </button>
+        </li>
 
-    <ul class="nav-list">
-      <li class="nav-list-item">
-        <button type="button" class="btn btn-primary">
-            <%= link_to "残高", user_accounts_path(current_user) %>
-        </button>
-      </li>
-
-      <li class="nav-list-item">
-        <button type="button" class="btn btn-primary">
-          <%= link_to "新規イベント作成", new_user_event_path(current_user) %>
-        </button>
-      </li>
-    </ul>
+        <li class="nav-list-item">
+          <button type="button" class="btn btn-primary">
+            <%= link_to "新規イベント作成", new_user_event_path(current_user) %>
+          </button>
+        </li>
+      </ul>
+    <% end %>
 
     <%= yield %>
 

@@ -16,6 +16,9 @@
     <%= f.submit "ジャンル作成" %>
   </div>
 <% end %>
-<div class="">
-  <%= link_to "ジャンル一覧へ戻る", user_genres_path(params[:user_id]) %>
-</div>
+
+<ul class="nav-list">
+  <li class="nav-list-item">
+    <%= link_to "ジャンル一覧へ戻る", user_genres_path(params[:user_id]) %>
+  </li>
+</ul>

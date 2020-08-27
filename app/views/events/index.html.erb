@@ -1,35 +1,89 @@
-<h1>イベント一覧</h1>
-  <% a=0 %>
-  <% @events.each do |event| %>
-    <div class="">
+<h1>履歴</h1>
 
-      <% if event.date != a %>
-        <div class="">
-          <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
-        </div>
-      <% end %>
+<div class="col-5 ml-3">
+  <table class="table" id="table_events">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>ジャンル</th>
+        <th>アカウント</th>
+        <th>メモ</th>
+        <th>金額</th>
+      </tr>
+    </thead>
 
-      <%= event.genre %>
-      <%= event.memo %>
-      <%= event.account %>
-
+    <% a=0 %>
+    <% @events.each do |event| %>
+    <tbody>
       <% if event.iae==false %>
-        ¥<%= -event.value %>
+        <tr class="false">
+          <% if event.date != a %>
+            <td>
+              <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
+            </td>
+          <% else %>
+            <td>
+            </td>
+          <% end %>
+
+          <td><%= event.genre %></td>
+          <td><%= event.account %></td>
+
+          <% if event.genre %>
+            <td><%= event.memo %></td>
+          <% else %>
+            <td>
+            </td>
+          <% end %>
+
+          <td>
+           ¥<%= -event.value %>
+          </td>
+
+          <td>
+            <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
+          </td>
+          <% a=event.date %>
+        </tr>
       <% else %>
-        ¥<%= event.value %>
+        <tr class="true">
+          <% if event.date != a %>
+            <td>
+              <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
+            </td>
+          <% else %>
+            <td>
+            </td>
+          <% end %>
+
+          <td><%= event.genre %></td>
+          <td><%= event.account %></td>
+
+          <% if event.genre %>
+            <td><%= event.memo %></td>
+          <% else %>
+            <td>
+            </td>
+          <% end %>
+
+          <td>
+           ¥<%= event.value %>
+          </td>
+
+          <td>
+            <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
+          </td>
+          <td>
+            <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
+          </td>
+          <% a=event.date %>
+        </tr>
       <% end %>
-
-      <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
-      <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
-    </div>
-    <% a=event.date %>
+    </tbody>
     <% end %>
-  <%= will_paginate @events %>
-
-<p><%= link_to "新規イベント作成", new_user_event_path(params[:user_id]) %></p>
-<p><%= link_to "残高", user_accounts_path(params[:user_id]) %></p>
-<p><%= link_to "ジャンル一覧", user_genres_path(params[:user_id]) %></p>
-<p><%= link_to "新規ジャンル作成", new_user_genre_path(params[:user_id]) %></p>
-<p><%= link_to "新規アカウント作成", new_user_account_path(params[:user_id]) %></p>
-<p><%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]) %></p>
-<p><%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %></p>
+    <%= will_paginate @events %>
+  </table>
+</div>

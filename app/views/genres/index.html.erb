@@ -1,25 +1,53 @@
 <h1>ジャンル一覧</h1>
-<div class="">
-  支出
-</div>
-<% @expences.each do |genre| %>
-<div class="">
-  <%= genre.name %>
-  <%= link_to "編集", edit_user_genre_path(params[:user_id], genre.id) %>
-  <%= link_to "削除", user_genre_path(params[:user_id], genre.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" }  %>
-</div>
-<% end %>
 
-<div class="">
-  収入
+<h2>支出</h2>
+<div class="col-5 ml-3">
+  <table class="table" id="genres">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @expences.each do |genre| %>
+    <tbody>
+      <tr>
+        <td><%= genre.name %></td>
+        <td><%= link_to "編集", edit_user_genre_path(params[:user_id], genre.id) %></td>
+        <td><%= link_to "削除", user_genre_path(params[:user_id], genre.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" }  %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 </div>
-<% @incomes.each do |genre| %>
-<div class="">
-  <%= genre.name %>
-  <%= link_to "編集", edit_user_genre_path(params[:user_id], genre.id) %>
-  <%= link_to "削除", user_genre_path(params[:user_id], genre.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" }  %>
+
+<h2>収入</h2>
+<div class="col-5 ml-3">
+  <table class="table" id="genres">
+    <thead>
+      <tr>
+        <th>名前</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @incomes.each do |genre| %>
+    <tbody>
+      <tr>
+        <td><%= genre.name %></td>
+        <td><%= link_to "編集", edit_user_genre_path(params[:user_id], genre.id) %></td>
+        <td><%= link_to "削除", user_genre_path(params[:user_id], genre.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" }  %></td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
 </div>
-<% end %>
-<div class="">
-  <%= link_to "新規ジャンル作成", new_user_genre_path(params[:user_id]) %>
-</div>
+
+<ul class="nav-list">
+  <li class="nav-list-item">
+    <%= link_to "新規ジャンル作成", new_user_genre_path(params[:user_id]) %>
+  </li>
+</ul>

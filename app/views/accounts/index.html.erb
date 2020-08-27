@@ -6,71 +6,123 @@
 </div>
 
 <h2>アカウント残高</h2>
-<% @accounts.each do |account| %>
-  <div class="">
-    <%= account.name %>
-    ¥<%= account.value %>
-    <%= link_to "削除", user_account_path(params[:user_id], account.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
-  </div>
-<% end %>
 
-<div class="">
-  <%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]) %>
+<div class="col-5 ml-3">
+  <table class="table" id="table_accounts">
+    <thead>
+      <tr>
+        <th>アカウント</th>
+        <th>金額</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @accounts.each do |account| %>
+
+    <tbody>
+      <tr>
+        <td><%= account.name %></td>
+        <td>¥<%= account.value %></td>
+        <td><%= link_to "削除", user_account_path(params[:user_id], account.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %></td>
+      </tr>
+    </tbody>
+
+    <% end %>
+
+  </table>
 </div>
 
-<div class="">
-  <%= link_to "アカウント新規作成", new_user_account_path(params[:user_id]) %>
-</div>
 
-<div class="">
-  <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %>
-</div>
+
+<ul class="nav-list">
+  <li class="nav-list-item">
+    <%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]) %>
+  </li>
+  <li class="nav-list-item">
+    <%= link_to "アカウント新規作成", new_user_account_path(params[:user_id]) %>
+  </li>
+  <li class="nav-list-item">
+    <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %>
+  </li>
+</ul>
 
 <h2>月ごとの収支</h2>
-<div class="">
-  <% a=0 %>
-  <% @month_pm_paginate.each do |month_pm_genre| %>
+<div class="col-5 ml-3">
+  <table class="table" id="pm">
+    <thead>
+      <tr>
+        <th>年</th>
+        <th>月</th>
+        <th>収支</th>
 
-    <% if a != month_pm_genre[:year] %>
-      <%= month_pm_genre[:year] %>年
-    <% end %>
+        <% @genres_array.each do |genre| %>
+          <th>
+            <%= genre %>
+          </th>
+        <% end %>
 
-    <div class="">
-      <%= month_pm_genre[:month] %>月
-      ¥<%= month_pm_genre[:pm] %>
-    </div>
+      </tr>
+    </thead>
 
-    <% @genres_array.each do |genre| %>
-      <div class="">
-        <%= genre %>
-        ¥<%= month_pm_genre[genre] %>
-      </div>
-    <% end %>
+    <% a=0 %>
+    <% @month_pm_paginate.each do |month_pm_genre| %>
+
+    <tbody>
+      <tr>
+        <% if a != month_pm_genre[:year] %>
+          <td><%= month_pm_genre[:year] %>年</td>
+        <% else %>
+          <td></td>
+        <% end %>
+
+        <td><%= month_pm_genre[:month] %>月</td>
+        <td>¥<%= month_pm_genre[:pm] %></td>
+
+        <% @genres_array.each do |genre| %>
+          <td>¥<%= month_pm_genre[genre] %></td>
+        <% end %>
+      </tr>
+    </tbody>
 
     <% a=month_pm_genre[:year] %>
+    <% end %>
+    <%= will_paginate @month_pm_paginate, :param_name => 'month', class: "center" %>
 
-  <% end %>
-
-  <%= will_paginate @month_pm_paginate, :param_name => 'month', class: "center" %>
+  </table>
 </div>
 
 <h2>年ごとの収支</h2>
-<div class="">
-  <% @year_pm_paginate.each do |year_pm_genre| %>
 
-    <div class="">
-      <%= year_pm_genre[:year] %>年
-      ¥<%= year_pm_genre[:pm] %>
-    </div>
+<div class="col-5 ml-3">
+  <table class="table" id="pm">
+    <thead>
+      <tr>
+        <th>年</th>
+        <th>収支</th>
 
-    <% @genres_array.each do |genre| %>
-      <div class="">
-        <%= genre %>
-        ¥<%= year_pm_genre[genre] %>
-      </div>
+        <% @genres_array.each do |genre| %>
+          <th>
+            <%= genre %>
+          </th>
+        <% end %>
+
+      </tr>
+    </thead>
+
+    <% @year_pm_paginate.each do |year_pm_genre| %>
+    <tbody>
+      <tr>
+        <td><%= year_pm_genre[:year] %>年</td>
+        <td>¥<%= year_pm_genre[:pm] %></td>
+
+        <% @genres_array.each do |genre| %>
+          <td>¥<%= year_pm_genre[genre] %></td>
+        <% end %>
+      </tr>
+    </tbody>
+
     <% end %>
+    <%= will_paginate @year_pm_paginate, :param_name => 'year', class: "center" %>
 
-  <% end %>
-
-  <%= will_paginate @year_pm_paginate, :param_name => 'year', class: "center" %>
+  </table>
 </div>

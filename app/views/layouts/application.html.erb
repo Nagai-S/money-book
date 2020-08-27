@@ -15,34 +15,77 @@
     <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
 
-    <header class="">
+    <header>
+
       <div class="container">
         <% if user_signed_in? %>
 
-          <h1><%= link_to "Money Book", user_events_path(current_user) %></h1>
-          <ul>
-            <li><%= link_to "新規イベント作成", new_user_event_path(current_user) %></li>
-            <li><%= link_to "残高", user_accounts_path(current_user) %></li>
-            <li><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
-            <li><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
-            <li><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
-            <li><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
-            <li><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          </ul>
+          <h1 class="headline">
+            <%= link_to "Money Book", user_events_path(current_user) %>
+          </h1>
+
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+              Menu
+            </button>
+            <div class="dropdown-menu dropdown-menu-left">
+                <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </div>
+          </div>
 
         <% else %>
 
-        <div class="header-loga">
-          <h1><%= link_to "Money Book", root_path %></h1>
-        </div>
+        <h1 class="headline"><%= link_to "Money Book", root_path %></h1>
+        <ul class="nav-list">
+              <li class="nav-list-item"><%= link_to "新規会員登録", new_user_registration_path %></li>
+              <li class="nav-list-item"><%= link_to "ログイン", new_user_session_path %></li>
+        </ul>
 
         <% end %>
 
       </div>
     </header>
 
+    <ul class="nav-list">
+      <li class="nav-list-item">
+        <button type="button" class="btn btn-primary">
+          <div class="zandaka">
+            <%= link_to "残高", user_accounts_path(current_user) %>
+          </div>
+        </button>
+      </li>
+
+      <li class="nav-list-item">
+        <button type="button" class="btn btn-primary btn_lg">
+          <%= link_to "新規イベント作成", new_user_event_path(current_user) %>
+        </button>
+      </li>
+    </ul>
+
     <%= yield %>
 
+    <footer>
+      <% if user_signed_in? %>
+      <ul class="nav-list">
+        <li class="nav-list-item"><%= link_to "新規イベント作成", new_user_event_path(current_user) %></li>
+        <li class="nav-list-item"><%= link_to "残高", user_accounts_path(current_user) %></li>
+        <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
+        <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
+        <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
+        <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
+        <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
+        <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+      </ul>
+      <% end %>
+    	<p>© All rights reserved by Nagai Shogo</p>
+    </footer>
   </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

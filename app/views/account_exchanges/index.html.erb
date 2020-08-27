@@ -1,15 +1,36 @@
 <h1>振替履歴一覧</h1>
-<% @account_exchanges.each do |account_exchange| %>
-  <div class="">
-    <%= account_exchange.date %>
-  </div>
-  <div class="">
-    <%= account_exchange.bname %> → <%= account_exchange.aname %>
-    ¥<%= account_exchange.value %>
-    <%= link_to "削除", user_account_exchange_path(params[:user_id], account_exchange.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %>
-    <%= link_to "編集", edit_user_account_exchange_path(params[:user_id], account_exchange.id) %>
-  </div>
-<% end %>
-<div class="">
-  <%= link_to "アカウント一覧へ戻る", user_accounts_path %>
+
+<div class="col-5 ml-3">
+  <table class="table" id="account_exchanges">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>振替元アカウント</th>
+        <th>振替先アカウント</th>
+        <th>金額</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <% @account_exchanges.each do |account_exchange| %>
+    <tbody>
+      <tr>
+        <td><%= account_exchange.date %></td>
+        <td><%= account_exchange.bname %></td>
+        <td><%= account_exchange.aname %></td>
+        <td>¥<%= account_exchange.value %></td>
+        <td><%= link_to "削除", user_account_exchange_path(params[:user_id], account_exchange.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" } %></td>
+        <td><%= link_to "編集", edit_user_account_exchange_path(params[:user_id], account_exchange.id) %></td>
+      </tr>
+    </tbody>
+    <% end %>
+    <%= will_paginate @account_exchanges %>
+  </table>
 </div>
+
+<ul class="nav-list">
+  <li class="nav-list-item">
+    <%= link_to "アカウント一覧へ戻る", user_accounts_path %>
+  </li>
+</ul>

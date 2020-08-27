@@ -13,7 +13,142 @@
  *= require_tree .
  *= require_self
  */
- body{
+ @import "bootstrap";
+
+ * {
+  margin:0; padding:0;
+}
+
+body{
    font-family: -apple-system,BlinkMacSystemFont,sans-serif;
    text-align: center;
  }
+
+/* header */
+ header {
+   width: 100%;
+   padding: 15px 0;
+   margin: 0 auto;
+   text-align: center;
+   background-color: #F0F8FF;
+ }
+
+header .headline{
+  font-size: 50px;
+}
+
+header .nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+  font-size: 15px;
+}
+
+header .nav-list-item {
+  list-style: none;
+  display: block;
+  margin: auto;
+  font-size: 17px;
+}
+
+header .dropdown{
+  text-align: right;
+  font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+header .dropdown-menu{
+  background-color: #F0F8FF;
+}
+
+header .btn{
+  background-color: LightBlue;
+  color: inherit;
+  font-weight: lighter;
+}
+
+
+.nav-list {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.btn{
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+  background-color: #F0F8FF;
+  font-weight: bold;
+  font-size: 20px
+}
+
+.table th{
+  text-align: center;
+}
+
+.table .false{
+  background-color: Linen;
+}
+
+.table .true{
+  background-color: #F0F8FF;
+}
+
+#table_events{
+  width: 100%;
+  margin: auto;
+}
+
+#table_accounts{
+  width: 50%;
+  margin: auto;
+}
+
+#pm{
+  width: 80%;
+  margin: auto;
+}
+
+#account_exchanges{
+  width: 50%;
+  margin: auto;
+}
+
+#genres{
+  width: 20%;
+  margin: auto;
+}
+
+/* footer */
+footer {
+  width: 100%;
+  height: 120px;
+  text-align: bottom;
+  padding: 50px 0;
+  background-color: #F0F8FF;
+}
+
+footer .nav-list {
+ text-align: center;
+ padding: 10px 0;
+ margin: 0 auto;
+ font-size: 15px;
+}
+
+footer .nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.footer-text {
+  color: #fff;
+}

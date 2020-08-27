@@ -3,7 +3,7 @@ class AccountExchangesController < ApplicationController
   before_action :correct_user
 
   def index
-    @account_exchanges=current_user.account_exchanges
+    @account_exchanges=current_user.account_exchanges.paginate(page: params[:page])
   end
 
   def new

@@ -17,7 +17,6 @@ gem 'rails-i18n'
 gem 'twitter-bootstrap-rails' 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'jquery-turbolinks'
 gem 'bootstrap'
 
 group :development, :test do

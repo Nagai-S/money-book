@@ -12,87 +12,69 @@
 
       <div class="tab-content">
         <div class="tab-pane active" id="tab_a" role="tabpanel">
-          <p>
             <%= form_for :event, url:user_events_up1_path(params[:user_id], params[:id]), method: :PUT do |f| %>
-            <div class="">
-              <%= f.label :date, "日付を選択してください" %>
-            </div>
-            <div class="">
-              <%= f.date_select :date, selected: @event.date %>
+
+            <div class="form-group">
+              <%= f.label :date, "日付を選択してください", class: "date_label" %>
+              <%= f.date_select :date, {}, selected: @event.date, class: "form-control", id: "date" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :genre, "ジャンルを選択してください" %>
-            </div>
-            <div class="">
-              <%= f.select :genre, @genres_e %>
+              <%= f.select :genre, @genres_e,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :account, "アカウントを選択してください" %>
+              <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
-            <div class="">
-              <%= f.select :account, @accounts %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :memo, "メモ" %>
+              <%= f.text_field :memo, memo: @event.memo, class: "form-control", id: "text" %>
             </div>
-            <div class="">
-              <%= f.text_field :memo, memo: @event.memo %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :value, "金額を入力してください" %>
+              <%= f.text_field :value, value: @event.value, class: "form-control", id: "value" %>
             </div>
-            <div class="">
-              <%= f.text_field :value, value: @event.value %>
-            </div>
-            <div class="">
-              <%= f.submit "イベント登録" %>
-            </div>
+
+            <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
+
             <% end %>
-          </p>
         </div>
 
         <div class="tab-pane" id="tab_b" role="tabpanel">
-          <p>
             <%= form_for :event, url:user_events_up2_path(params[:user_id], params[:id]), method: :PUT do |f| %>
-            <div class="">
-              <%= f.label :date, "日付を選択してください" %>
-            </div>
-            <div class="">
-              <%= f.date_select :date, selected: @event.date %>
+
+            <div class="form-group">
+              <%= f.label :date, "日付を選択してください", class: "date_label" %>
+              <%= f.date_select :date, {}, selected: @event.date, class: "form-control", id: "date" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :genre, "ジャンルを選択してください" %>
-            </div>
-            <div class="">
-              <%= f.select :genre, @genres_i %>
+              <%= f.select :genre, @genres_i,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :account, "アカウントを選択してください" %>
+              <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
-            <div class="">
-              <%= f.select :account, @accounts %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :memo, "メモ" %>
+              <%= f.text_field :memo, memo: @event.memo, class: "form-control", id: "text" %>
             </div>
-            <div class="">
-              <%= f.text_field :memo, memo: @event.memo %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :value, "金額を入力してください" %>
+              <%= f.text_field :value, value: @event.value, class: "form-control", id: "value" %>
             </div>
-            <div class="">
-              <%= f.text_field :value, value: @event.value %>
-            </div>
-            <div class="">
-              <%= f.submit "イベント登録" %>
-            </div>
+
+            <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
+
             <% end %>
-          </p>
         </div>
       </div>
     </div>
@@ -109,87 +91,69 @@
 
       <div class="tab-content">
         <div class="tab-pane" id="tab_a" role="tabpanel">
-          <p>
             <%= form_for :event, url:user_events_up1_path(params[:user_id], params[:id]), method: :PUT do |f| %>
-            <div class="">
-              <%= f.label :date, "日付を選択してください" %>
-            </div>
-            <div class="">
-              <%= f.date_select :date, selected: @event.date %>
+
+            <div class="form-group">
+              <%= f.label :date, "日付を選択してください", class: "date_label" %>
+              <%= f.date_select :date, {}, selected: @event.date, class: "form-control", id: "date" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :genre, "ジャンルを選択してください" %>
-            </div>
-            <div class="">
-              <%= f.select :genre, @genres_e %>
+              <%= f.select :genre, @genres_e,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :account, "アカウントを選択してください" %>
+              <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
-            <div class="">
-              <%= f.select :account, @accounts %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :memo, "メモ" %>
+              <%= f.text_field :memo, memo: @event.memo, class: "form-control", id: "text" %>
             </div>
-            <div class="">
-              <%= f.text_field :memo, memo: @event.memo %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :value, "金額を入力してください" %>
+              <%= f.text_field :value, value: @event.value, class: "form-control", id: "value" %>
             </div>
-            <div class="">
-              <%= f.text_field :value, value: @event.value %>
-            </div>
-            <div class="">
-              <%= f.submit "イベント登録" %>
-            </div>
+
+            <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
+
             <% end %>
-          </p>
         </div>
 
         <div class="tab-pane active" id="tab_b" role="tabpanel">
-          <p>
             <%= form_for :event, url:user_events_up2_path(params[:user_id], params[:id]), method: :PUT do |f| %>
-            <div class="">
-              <%= f.label :date, "日付を選択してください" %>
-            </div>
-            <div class="">
-              <%= f.date_select :date, selected: @event.date %>
+
+            <div class="form-group">
+              <%= f.label :date, "日付を選択してください", class: "date_label" %>
+              <%= f.date_select :date, {}, selected: @event.date, class: "form-control", id: "date" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :genre, "ジャンルを選択してください" %>
-            </div>
-            <div class="">
-              <%= f.select :genre, @genres_i %>
+              <%= f.select :genre, @genres_i,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
 
-            <div class="">
+            <div class="form-group">
               <%= f.label :account, "アカウントを選択してください" %>
+              <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
             </div>
-            <div class="">
-              <%= f.select :account, @accounts %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :memo, "メモ" %>
+              <%= f.text_field :memo, memo: @event.memo, class: "form-control", id: "text" %>
             </div>
-            <div class="">
-              <%= f.text_field :memo, memo: @event.memo %>
-            </div>
-            <div class="">
+
+            <div class="form-group">
               <%= f.label :value, "金額を入力してください" %>
+              <%= f.text_field :value, value: @event.value, class: "form-control", id: "value" %>
             </div>
-            <div class="">
-              <%= f.text_field :value, value: @event.value %>
-            </div>
-            <div class="">
-              <%= f.submit "イベント登録" %>
-            </div>
+
+            <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
+
             <% end %>
-          </p>
         </div>
       </div>
     </div>
@@ -197,6 +161,6 @@
 
     <ul class="nav-list">
       <li class="nav-list-item">
-        <%= link_to "イベント一覧へ戻る", user_events_path %>
+        <%= link_to "イベント一覧へ戻る", user_events_path, data: {"turbolinks" => false} %>
       </li>
     </ul>

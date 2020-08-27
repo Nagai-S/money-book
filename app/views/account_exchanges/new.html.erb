@@ -6,37 +6,34 @@
 <% end %>
 
 <%= form_for :account_exchange, url:user_account_exchanges_path do |f| %>
-  <div class="">
-    <%= f.label :date, "日付を選択してください" %>
+
+  <div class="form-group">
+    <%= f.label :date, "日付を選択してください", class: "date_label" %>
+    <%= f.date_select :date, {}, class: "form-control", id: "date" %>
   </div>
-  <div class="">
-    <%= f.date_select :date, {} %>
-  </div>
-  <div class="">
+
+  <div class="form-group">
     <%= f.label :bname, "振替もとアカウントを選択してください" %>
+    <%= f.select :bname, names, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
   </div>
-  <div class="">
-    <%= f.select :bname, names, {include_blank: '選択ボックス'} %>
-  </div>
-  <div class="">
+
+  <div class="form-group">
     <%= f.label :aname, "振替先アカウントを入力してください" %>
+    <%= f.select :aname, names, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
   </div>
-  <div class="">
-    <%= f.select :aname, names, {include_blank: '選択ボックス'} %>
-  </div>
-  <div class="">
+
+  <div class="form-group">
     <%= f.label :value, "振替金額を入力してください" %>
+    <%= f.text_field :value, class: "form-control", id: "value" %>
   </div>
-  <div class="">
-    <%= f.text_field :value %>
-  </div>
-  <div class="">
-    <%= f.submit "新規振替" %>
-  </div>
+
+
+    <%= f.submit "新規振替", class: "btn btn-primary", role: "button" %>
+
 <% end %>
 
 <ul class="nav-list">
   <li class="nav-list-item">
-    <%= link_to "アカウント一覧へ戻る", user_accounts_path %>
+    <%= link_to "アカウント一覧へ戻る", user_accounts_path, data: {"turbolinks" => false} %>
   </li>
 </ul>

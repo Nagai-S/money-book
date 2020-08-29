@@ -52,6 +52,21 @@ header .nav-list-item {
   font-size: 20px;
 }
 
+header #unlogin1 {
+  text-align: center;
+  padding: 10px 0;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+header #unlogin2 {
+  list-style: none;
+  display: inline-block;
+  margin: auto;
+  margin-right: 20px;
+  font-size: 20px;
+}
+
 header .dropdown{
   text-align: right;
   font-family: -apple-system,BlinkMacSystemFont,sans-serif;
@@ -89,6 +104,17 @@ header .btn{
   background-color: #F0F8FF;
   font-weight: bold;
   font-size: 20px
+}
+
+#error{
+  color: red;
+  list-style: none;
+}
+
+btn{
+  color: inherit;
+  background-color: #F0F8FF;
+  font-size: 20px;
 }
 
 /* table */
@@ -184,6 +210,13 @@ form #name{
   height: 30px;
   margin: auto;
   font-size: 20px;
+}
+
+form #user{
+    width: 60%;
+    height: 30px;
+    margin: auto;
+    font-size: 20px;
 }
 
 form .btn{

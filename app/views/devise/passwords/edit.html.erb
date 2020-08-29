@@ -4,21 +4,18 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "新しいパスワードを入力してください" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+  <div class="form-group">
+    <%= f.label :password, "新しいパスワードを入力してください", class: "form-control", id: "user" %><br />
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", id: "user" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation, "もう一度入力してください" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "user" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "パスワード変更" %>
+    <%= f.submit "パスワード変更", class: "btn btn-primary", role: "button" %>
   </div>
 <% end %>
 

@@ -35,6 +35,7 @@
                 <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user), data: {"turbolinks" => false} %></li>
                 <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user), data: {"turbolinks" => false} %></li>
                 <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user), data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path, data: {"turbolinks" => false} %></li>
                 <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false} %></li>
             </div>
           </div>
@@ -42,9 +43,9 @@
         <% else %>
 
         <h1 class="headline"><%= link_to "Money Book", root_path, data: {"turbolinks" => false} %></h1>
-        <ul class="nav-list">
-              <li class="nav-list-item"><%= link_to "新規会員登録", new_user_registration_path, data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %></li>
+        <ul class="nav-list" id="unlogin1">
+              <li class="nav-list-item" id="unlogin2"><%= link_to "新規会員登録", new_user_registration_path, data: {"turbolinks" => false} %></li>
+              <li class="nav-list-item" id="unlogin2"><%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %></li>
         </ul>
 
         <% end %>
@@ -82,6 +83,7 @@
         <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user), data: {"turbolinks" => false} %></li>
         <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user), data: {"turbolinks" => false} %></li>
         <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user), data: {"turbolinks" => false} %></li>
+        <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path, data: {"turbolinks" => false} %></li>
         <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {"turbolinks" => false} %></li>
       </ul>
       <% end %>

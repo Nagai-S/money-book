@@ -40728,3 +40728,346 @@ Processing by AccountsController#create as HTML
 Completed 200 OK in 79ms (Views: 74.3ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/" for ::1 at 2020-09-01 23:40:08 +0900
+Processing by HomepagesController#home as HTML
+  Rendering homepages/home.html.erb within layouts/application
+  Rendered homepages/home.html.erb within layouts/application (0.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Completed 200 OK in 224ms (Views: 222.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/5/events" for ::1 at 2020-09-01 23:40:13 +0900
+Processing by EventsController#index as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 5], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered events/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 112ms (Views: 100.6ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-09-01 23:40:16 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1gBinWydb4eDtp1BosL+I3UI/YblEOB8Vcw+7hmv8Ct4KhzndrAMU0DDNfkxoXZ6VTKSLEuFwDcL6ljG0aaqLg=="}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-09-01 23:40:17 +0900
+Processing by HomepagesController#home as HTML
+  Rendering homepages/home.html.erb within layouts/application
+  Rendered homepages/home.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 85ms (Views: 83.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-01 23:40:18 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 98ms (Views: 96.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-09-01 23:40:35 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ubbr9r1qbLinGQ5HPJ7U1xGBRAs3oLLAx8xg1GCzjs5XEomEPjcL/GABXwUnJivKIGkVsG1Vehb8sQmDj1H97g==", "user"=>{"email"=>"shogo0407baseball@icloud.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "shogo0407baseball@icloud.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 286ms (ActiveRecord: 0.3ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ubbr9r1qbLinGQ5HPJ7U1xGBRAs3oLLAx8xg1GCzjs5XEomEPjcL/GABXwUnJivKIGkVsG1Vehb8sQmDj1H97g==", "user"=>{"email"=>"shogo0407baseball@icloud.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 335ms (Views: 67.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-09-01 23:40:44 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BrgWvjRPTPsNQ2PYXnpitAUgzH5gEXJd5unWyiIh7MToHHTMtxIrv8pbMppFwp2pNMidxTrkuovdlL+dzcOf5A==", "user"=>{"email"=>"shogo0407baseball@icloud.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "shogo0407baseball@icloud.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 267ms (ActiveRecord: 0.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BrgWvjRPTPsNQ2PYXnpitAUgzH5gEXJd5unWyiIh7MToHHTMtxIrv8pbMppFwp2pNMidxTrkuovdlL+dzcOf5A==", "user"=>{"email"=>"shogo0407baseball@icloud.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 354ms (Views: 88.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-09-01 23:40:54 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eEAES7vEkN3cmkwLxkh/t5kJvDIH6xEvZacj4n7ODE6W5GY5OJn3mRuCHUnd8ICqqOHtiV0e2fle2kq1kSx/bg==", "user"=>{"email"=>"shogo0407baseball@icloud.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"ログイン"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "shogo0407baseball@icloud.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/user/1/events
+Completed 302 Found in 291ms (ActiveRecord: 0.2ms)
+
+
+Started GET "/user/1/events" for ::1 at 2020-09-01 23:40:54 +0900
+Processing by EventsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered events/index.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 86ms (Views: 81.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/edit" for ::1 at 2020-09-01 23:40:57 +0900
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (0.6ms)
+  Rendered devise/registrations/edit.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 94ms (Views: 91.6ms | ActiveRecord: 0.2ms)
+
+
+Started PUT "/users" for ::1 at 2020-09-01 23:41:13 +0900
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"b5L30/XGmnwBW1/u7KCxye2t9Lmsc1ok5F+FGb6W5GDEIhrHkseIfHEeW0qNMv+fv+YYuiAUppoewVhYY00fjg==", "user"=>{"email"=>"shogo0407baseball@icloud.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "current_password"=>"[FILTERED]"}, "commit"=>"変更"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "encrypted_password" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["encrypted_password", "$2a$12$PzOJEWTZVKZ/PjnoboB0Be0fBbm7lGrqT5pVFyZ9fQSZUPgowkAE6"], ["updated_at", "2020-09-01 14:41:14.110837"], ["id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 573ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/" for ::1 at 2020-09-01 23:41:14 +0900
+Processing by HomepagesController#home as HTML
+  Rendering homepages/home.html.erb within layouts/application
+  Rendered homepages/home.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 86ms (Views: 84.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/user/1/events" for ::1 at 2020-09-01 23:41:17 +0900
+Processing by EventsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered events/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 94ms (Views: 87.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/1/account_exchanges" for ::1 at 2020-09-01 23:41:21 +0900
+Processing by AccountExchangesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering account_exchanges/index.html.erb within layouts/application
+  [1m[36mAccountExchange Load (0.5ms)[0m  [1m[34mSELECT  "account_exchanges".* FROM "account_exchanges" WHERE "account_exchanges"."user_id" = ? ORDER BY "account_exchanges"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered account_exchanges/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 109ms (Views: 100.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/user/1/accounts" for ::1 at 2020-09-01 23:41:28 +0900
+Processing by AccountsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC[0m  [["user_id", 1]]
+  Rendering accounts/index.html.erb within layouts/application
+  Rendered accounts/index.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 121ms (Views: 93.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/1/accounts/new" for ::1 at 2020-09-01 23:41:30 +0900
+Processing by AccountsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering accounts/new.html.erb within layouts/application
+  Rendered accounts/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 75ms (Views: 71.7ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/user/1/accounts" for ::1 at 2020-09-01 23:41:36 +0900
+Processing by AccountsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"OXZDAQV6k5IiYCcUu04HANBuicH3TNUiMLYNCqDl43SSxq4VYnuBklIlI7Da3ElWgiVlwnsrKZzKKNBLfT4Ymg==", "account"=>{"name"=>"a", "value"=>"100"}, "commit"=>"アカウント作成", "user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mAccount Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "accounts" WHERE "accounts"."name" = ? AND "accounts"."user_id" = 1 LIMIT ?[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "accounts" ("name", "value", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "a"], ["value", 100], ["user_id", 1], ["created_at", "2020-09-01 14:41:36.179494"], ["updated_at", "2020-09-01 14:41:36.179494"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/accounts
+Completed 302 Found in 10ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/user/1/accounts" for ::1 at 2020-09-01 23:41:36 +0900
+Processing by AccountsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC[0m  [["user_id", 1]]
+  Rendering accounts/index.html.erb within layouts/application
+  Rendered accounts/index.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 115ms (Views: 105.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/user/1/account_exchanges/new" for ::1 at 2020-09-01 23:41:38 +0900
+Processing by AccountExchangesController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering account_exchanges/new.html.erb within layouts/application
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  Rendered account_exchanges/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 96ms (Views: 91.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/user/1/account_exchanges" for ::1 at 2020-09-01 23:41:44 +0900
+Processing by AccountExchangesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nyfJFYacXjLfS9MeEuy70kGvf0e2YHbakGNJLtNW6hI0lyQB4Z1MMq8O17pzfvWEE+STRDoHimRq/ZRvDo0R/A==", "account_exchange"=>{"date(1i)"=>"2020", "date(2i)"=>"9", "date(3i)"=>"1", "bname"=>"銀行", "aname"=>"a", "value"=>"200"}, "commit"=>"新規振替", "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "account_exchanges" ("bname", "aname", "value", "date", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["bname", "銀行"], ["aname", "a"], ["value", 200], ["date", "2020-09-01"], ["user_id", 1], ["created_at", "2020-09-01 14:41:44.461417"], ["updated_at", "2020-09-01 14:41:44.461417"]]
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? AND "accounts"."name" = ? ORDER BY "accounts"."value" DESC LIMIT ?[0m  [["user_id", 1], ["name", "銀行"], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? AND "accounts"."name" = ? ORDER BY "accounts"."value" DESC LIMIT ?[0m  [["user_id", 1], ["name", "a"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "accounts" WHERE "accounts"."name" = ? AND ("accounts"."id" != ?) AND "accounts"."user_id" = 1 LIMIT ?[0m  [["name", "銀行"], ["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "value" = ?, "updated_at" = ? WHERE "accounts"."id" = ?[0m  [["value", 18598], ["updated_at", "2020-09-01 14:41:44.469770"], ["id", 2]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "accounts" WHERE "accounts"."name" = ? AND ("accounts"."id" != ?) AND "accounts"."user_id" = 1 LIMIT ?[0m  [["name", "a"], ["id", 4], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "accounts" SET "value" = ?, "updated_at" = ? WHERE "accounts"."id" = ?[0m  [["value", 300], ["updated_at", "2020-09-01 14:41:44.474599"], ["id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/accounts
+Completed 302 Found in 19ms (ActiveRecord: 6.1ms)
+
+
+Started GET "/user/1/accounts" for ::1 at 2020-09-01 23:41:44 +0900
+Processing by AccountsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC[0m  [["user_id", 1]]
+  Rendering accounts/index.html.erb within layouts/application
+  Rendered accounts/index.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 85ms (Views: 76.4ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/user/1/accounts/4" for ::1 at 2020-09-01 23:41:47 +0900
+Processing by AccountsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"79VywwKOBeyPOO4gvBbvEncDlrlm1NfJMbYotdNRIiREZZ/XZY8X7P996oTdhKFEJUh6uuqzK3fLKPX0DorZyg==", "user_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? AND "accounts"."id" = ? ORDER BY "accounts"."value" DESC LIMIT ?[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "accounts" WHERE "accounts"."id" = ?[0m  [["id", 4]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/accounts
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/user/1/accounts" for ::1 at 2020-09-01 23:41:47 +0900
+Processing by AccountsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[36mGenre Load (0.1ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC[0m  [["user_id", 1]]
+  Rendering accounts/index.html.erb within layouts/application
+  Rendered accounts/index.html.erb within layouts/application (28.2ms)
+Completed 200 OK in 108ms (Views: 99.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/1/events/new" for ::1 at 2020-09-01 23:41:48 +0900
+Processing by EventsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT "genres".* FROM "genres" WHERE "genres"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 98ms (Views: 90.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/user/1/account_exchanges" for ::1 at 2020-09-01 23:41:51 +0900
+Processing by AccountExchangesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering account_exchanges/index.html.erb within layouts/application
+  [1m[36mAccountExchange Load (0.3ms)[0m  [1m[34mSELECT  "account_exchanges".* FROM "account_exchanges" WHERE "account_exchanges"."user_id" = ? ORDER BY "account_exchanges"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered account_exchanges/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 80ms (Views: 76.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/user/1/account_exchanges/44/edit" for ::1 at 2020-09-01 23:41:53 +0900
+Processing by AccountExchangesController#edit as HTML
+  Parameters: {"user_id"=>"1", "id"=>"44"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccountExchange Load (0.2ms)[0m  [1m[34mSELECT  "account_exchanges".* FROM "account_exchanges" WHERE "account_exchanges"."user_id" = ? AND "account_exchanges"."id" = ? ORDER BY "account_exchanges"."date" DESC LIMIT ?[0m  [["user_id", 1], ["id", 44], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? AND "accounts"."name" = ? ORDER BY "accounts"."value" DESC LIMIT ?[0m  [["user_id", 1], ["name", "銀行"], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? AND "accounts"."name" = ? ORDER BY "accounts"."value" DESC LIMIT ?[0m  [["user_id", 1], ["name", "a"], ["LIMIT", 1]]
+  Rendering account_exchanges/index.html.erb within layouts/application
+  [1m[36mAccountExchange Load (0.2ms)[0m  [1m[34mSELECT "account_exchanges".* FROM "account_exchanges" WHERE "account_exchanges"."user_id" = ? ORDER BY "account_exchanges"."date" DESC[0m  [["user_id", 1]]
+  Rendered account_exchanges/index.html.erb within layouts/application (8.9ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `total_pages' for #<AccountExchange::ActiveRecord_Associations_CollectionProxy:0x00007f846b6755b0>):
+    25:       </tr>
+    26:     </tbody>
+    27:     <% end %>
+    28:     <%= will_paginate @account_exchanges %>
+    29:   </table>
+    30: </div>
+    31: 
+  
+app/views/account_exchanges/index.html.erb:28:in `_app_views_account_exchanges_index_html_erb__3824099375718694642_70103367262680'
+app/controllers/account_exchanges_controller.rb:77:in `edit'
+Started GET "/user/1/account_exchanges" for ::1 at 2020-09-01 23:46:11 +0900
+Processing by AccountExchangesController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering account_exchanges/index.html.erb within layouts/application
+  [1m[36mAccountExchange Load (0.3ms)[0m  [1m[34mSELECT  "account_exchanges".* FROM "account_exchanges" WHERE "account_exchanges"."user_id" = ? ORDER BY "account_exchanges"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered account_exchanges/index.html.erb within layouts/application (10.5ms)
+Completed 200 OK in 386ms (Views: 362.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/user/1/account_exchanges/44/edit" for ::1 at 2020-09-01 23:46:13 +0900
+Processing by AccountExchangesController#edit as HTML
+  Parameters: {"user_id"=>"1", "id"=>"44"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccountExchange Load (0.2ms)[0m  [1m[34mSELECT  "account_exchanges".* FROM "account_exchanges" WHERE "account_exchanges"."user_id" = ? AND "account_exchanges"."id" = ? ORDER BY "account_exchanges"."date" DESC LIMIT ?[0m  [["user_id", 1], ["id", 44], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? AND "accounts"."name" = ? ORDER BY "accounts"."value" DESC LIMIT ?[0m  [["user_id", 1], ["name", "銀行"], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT  "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? AND "accounts"."name" = ? ORDER BY "accounts"."value" DESC LIMIT ?[0m  [["user_id", 1], ["name", "a"], ["LIMIT", 1]]
+  Rendering account_exchanges/index.html.erb within layouts/application
+  [1m[36mAccountExchange Load (0.3ms)[0m  [1m[34mSELECT  "account_exchanges".* FROM "account_exchanges" WHERE "account_exchanges"."user_id" = ? ORDER BY "account_exchanges"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered account_exchanges/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 130ms (Views: 92.0ms | ActiveRecord: 2.6ms)
+
+

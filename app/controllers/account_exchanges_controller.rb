@@ -50,7 +50,7 @@ class AccountExchangesController < ApplicationController
   end
 
   def edit
-    @account_exchanges=current_user.account_exchanges
+    @account_exchanges=current_user.account_exchanges.paginate(page: params[:page])
     @accounts=current_user.accounts
     @account_exchange=AccountExchange.find_by(:user_id => params[:user_id], :id => params[:id])
     @anames=[]

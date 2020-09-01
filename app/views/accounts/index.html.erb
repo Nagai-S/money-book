@@ -48,6 +48,8 @@
 
 <h2>月ごとの収支</h2>
 
+<% if @events!=[] %>
+
 <div class="col-5 ml-3">
   <table class="table" id="pm">
     <thead>
@@ -66,9 +68,9 @@
     <tbody>
       <tr>
         <% if a != month_pm_genre[:year] %>
-          <td><%= month_pm_genre[:year] %>年</td>
+        <td><%= month_pm_genre[:year] %>年</td>
         <% else %>
-          <td></td>
+        <td></td>
         <% end %>
 
         <td class="border-right"><%= month_pm_genre[:month] %>月</td>
@@ -93,21 +95,21 @@
         <th class="border-right">月</th>
 
         <% @genres_array_e.each do |genre| %>
-          <% if genre==@genres_array_e.last %>
-            <th class="border-right">
-              <%= genre %>
-            </th>
-          <% else %>
-            <th>
-              <%= genre %>
-            </th>
-          <% end %>
+        <% if genre==@genres_array_e.last %>
+        <th class="border-right">
+          <%= genre %>
+        </th>
+        <% else %>
+        <th>
+          <%= genre %>
+        </th>
+        <% end %>
         <% end %>
 
         <% @genres_array_i.each do |genre| %>
-          <th>
-            <%= genre %>
-          </th>
+        <th>
+          <%= genre %>
+        </th>
         <% end %>
 
       </tr>
@@ -119,23 +121,23 @@
     <tbody>
       <tr>
         <% if a != month_pm_genre[:year] %>
-          <td><%= month_pm_genre[:year] %>年</td>
+        <td><%= month_pm_genre[:year] %>年</td>
         <% else %>
-          <td></td>
+        <td></td>
         <% end %>
 
         <td class="border-right"><%= month_pm_genre[:month] %>月</td>
 
         <% @genres_array_e.each do |genre| %>
-          <% if genre==@genres_array_e.last %>
-            <td class="border-right">¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
-          <% else %>
-            <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
-          <% end %>
+        <% if genre==@genres_array_e.last %>
+        <td class="border-right">¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
+        <% else %>
+        <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
+        <% end %>
         <% end %>
 
         <% @genres_array_i.each do |genre| %>
-          <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
+        <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
         <% end %>
       </tr>
     </tbody>
@@ -147,7 +149,13 @@
   </table>
 </div>
 
+<% else %>
+
+<p>まだイベントがありません</p>
+<% end %>
+
 <h2>年ごとの収支</h2>
+<% if @events!=[] %>
 
 <div class="col-5 ml-3">
   <table class="table" id="pm">
@@ -183,21 +191,21 @@
         <th class="border-right">年</th>
 
         <% @genres_array_e.each do |genre| %>
-          <% if genre==@genres_array_e.last %>
-            <th class="border-right">
-              <%= genre %>
-            </th>
-          <% else %>
-            <th>
-              <%= genre %>
-            </th>
-          <% end %>
+        <% if genre==@genres_array_e.last %>
+        <th class="border-right">
+          <%= genre %>
+        </th>
+        <% else %>
+        <th>
+          <%= genre %>
+        </th>
+        <% end %>
         <% end %>
 
         <% @genres_array_i.each do |genre| %>
-          <th>
-            <%= genre %>
-          </th>
+        <th>
+          <%= genre %>
+        </th>
         <% end %>
 
       </tr>
@@ -209,15 +217,15 @@
         <td class="border-right"><%= year_pm_genre[:year] %>年</td>
 
         <% @genres_array_e.each do |genre| %>
-          <% if genre==@genres_array_e.last %>
-            <td class="border-right">¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
-          <% else %>
-            <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
-          <% end %>
+        <% if genre==@genres_array_e.last %>
+        <td class="border-right">¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
+        <% else %>
+        <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
+        <% end %>
         <% end %>
 
         <% @genres_array_i.each do |genre| %>
-          <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
+        <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
         <% end %>
       </tr>
     </tbody>
@@ -227,3 +235,9 @@
 
   </table>
 </div>
+
+<% else %>
+
+<p>まだイベントがありません</p>
+
+<% end %>

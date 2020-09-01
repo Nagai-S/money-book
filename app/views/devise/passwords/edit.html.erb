@@ -5,7 +5,7 @@
   <%= f.hidden_field :reset_password_token %>
 
   <div class="form-group">
-    <%= f.label :password, "新しいパスワードを入力してください", class: "form-control", id: "user" %><br />
+    <%= f.label :password, "新しいパスワードを入力してください" %><br />
     <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", id: "user" %>
   </div>
 
@@ -14,9 +14,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "user" %>
   </div>
 
-  <div class="actions">
     <%= f.submit "パスワード変更", class: "btn btn-primary", role: "button" %>
-  </div>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

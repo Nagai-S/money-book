@@ -43,15 +43,13 @@ class AccountsController < ApplicationController
     # end
     # ------------------------------------------------------------------------------------
 
-    @genres_array=[]
+    @genres_array_e=[]
+    @genres_array_i=[]
     @genres.each do |genre|
       if genre.iae==false
-        @genres_array << genre.name
-      end
-    end
-    @genres.each do |genre|
-      if genre.iae==true
-        @genres_array << genre.name
+        @genres_array_e << genre.name
+      else
+        @genres_array_i << genre.name
       end
     end
 
@@ -73,6 +71,8 @@ class AccountsController < ApplicationController
         month_pm_genre[:year]=event.date.year
         month_pm_genre[:month]=event.date.month
         month_pm_genre[:pm]=0
+        month_pm_genre[:in]=0
+        month_pm_genre[:out]=0
         @genres.each do |genre|
           month_pm_genre[genre.name]=0
         end
@@ -80,8 +80,10 @@ class AccountsController < ApplicationController
 
       if event.iae==false
         month_pm_genre[:pm] -= event.value
+        month_pm_genre[:out] += event.value
       else
         month_pm_genre[:pm] += event.value
+        month_pm_genre[:in] += event.value
       end
 
       @genres.each do |genre|
@@ -118,6 +120,8 @@ class AccountsController < ApplicationController
         year_pm_genre=Hash.new
         year_pm_genre[:year]=event.date.year
         year_pm_genre[:pm]=0
+        year_pm_genre[:in]=0
+        year_pm_genre[:out]=0
         @genres.each do |genre|
           year_pm_genre[genre.name]=0
         end
@@ -125,8 +129,10 @@ class AccountsController < ApplicationController
 
       if event.iae==false
         year_pm_genre[:pm] -= event.value
+        year_pm_genre[:out] += event.value
       else
         year_pm_genre[:pm] += event.value
+        year_pm_genre[:in] += event.value
       end
 
       @genres.each do |genre|

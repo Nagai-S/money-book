@@ -140,6 +140,10 @@ btn{
   background-color: #F0F8FF;
 }
 
+.border-right{
+  border-right: 1px solid #ddd
+}
+
 #table_events{
   width: 100%;
   margin: auto;

@@ -37,7 +37,7 @@
           <% end %>
 
           <td>
-           ¥<%= -event.value %>
+           ¥<%= -event.value.to_s(:delimited) %>
           </td>
 
           <td>
@@ -70,7 +70,7 @@
           <% end %>
 
           <td>
-           ¥<%= event.value %>
+           ¥<%= event.value.to_s(:delimited) %>
           </td>
 
           <td>

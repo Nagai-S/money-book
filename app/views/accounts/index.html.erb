@@ -2,7 +2,7 @@
 
 <h2>残高</h2>
 <div class="">
-  ¥<%= @total %>
+  ¥<%= @total.to_s(:delimited) %>
 </div>
 
 <h2>アカウント残高</h2>
@@ -22,7 +22,7 @@
     <tbody>
       <tr>
         <td><%= account.name %></td>
-        <td>¥<%= account.value %></td>
+        <td>¥<%= account.value.to_s(:delimited) %></td>
         <td><%= link_to "削除", user_account_path(params[:user_id], account.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" }, data: {"turbolinks" => false} %></td>
       </tr>
     </tbody>
@@ -72,9 +72,9 @@
         <% end %>
 
         <td class="border-right"><%= month_pm_genre[:month] %>月</td>
-        <td>¥<%= month_pm_genre[:in] %></td>
-        <td class="border-right">-¥<%= month_pm_genre[:out] %></td>
-        <td>¥<%= month_pm_genre[:pm] %></td>
+        <td>¥<%= month_pm_genre[:in].to_s(:delimited) %></td>
+        <td class="border-right">-¥<%= month_pm_genre[:out].to_s(:delimited) %></td>
+        <td>¥<%= month_pm_genre[:pm].to_s(:delimited) %></td>
       </tr>
     </tbody>
 
@@ -128,14 +128,14 @@
 
         <% @genres_array_e.each do |genre| %>
           <% if genre==@genres_array_e.last %>
-            <td class="border-right">¥<%= month_pm_genre[genre] %></td>
+            <td class="border-right">¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
           <% else %>
-            <td>¥<%= month_pm_genre[genre] %></td>
+            <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
           <% end %>
         <% end %>
 
         <% @genres_array_i.each do |genre| %>
-          <td>¥<%= month_pm_genre[genre] %></td>
+          <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
         <% end %>
       </tr>
     </tbody>
@@ -164,9 +164,9 @@
     <tbody>
       <tr>
         <td class="border-right"><%= year_pm_genre[:year] %>年</td>
-        <td>¥<%= year_pm_genre[:in] %></td>
-        <td class="border-right">-¥<%= year_pm_genre[:out] %></td>
-        <td>¥<%= year_pm_genre[:pm] %></td>
+        <td>¥<%= year_pm_genre[:in].to_s(:delimited) %></td>
+        <td class="border-right">-¥<%= year_pm_genre[:out].to_s(:delimited) %></td>
+        <td>¥<%= year_pm_genre[:pm].to_s(:delimited) %></td>
       </tr>
     </tbody>
 
@@ -210,14 +210,14 @@
 
         <% @genres_array_e.each do |genre| %>
           <% if genre==@genres_array_e.last %>
-            <td class="border-right">¥<%= year_pm_genre[genre] %></td>
+            <td class="border-right">¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
           <% else %>
-            <td>¥<%= year_pm_genre[genre] %></td>
+            <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
           <% end %>
         <% end %>
 
         <% @genres_array_i.each do |genre| %>
-          <td>¥<%= year_pm_genre[genre] %></td>
+          <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
         <% end %>
       </tr>
     </tbody>

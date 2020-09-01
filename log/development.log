@@ -40075,3 +40075,5 @@ Completed 200 OK in 191ms (Views: 187.0ms | ActiveRecord: 0.7ms)
 >>>>>>> user-confirmation-2
 DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
 DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')

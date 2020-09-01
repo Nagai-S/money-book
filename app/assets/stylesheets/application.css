@@ -19,6 +19,10 @@
   margin:0; padding:0;
 }
 
+.container2{
+  padding-bottom: 160px;
+}
+
 body{
    font-family: -apple-system,BlinkMacSystemFont,sans-serif;
    text-align: center;
@@ -26,7 +30,9 @@ body{
  }
 
  #wrapper{
+   width: 100%;
    display: flex;
+   position: relative;
   flex-direction: column;
   min-height: 100vh;
  }
@@ -255,7 +261,8 @@ footer {
   text-align: bottom;
   padding: 50px 0;
   background-color: #F0F8FF;
-  margin-top: auto;
+  position: absolute;
+  bottom: 0;
 }
 
 footer .nav-list {

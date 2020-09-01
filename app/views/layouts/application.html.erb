@@ -52,12 +52,15 @@
         <% end %>
 
       </div>
+      
     </header>
-    <% if user_signed_in? %>
+
+    <div class="container2">
+      <% if user_signed_in? %>
       <ul class="nav-list">
         <li class="nav-list-item">
           <button type="button" class="btn btn-primary">
-              <%= link_to "残高", user_accounts_path(current_user), data: {"turbolinks" => false} %>
+            <%= link_to "残高", user_accounts_path(current_user), data: {"turbolinks" => false} %>
           </button>
         </li>
 
@@ -67,9 +70,10 @@
           </button>
         </li>
       </ul>
-    <% end %>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
 
     <footer>
       <% if user_signed_in? %>

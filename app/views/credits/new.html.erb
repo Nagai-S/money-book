@@ -1,0 +1,41 @@
+<h1>新規クレジットカード作成</h1>
+
+<%= form_for :credit, url:user_credits_path do |f| %>
+
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+      <%= f.label :name, "カードの名前を入力してください" %>
+      <%= f.text_field :name, class: "form-control", id: "name" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+      <%= f.label :account, "引き落とし先のアカウントを選択してください" %>
+      <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+      <%= f.label :pay_date, "引き落とし日を選択してください", class: "date_label" %>
+      <%= f.select :pay_date, @days, {include_blank: '選択ボックス'}, class: "form-control", id: "day_select" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+      <%= f.label :month_date, "締め日を選択してください", class: "date_label" %>
+      <%= f.select :month_date, @days, {include_blank: '選択ボックス'}, class: "form-control", id: "day_select" %>
+    </div>
+  </div>
+
+  <%= f.submit "クレジットカード作成", class: "btn btn-primary", role: "button" %>
+
+<% end %>
+
+<ul class="nav-list">
+  <li class="nav-list-item">
+    <%= link_to "クレジットカード一覧へ戻る",  user_credits_path(params[:user_id]), data: {"turbolinks" => false} %>
+  </li>
+</ul>

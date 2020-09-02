@@ -20,7 +20,7 @@
         <td><%= account_exchange.bname %></td>
         <td><%= account_exchange.aname %></td>
         <td>¥<%= account_exchange.value.to_s(:delimited) %></td>
-        <td><%= link_to "削除", user_account_exchange_path(params[:user_id], account_exchange.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" }, data: {"turbolinks" => false} %></td>
+        <td><%= link_to "削除", user_account_exchange_path(params[:user_id], account_exchange.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %></td>
         <td><%= link_to "編集", edit_user_account_exchange_path(params[:user_id], account_exchange.id), data: {"turbolinks" => false} %></td>
       </tr>
     </tbody>

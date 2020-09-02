@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources:accounts
     resources:account_exchanges
     resources:events
+    resources:credits
     post "/events1" => "events#create1"
     post "/events2" => "events#create2"
     put "/events_up1/:id" => "events#update1", as: "events_up1"

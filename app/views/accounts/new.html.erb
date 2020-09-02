@@ -1,13 +1,18 @@
 <h1>新規アカウント作成</h1>
 <%= form_for :account, url:user_accounts_path do |f| %>
 
-  <div class="form-group">
-    <%= f.label :name, "名前を入力してください" %>
-    <%= f.text_field :name, class: "form-control", id: "name" %>
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+      <%= f.label :name, "名前を入力してください" %>
+      <%= f.text_field :name, class: "form-control", id: "name" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :value, "初期値を入力してください" %>
-    <%= f.text_field :value, class: "form-control", id: "value" %>
+
+  <div class="row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+      <%= f.label :value, "初期値を入力してください" %>
+      <%= f.text_field :value, class: "form-control", id: "value" %>
+    </div>
   </div>
 
   <%= f.submit "アカウント作成", class: "btn btn-primary", role: "button" %>

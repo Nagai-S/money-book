@@ -13,30 +13,40 @@
     <div class="tab-pane active" id="tab_a" role="tabpanel">
       <%= form_for :event, url:user_events1_path do |f| %>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :date, "日付を選択してください", class: "date_label" %>
           <%= f.date_select :date, {}, class: "form-control", id: "date" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :genre, "ジャンルを選択してください" %>
           <%= f.select :genre, @genres_e,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :account, "アカウントを選択してください" %>
           <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :memo, "メモ" %>
           <%= f.text_field :memo, class: "form-control", id: "text" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :value, "金額を入力してください" %>
           <%= f.text_field :value, class: "form-control", id: "value" %>
         </div>
+      </div>
 
         <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
 
@@ -44,30 +54,40 @@
     </div>
     <div class="tab-pane" id="tab_b" role="tabpanel">
       <%= form_for :event, url:user_events2_path do |f| %>
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :date, "日付を選択してください", class: "date_label" %>
           <%= f.date_select :date, {}, class: "form-control", id: "date" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :genre, "ジャンルを選択してください" %>
           <%= f.select :genre, @genres_i,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :account, "アカウントを選択してください" %>
           <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :memo, "メモ" %>
           <%= f.text_field :memo, class: "form-control", id: "text" %>
         </div>
+      </div>
 
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
           <%= f.label :value, "金額を入力してください" %>
           <%= f.text_field :value, class: "form-control", id: "value" %>
         </div>
+      </div>
 
         <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
 

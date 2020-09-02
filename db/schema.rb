@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200828024711) do
+ActiveRecord::Schema.define(version: 20200902084206) do
 
   create_table "account_exchanges", force: :cascade do |t|
     t.string "bname"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 20200828024711) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
+  create_table "credits", force: :cascade do |t|
+    t.string "name"
+    t.integer "pay_date"
+    t.integer "month_date"
+    t.string "account"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credits_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.date "date"
     t.string "genre"
@@ -42,6 +53,7 @@ ActiveRecord::Schema.define(version: 20200828024711) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "pay_date"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

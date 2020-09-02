@@ -23,7 +23,7 @@
       <tr>
         <td><%= account.name %></td>
         <td>¥<%= account.value.to_s(:delimited) %></td>
-        <td><%= link_to "削除", user_account_path(params[:user_id], account.id), method: :DELETE, data: { confirm: "削除してよろしいですか？" }, data: {"turbolinks" => false} %></td>
+        <td><%= link_to "削除", user_account_path(params[:user_id], account.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %></td>
       </tr>
     </tbody>
 

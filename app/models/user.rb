@@ -7,4 +7,5 @@ class User < ApplicationRecord
  has_many :account_exchanges, dependent: :destroy
  has_many :genres, dependent: :destroy
  has_many :events, dependent: :destroy
+ has_many :credits, dependent: :destroy
 end

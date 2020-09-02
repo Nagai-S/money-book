@@ -198,6 +198,12 @@ form #select{
   font-size: 20px;
 }
 
+form #day_select{
+  width: 30%;
+  margin: auto;
+  font-size: 20px;
+}
+
 form #text{
   height: 70px;
   margin: auto;

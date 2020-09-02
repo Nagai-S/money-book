@@ -42339,3 +42339,16 @@ Processing by GenresController#index as HTML
 Completed 200 OK in 105ms (Views: 102.0ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/user/1/events" for ::1 at 2020-09-02 12:57:13 +0900
+Processing by EventsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."user_id" = ? ORDER BY "events"."date" DESC LIMIT ? OFFSET ?[0m  [["user_id", 1], ["LIMIT", 30], ["OFFSET", 0]]
+  Rendered events/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 129ms (Views: 122.8ms | ActiveRecord: 0.8ms)
+
+
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')

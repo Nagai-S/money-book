@@ -82,19 +82,19 @@
       </ul>
       <ul class="nav-list">
         <div class="row">
-          <div class="col-xs-6 col-md-4">
+          <div class="col-xs-4">
             <li class="nav-list-item"><%= link_to "新規イベント作成", new_user_event_path(current_user), data: {"turbolinks" => false} %></li>
             <li class="nav-list-item"><%= link_to "残高", user_accounts_path(current_user) %></li>
             <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user), data: {"turbolinks" => false} %></li>
             <li class="nav-list-item"><%= link_to "新規クレジットカード作成", new_user_credit_path(current_user), data: {"turbolinks" => false} %></li>
           </div>
-          <div class="col-xs-6 col-md-4">
+          <div class="col-xs-4">
             <li class="nav-list-item"><%= link_to "クレジットカード一覧", user_credits_path(current_user), data: {"turbolinks" => false} %></li>
             <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user), data: {"turbolinks" => false} %></li>
             <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user), data: {"turbolinks" => false} %></li>
             <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user), data: {"turbolinks" => false} %></li>
           </div>
-          <div class="col-xs-6 col-md-4">
+          <div class="col-xs-4">
             <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user), data: {"turbolinks" => false} %></li>
             <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path, data: {"turbolinks" => false} %></li>
             <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？", "turbolinks" => false} %></li>

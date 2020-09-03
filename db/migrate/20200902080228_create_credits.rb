@@ -2,8 +2,8 @@ class CreateCredits < ActiveRecord::Migration[5.1]
   def change
     create_table :credits do |t|
       t.string :name
-      t.integer :pay_date
-      t.integer :month_date
+      t.date :pay_date
+      t.date :month_date
       t.string :account
       t.references :user, foreign_key: true
 

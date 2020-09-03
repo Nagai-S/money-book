@@ -5,4 +5,5 @@ class ChangeDatatypePayDateOfCredits < ActiveRecord::Migration[5.1]
 
   def down
     change_column :credits, :pay_date, 'date'
+  end
 end

@@ -43294,3 +43294,291 @@ Processing by CreditsController#index as HTML
 Completed 200 OK in 105ms (Views: 101.3ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:46:52 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 139ms (Views: 136.8ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/user/1/credits/1" for ::1 at 2020-09-03 22:46:56 +0900
+Processing by CreditsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"lxFJY1SC9YeTiRvJXQYg9e4hkzX7pRqZyGzcBUmyhQdpAN4TefVXLIfeL0T5y9Bi2UIZQrWtBA7tLhsokguctQ==", "user_id"=>"1", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT  "credits".* FROM "credits" WHERE "credits"."user_id" = ? AND "credits"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "credits" WHERE "credits"."id" = ?[0m  [["id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 6ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:46:56 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 131ms (Views: 127.9ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/user/1/credits/21" for ::1 at 2020-09-03 22:47:01 +0900
+Processing by CreditsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"kRKedEzKOObnDCRR6SxzVB5t/9etX8JarCQn+Wdi5SFvAwkEYb2aTfNbENxN4YPDKQ51oONX3M2JZuDUvNv8kw==", "user_id"=>"1", "id"=>"21"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT  "credits".* FROM "credits" WHERE "credits"."user_id" = ? AND "credits"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 21], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "credits" WHERE "credits"."id" = ?[0m  [["id", 21]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 6ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:47:01 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 162ms (Views: 158.8ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/user/1/credits/23" for ::1 at 2020-09-03 22:47:04 +0900
+Processing by CreditsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"bsRzezp5bCEToMMP6oTxUeuRmrtMWRx5FsX0H53DqaSQ1eQLFw7Oigf394JOSQHG3PIQzAJRAu4zhzMyRnqwFg==", "user_id"=>"1", "id"=>"23"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT  "credits".* FROM "credits" WHERE "credits"."user_id" = ? AND "credits"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 23], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "credits" WHERE "credits"."id" = ?[0m  [["id", 23]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 4ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:47:04 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 100ms (Views: 96.0ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/user/1/credits/4" for ::1 at 2020-09-03 22:47:06 +0900
+Processing by CreditsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"AdpeYtZNG0+uRRRzpDeGvW3KLnXuWgLejUXR577GbBP/y8kS+zq55LoSIP4A+nYqWqmkAqBSHEmoBxbKZX91oQ==", "user_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT  "credits".* FROM "credits" WHERE "credits"."user_id" = ? AND "credits"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "credits" WHERE "credits"."id" = ?[0m  [["id", 4]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 6ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:47:06 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 112ms (Views: 107.4ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/user/1/credits/22" for ::1 at 2020-09-03 22:47:07 +0900
+Processing by CreditsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0R4se9xDBHu7yA1MCMsUgzAM4Vni7d0/5SSiZGa68dwvD7sL8TSm0K+fOcGsBuQUB29rLqzlw6jAZmVJvQPobg==", "user_id"=>"1", "id"=>"22"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT  "credits".* FROM "credits" WHERE "credits"."user_id" = ? AND "credits"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "credits" WHERE "credits"."id" = ?[0m  [["id", 22]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:47:07 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 143ms (Views: 139.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/user/1/credits/new" for ::1 at 2020-09-03 22:47:08 +0900
+Processing by CreditsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  Rendering credits/new.html.erb within layouts/application
+  Rendered credits/new.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 100ms (Views: 95.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/user/1/credits" for ::1 at 2020-09-03 22:47:33 +0900
+Processing by CreditsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fvvWi43VFjkNdokNJO+82et0oZly2/uo291TSTsdFuOA6kH7oKK0khkhvYCAIkxO3Bcr7jzT5T/+n5Rk4KQPUQ==", "credit"=>{"name"=>"YahooCard", "account"=>"ゆうちょ", "pay_date"=>"27", "month_date"=>"4"}, "commit"=>"クレジットカード登録", "user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCredit Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "credits" WHERE "credits"."name" = ? AND "credits"."user_id" = 1 LIMIT ?[0m  [["name", "YahooCard"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "credits" ("name", "pay_date", "month_date", "account", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "YahooCard"], ["pay_date", 27], ["month_date", 4], ["account", "ゆうちょ"], ["user_id", 1], ["created_at", "2020-09-03 13:47:33.976632"], ["updated_at", "2020-09-03 13:47:33.976632"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 9ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:47:33 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 119ms (Views: 115.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:47:42 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 88ms (Views: 85.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/user/1/credits/new" for ::1 at 2020-09-03 22:50:46 +0900
+Processing by CreditsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  Rendering credits/new.html.erb within layouts/application
+  Rendered credits/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 148ms (Views: 143.5ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/user/1/credits" for ::1 at 2020-09-03 22:50:57 +0900
+Processing by CreditsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"df1w3jnduQa32UWHIdIZYXkjUWA7CpY2MPSkbjmZir6L7OeuFKobraOOcQqFH+n2TkDbF3UCiKEVtmND4iCTDA==", "credit"=>{"name"=>"Rakuten", "account"=>"銀行", "pay_date"=>"2", "month_date"=>"5"}, "commit"=>"クレジットカード登録", "user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCredit Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "credits" WHERE "credits"."name" = ? AND "credits"."user_id" = 1 LIMIT ?[0m  [["name", "Rakuten"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "credits" ("name", "pay_date", "month_date", "account", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Rakuten"], ["pay_date", 2], ["month_date", 5], ["account", "銀行"], ["user_id", 1], ["created_at", "2020-09-03 13:50:57.447162"], ["updated_at", "2020-09-03 13:50:57.447162"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 8ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:50:57 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 158ms (Views: 154.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 22:51:00 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 128ms (Views: 125.1ms | ActiveRecord: 0.4ms)
+
+
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_events_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_events_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m

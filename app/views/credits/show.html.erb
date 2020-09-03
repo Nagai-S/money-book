@@ -1,1 +1,4 @@
 <h1><%= @credit.name %></h1>
+<ul class="nav-list">
+  <li class="nav-list-item"><%= link_to "クレジットカード一覧へ戻る", user_credits_path(current_user), data: {"turbolinks" => false} %></li>
+</ul>

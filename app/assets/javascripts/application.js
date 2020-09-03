@@ -18,3 +18,10 @@
 //= require twitter/bootstrap
 
 //= require bootstrap-sprockets
+
+(function($){
+$(document).ready(function () {
+  hsize = $('footer').height();
+  $("#contents").css("padding-bottom", hsize + "px");
+});
+})(jQuery);

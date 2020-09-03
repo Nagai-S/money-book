@@ -4,6 +4,10 @@
     <title>MoneyBook</title>
     <%= csrf_meta_tags %>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -55,7 +59,8 @@
 
     </header>
 
-    <div class="container2">
+    <div class="contents" id="contents">
+
       <% if user_signed_in? %>
       <ul class="nav-list">
         <li class="nav-list-item">
@@ -73,6 +78,7 @@
       <% end %>
 
       <%= yield %>
+
     </div>
 
     <footer>
@@ -106,9 +112,6 @@
     </footer>
   </div>
   </div>
+
   </body>
 </html>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

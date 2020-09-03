@@ -43582,3 +43582,358 @@ DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale 
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeDatatypeMonthDateOfCredits (20200902084206)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_events_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_events_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeDatatypeMonthDateOfCredits (20200902084206)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acredits" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "pay_date" integer DEFAULT NULL, "month_date" integer DEFAULT NULL, "account" varchar DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_acredits_on_user_id" ON "acredits" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acredits" ("id","name","pay_date","month_date","account","user_id","created_at","updated_at")
+                     SELECT "id","name","pay_date","month_date","account","user_id","created_at","updated_at" FROM "credits"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "credits"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "credits" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "pay_date" integer DEFAULT NULL, "month_date" date DEFAULT NULL, "account" varchar DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_acredits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_acredits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_credits_on_user_id" ON "credits" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "credits" ("id","name","pay_date","month_date","account","user_id","created_at","updated_at")
+                     SELECT "id","name","pay_date","month_date","account","user_id","created_at","updated_at" FROM "acredits"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acredits"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20200902084206"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_events_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_events_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/user/1/credits/new" for ::1 at 2020-09-03 23:58:47 +0900
+Processing by CreditsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  Rendering credits/new.html.erb within layouts/application
+  Rendered credits/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 199ms (Views: 140.5ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/user/1/credits" for ::1 at 2020-09-03 23:58:56 +0900
+Processing by CreditsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y4C9Yo6LtUtwwKrVyMM2z1tR7FMfqV0YdZWF8rIDaEE1kSoSo/wX4GSXnlhsDsZYbDJmJFGhQ49Q10Lfabpx8w==", "credit"=>{"name"=>"asdf", "account"=>"現金", "pay_date"=>"2", "month_date"=>"3"}, "commit"=>"クレジットカード登録", "user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCredit Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "credits" WHERE "credits"."name" = ? AND "credits"."user_id" = 1 LIMIT ?[0m  [["name", "asdf"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering credits/new.html.erb within layouts/application
+  Rendered credits/new.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 599ms (Views: 92.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 23:58:59 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.4ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 155ms (Views: 147.5ms | ActiveRecord: 1.2ms)
+
+
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeDatatypeMonthDateOfCredits (20200902084206)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acredits" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "pay_date" integer DEFAULT NULL, "month_date" date DEFAULT NULL, "account" varchar DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_acredits_on_user_id" ON "acredits" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "acredits" ("id","name","pay_date","month_date","account","user_id","created_at","updated_at")
+                     SELECT "id","name","pay_date","month_date","account","user_id","created_at","updated_at" FROM "credits"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "credits"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "credits" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "pay_date" integer DEFAULT NULL, "month_date" integer DEFAULT NULL, "account" varchar DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_acredits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_acredits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_credits_on_user_id" ON "credits" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "credits" ("id","name","pay_date","month_date","account","user_id","created_at","updated_at")
+                     SELECT "id","name","pay_date","month_date","account","user_id","created_at","updated_at" FROM "acredits"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acredits"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200902084206"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_account_exchanges_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_accounts_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_credits_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_events_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_events_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_genres_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+Started GET "/user/1/credits/new" for ::1 at 2020-09-03 23:59:18 +0900
+Processing by CreditsController#new as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  Rendering credits/new.html.erb within layouts/application
+  Rendered credits/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 164ms (Views: 124.8ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/user/1/credits" for ::1 at 2020-09-03 23:59:27 +0900
+Processing by CreditsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fCrqU042N9xCVjMj+ijs+2zUNVfJqYrDmcs6zWyn5eqCO30jY0GVd1YBB65e5RxsW7e/IIehlFS8if3gtx78WA==", "credit"=>{"name"=>"a", "account"=>"ゆうちょ", "pay_date"=>"4", "month_date"=>"9"}, "commit"=>"クレジットカード登録", "user_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."user_id" = ? ORDER BY "accounts"."value" DESC[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCredit Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "credits" WHERE "credits"."name" = ? AND "credits"."user_id" = 1 LIMIT ?[0m  [["name", "a"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "credits" ("name", "pay_date", "month_date", "account", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "a"], ["pay_date", 4], ["month_date", 9], ["account", "ゆうちょ"], ["user_id", 1], ["created_at", "2020-09-03 14:59:27.127990"], ["updated_at", "2020-09-03 14:59:27.127990"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 13ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 23:59:27 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.3ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 148ms (Views: 143.6ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/user/1/credits/3" for ::1 at 2020-09-03 23:59:30 +0900
+Processing by CreditsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7xvnl4KGhD4WllBSIBP9+9PI4Mvl+mEm47oxn1nORTARCnDnr/EmlQLBZN+E3g1s5KtqvKvyf7HG+Paygndcgg==", "user_id"=>"1", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCredit Load (0.1ms)[0m  [1m[34mSELECT  "credits".* FROM "credits" WHERE "credits"."user_id" = ? AND "credits"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "credits" WHERE "credits"."id" = ?[0m  [["id", 3]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/1/credits
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/user/1/credits" for ::1 at 2020-09-03 23:59:30 +0900
+Processing by CreditsController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering credits/index.html.erb within layouts/application
+  [1m[36mCredit Load (0.2ms)[0m  [1m[34mSELECT "credits".* FROM "credits" WHERE "credits"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered credits/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 140ms (Views: 136.8ms | ActiveRecord: 0.7ms)
+
+

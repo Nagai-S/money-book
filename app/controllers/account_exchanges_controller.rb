@@ -2,16 +2,20 @@ class AccountExchangesController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user
 
+
   def index
+    form_class
     @account_exchanges=current_user.account_exchanges.paginate(page: params[:page])
   end
 
   def new
+    form_class
     @accounts=current_user.accounts
     @account_exchange=current_user.account_exchanges.build
   end
 
   def create
+    form_class
     @accounts=current_user.accounts
     @account_exchange=current_user.account_exchanges.build(account_exchange_params)
     if @account_exchange.bname==@account_exchange.aname
@@ -34,6 +38,7 @@ class AccountExchangesController < ApplicationController
   end
 
   def destroy
+    form_class
     a=AccountExchange.find_by(:user_id => params[:user_id], :id => params[:id])
     before=Account.find_by(:user_id => current_user.id, :name => a.bname)
     after=Account.find_by(:user_id => current_user.id, :name => a.aname)
@@ -50,6 +55,7 @@ class AccountExchangesController < ApplicationController
   end
 
   def edit
+    form_class
     @account_exchanges=current_user.account_exchanges.paginate(page: params[:page])
     @accounts=current_user.accounts
     @account_exchange=AccountExchange.find_by(:user_id => params[:user_id], :id => params[:id])
@@ -79,6 +85,7 @@ class AccountExchangesController < ApplicationController
   end
 
   def update
+    form_class
     # ----------------------------------------------------
     @accounts=current_user.accounts
     @account_exchange=AccountExchange.find_by(:user_id => params[:user_id], :id => params[:id])

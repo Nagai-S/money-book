@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     root_path # ログアウト後に遷移するpathを設定
   end
 
+  def form_class
+    @form_class="form-group col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
+  end
+
   private
     def correct_user
       @user=User.find(params[:user_id])

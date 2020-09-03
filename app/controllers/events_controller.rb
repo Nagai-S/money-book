@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :correct_user
 
   def index
+    form_class
     # 変数定義
     @events=current_user.events.paginate(page: params[:page])
 
@@ -33,6 +34,7 @@ class EventsController < ApplicationController
   end
 
   def new
+    form_class
     @event=current_user.events.build
     @genres_e=[]
     @genres_i=[]
@@ -54,6 +56,7 @@ class EventsController < ApplicationController
   end
 
   def create1
+    form_class
     # ----------------------------------------------------
     @genres_e=[]
     @genres_i=[]
@@ -87,6 +90,7 @@ class EventsController < ApplicationController
   end
 
   def create2
+    form_class
     # ----------------------------------------------------
     @genres_e=[]
     @genres_i=[]
@@ -120,6 +124,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    form_class
     @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
     account=Account.find_by(:user_id => params[:user_id], :name => @event.account)
     if account
@@ -134,6 +139,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    form_class
     @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
     @genres_e=[]
     @genres_i=[]
@@ -173,6 +179,7 @@ class EventsController < ApplicationController
   end
 
   def update1
+    form_class
     # ----------------------------------------------------
     @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
     @genres_e=[]
@@ -232,6 +239,7 @@ class EventsController < ApplicationController
   end
 
   def update2
+    form_class
     # ----------------------------------------------------
     @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
     @genres_e=[]

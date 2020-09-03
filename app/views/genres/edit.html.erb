@@ -2,14 +2,14 @@
 <%= form_for :genre, url:user_genre_path(params[:user_id], params[:id]), method: :PUT do |f| %>
 
 <div class="row">
-  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+  <div class="<%= @form_class %>">
     <%= f.label :iae, "収入か支出か選択してください" %>
     <%= f.select :iae, @selects, {}, class: "form-control", id: "select" %>
   </div>
 </div>
 
 <div class="row">
-  <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+  <div class="<%= @form_class %>">
     <%= f.label :name, "名前を入力してください" %>
     <%= f.text_field :name, value: @genre.name, class: "form-control", id: "name" %>
   </div>

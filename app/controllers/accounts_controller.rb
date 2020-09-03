@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
   before_action :correct_user
 
   def index
+    form_class
     # 変数定義
     # this_year=Date.today.year
     # this_month=Date.today.month
@@ -156,9 +157,11 @@ class AccountsController < ApplicationController
 
   def new
     @account=current_user.accounts.build
+    form_class
   end
 
   def create
+    form_class
     @account=current_user.accounts.build(accounts_params)
     if @account.save
       redirect_to user_accounts_path
@@ -169,6 +172,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
+    form_class
     Account.find_by(:user_id => params[:user_id], :id => params[:id]).destroy
     redirect_to user_accounts_path
   end

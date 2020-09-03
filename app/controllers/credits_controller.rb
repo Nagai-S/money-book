@@ -3,10 +3,12 @@ class CreditsController < ApplicationController
   before_action :correct_user
 
   def index
+    form_class
     @credits=current_user.credits
   end
 
   def new
+    form_class
     @credit=current_user.credits.build
     @accounts=[]
     current_user.accounts.each do |account|
@@ -22,6 +24,7 @@ class CreditsController < ApplicationController
   end
 
   def create
+    form_class
     # ----------------------------------------------------
     @accounts=[]
     current_user.accounts.each do |account|
@@ -46,11 +49,13 @@ class CreditsController < ApplicationController
   end
 
   def destroy
+    form_class
     Credit.find_by(:user_id => params[:user_id], :id => params[:id]).destroy
     redirect_to user_credits_path
   end
 
   def show
+    form_class
     @credit=Credit.find_by(:user_id => params[:user_id], :id => params[:id])
   end
 

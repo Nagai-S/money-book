@@ -4,7 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+    <div class="<%= @form_class %>">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "user" %>
     </div>
@@ -15,21 +15,21 @@
   <% end %>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+    <div class="<%= @form_class %>">
       <%= f.label :password %> <i>(変更しない場合は空欄にしてください)</i><br />
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "user" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+    <div class="<%= @form_class %>">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "user" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+    <div class="<%= @form_class %>">
       <%= f.label :current_password, "現在のパスワードを入力してください" %>
       <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", id: "user" %>
     </div>

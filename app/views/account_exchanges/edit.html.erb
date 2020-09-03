@@ -2,28 +2,28 @@
 
 <%= form_for :account_exchange, url:user_account_exchange_path(params[:user_id], params[:id]), method: :PUT do |f| %>
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
-      <%= f.label :date, "日付を選択してください", class: "date_label" %>
+    <div class="<%= @form_class %>">
+      <%= f.label :date, "日付を選択してください", class: "date_label" <%= @form_class %>%>
       <%= f.date_select :date, {}, selected: @account_exchange.date, class: "form-control", id: "date" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+    <div class="<%= @form_class %>">
       <%= f.label :bname, "振替もとアカウントを選択してください" %>
       <%= f.select :bname, @bnames, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+    <div class="<%= @form_class %>">
       <%= f.label :aname, "振替先アカウントを入力してください" %>
       <%= f.select :aname, @anames, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+    <div class="<%= @form_class %>">
       <%= f.label :value, "振替金額を入力してください" %>
       <%= f.text_field :value, value: @account_exchange.value, class: "form-control", id: "value" %>
     </div>

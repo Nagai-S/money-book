@@ -150,20 +150,28 @@ btn{
 #table_accounts{
   width: auto;
   margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #pm{
   margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #account_exchanges{
   width: auto;
   margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #genres{
   width: auto;
   margin: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 /* ------------------------------ */
 

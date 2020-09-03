@@ -22,6 +22,6 @@
 (function($){
 $(document).ready(function () {
   hsize = $('footer').height();
-  $("#contents").css("padding-bottom", hsize + "px");
+  $("#contents").css("padding-bottom", hsize + 30 + "px");
 });
 })(jQuery);

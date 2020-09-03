@@ -42651,3 +42651,5 @@ DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
 https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from require at /Users/nagaishogo/MONEYBOOK/money-book/bin/rails:9)
 DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
 DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.previous_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:7:in `<top (required)>')
+DEPRECATION WARNING: set the 'will_paginate.next_label' key in your i18n locale instead of editing pagination_options (called from /Users/nagaishogo/MONEYBOOK/money-book/config/environment.rb:8:in `<top (required)>')

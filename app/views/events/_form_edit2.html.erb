@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="<%= @form_class %>">
+    <%= f.label :account, "アカウントを選択してください" %>
+    <%= f.select :account, @accounts, {}, class: "form-control", id: "select" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="<%= @form_class %>">
+    <%= f.label :memo, "メモ" %>
+    <%= f.text_field :memo, memo: @event.memo, class: "form-control", id: "text" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="<%= @form_class %>">
+    <%= f.label :value, "金額を入力してください" %>
+    <%= f.text_field :value, value: @event.value, class: "form-control", id: "value" %>
+  </div>
+</div>
+
+<%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>

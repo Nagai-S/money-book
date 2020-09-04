@@ -13,83 +13,22 @@
     <div class="tab-pane active" id="tab_a" role="tabpanel">
       <%= form_for :event, url:user_events1_path do |f| %>
 
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :date, "日付を選択してください", class: "date_label" %>
-          <%= f.date_select :date, {}, class: "form-control", id: "date" %>
-        </div>
-      </div>
+      <%= render :partial => 'form_new1', :locals => {:f => f} %>
 
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :genre, "ジャンルを選択してください" %>
-          <%= f.select :genre, @genres_e,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
-        </div>
-      </div>
+      <%= render :partial => 'form_genre_e', :locals => {:f => f} %>
 
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :account, "アカウントを選択してください" %>
-          <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :memo, "メモ" %>
-          <%= f.text_field :memo, class: "form-control", id: "text" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :value, "金額を入力してください" %>
-          <%= f.text_field :value, class: "form-control", id: "value" %>
-        </div>
-      </div>
-
-        <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
+      <%= render :partial => 'form_new2', :locals => {:f => f} %>
 
       <% end %>
     </div>
     <div class="tab-pane" id="tab_b" role="tabpanel">
       <%= form_for :event, url:user_events2_path do |f| %>
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :date, "日付を選択してください", class: "date_label" %>
-          <%= f.date_select :date, {}, class: "form-control", id: "date" %>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :genre, "ジャンルを選択してください" %>
-          <%= f.select :genre, @genres_i,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
-        </div>
-      </div>
+      <%= render :partial => 'form_new1', :locals => {:f => f} %>
 
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :account, "アカウントを選択してください" %>
-          <%= f.select :account, @accounts, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
-        </div>
-      </div>
+      <%= render :partial => 'form_genre_i', :locals => {:f => f} %>
 
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :memo, "メモ" %>
-          <%= f.text_field :memo, class: "form-control", id: "text" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="<%= @form_class %>">
-          <%= f.label :value, "金額を入力してください" %>
-          <%= f.text_field :value, class: "form-control", id: "value" %>
-        </div>
-      </div>
-
-        <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
+      <%= render :partial => 'form_new2', :locals => {:f => f} %>
 
       <% end %>
     </div>

@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="<%= @form_class %>">
+    <%= f.label :genre, "ジャンルを選択してください" %>
+    <%= f.select :genre, @genres_e,{include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
+  </div>
+</div>

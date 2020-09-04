@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="<%= @form_class %>">
+    <%= f.label :date, "日付を選択してください", class: "date_label" %>
+    <%= f.date_select :date, {}, selected: @event.date, class: "form-control", id: "date" %>
+  </div>
+</div>

@@ -75,7 +75,7 @@
 
         <td class="border-right"><%= month_pm_genre[:month] %>月</td>
         <td>¥<%= month_pm_genre[:in].to_s(:delimited) %></td>
-        <td class="border-right">-¥<%= month_pm_genre[:out].to_s(:delimited) %></td>
+        <td class="border-right">¥-<%= month_pm_genre[:out].to_s(:delimited) %></td>
         <td>¥<%= month_pm_genre[:pm].to_s(:delimited) %></td>
       </tr>
     </tbody>
@@ -173,7 +173,7 @@
       <tr>
         <td class="border-right"><%= year_pm_genre[:year] %>年</td>
         <td>¥<%= year_pm_genre[:in].to_s(:delimited) %></td>
-        <td class="border-right">-¥<%= year_pm_genre[:out].to_s(:delimited) %></td>
+        <td class="border-right">¥-<%= year_pm_genre[:out].to_s(:delimited) %></td>
         <td>¥<%= year_pm_genre[:pm].to_s(:delimited) %></td>
       </tr>
     </tbody>

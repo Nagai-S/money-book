@@ -247,6 +247,14 @@ form .btn{
     text-align:center;
 }
 
+#tab_a{
+  background-color: Linen;
+}
+
+#tab_b{
+  background-color: #F0F8FF;
+}
+
 /* ------------------------------ */
 
 /* footer */

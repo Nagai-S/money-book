@@ -92,8 +92,18 @@ class EventsController < ApplicationController
         account.update(value: account.value-@event.value)
       else
         credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
-        @event.update(pay_date: @event.pay_date)
-        @event.update(pon: false)
+        c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+        if @event.pon==true
+          if @event.pay_date > Date.today
+            @event.update(pon: false)
+            c_account.update(value: c_account.value+@event.value)
+          end
+        else
+          if @event.pay_date <= Date.today
+            @event.update(pon: true)
+            c_account.update(value: c_account.value-@event.value)
+          end
+        end
       end
       redirect_to user_events_path
     else

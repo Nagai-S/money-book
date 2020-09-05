@@ -4,14 +4,22 @@ class AccountsController < ApplicationController
 
   def index
     form_class
-    # 変数定義
-    # this_year=Date.today.year
-    # this_month=Date.today.month
     @total=0
 
     @accounts=current_user.accounts
     @events=current_user.events
     @genres=current_user.genres
+
+    @events.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+          event.update(pon: true)
+          c_account.update(value: c_account.value-event.value)
+        end
+      end
+    end
 
     # total残高求める
     @accounts.each do |account|

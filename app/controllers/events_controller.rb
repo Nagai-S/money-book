@@ -56,11 +56,17 @@ class EventsController < ApplicationController
     form_class
     @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
     account=Account.find_by(:user_id => params[:user_id], :name => @event.account)
-    if account
-      if @event.iae==false
-        account.update(value: account.value+@event.value)
+    credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+    if @event.pon==true
+      if account
+        if @event.iae==false
+          account.update(value: account.value+@event.value)
+        else
+          account.update(value: account.value-@event.value)
+        end
       else
-        account.update(value: account.value-@event.value)
+        c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+        c_account.update(value: c_account.value+@event.value)
       end
     end
     @event.destroy
@@ -77,13 +83,21 @@ class EventsController < ApplicationController
     edit_variable
 
     account=Account.find_by(:user_id => current_user.id, :name => @event.account)
-    if account
-      if @event.iae==false
-        account.update(value: account.value+@event.value)
+    credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+    if @event.pon==true
+      if account
+        aoc=true
+        if @event.iae==false
+          account.update(value: account.value+@event.value)
+        else
+          account.update(value: account.value-@event.value)
+        end
       else
-        account.update(value: account.value-@event.value)
+        c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+        c_account.update(value: c_account.value+@event.value)
       end
     end
+    
     if @event.update(events_params_update1)
       @event.update(iae: false)
       account=Account.find_by(:user_id => current_user.id, :name => @event.account)
@@ -94,9 +108,19 @@ class EventsController < ApplicationController
         credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
         c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
         if @event.pon==true
-          if @event.pay_date > Date.today
-            @event.update(pon: false)
-            c_account.update(value: c_account.value+@event.value)
+          if aoc==true
+            if @event.pay_date > Date.today
+              @event.update(pon: false)
+            else
+              @event.update(pon: true)
+              c_account.update(value: c_account.value-@event.value)
+            end
+          else
+            if @event.pay_date > Date.today
+              @event.update(pon: false)
+            else
+              c_account.update(value: c_account.value-@event.value)
+            end
           end
         else
           if @event.pay_date <= Date.today

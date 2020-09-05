@@ -9,6 +9,9 @@
         <th>アカウント</th>
         <th>メモ</th>
         <th>金額</th>
+        <th>引き落とし日</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
 
@@ -29,7 +32,7 @@
           <td><%= event.genre %></td>
           <td><%= event.account %></td>
 
-          <% if event.genre %>
+          <% if event.memo %>
             <td><%= event.memo %></td>
           <% else %>
             <td>
@@ -39,6 +42,15 @@
           <td>
            ¥-<%= event.value.to_s(:delimited) %>
           </td>
+
+          <% if event.pay_date %>
+            <td>
+              <%= "#{event.pay_date.year}/#{event.pay_date.month}/#{event.pay_date.day}" %>
+            </td>
+          <% else %>
+            <td>
+            </td>
+          <% end %>
 
           <td>
             <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %>
@@ -62,7 +74,7 @@
           <td><%= event.genre %></td>
           <td><%= event.account %></td>
 
-          <% if event.genre %>
+          <% if event.memo %>
             <td><%= event.memo %></td>
           <% else %>
             <td>
@@ -72,6 +84,8 @@
           <td>
            ¥<%= event.value.to_s(:delimited) %>
           </td>
+
+          <td></td>
 
           <td>
             <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %>

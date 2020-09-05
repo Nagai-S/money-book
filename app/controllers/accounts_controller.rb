@@ -18,32 +18,43 @@ class AccountsController < ApplicationController
       @total=@total+account.value
     end
 
-    # ------------------------------------------------------------------------------------
-    # # 最小年を求める
-    # min_year=Date.today.year
-    # @events.each do |event|
-    #   if event.date.year<this_year
-    #     min_year=account.date.year
-    #   end
-    # end
+    # 引き落とし後の残高を求める
+    @accounts_after=[]
+    @accounts.each do |account|
+      after_value=account.value
+      a=[account.name]
+      @events.each do |event|
+        if event.pon==false
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+          if c_account==account
+            after_value -= event.value
+          end
+        end
+      end
+      a << after_value
+      @accounts_after << a
+    end
 
-    # # {年:{月:[events],月:[events]...}, 年:{月:[events],月:[events]...}}　作成
-    # each_year=Hash.new
-    # (min_year..this_year).each do |year|
-    #   each_month=Hash.new
-    #   (1..12).each do |month|
-    #     events=[]
-    #     @events.each do |event|
-    #       if event.date.year==year && event.date.month==month
-    #         events.push(event)
-    #       end
-    #     end
-    #     each_month.store(month,events)
-    #   end
-    #   each_year.store(year,each_month)
-    # end
-    # ------------------------------------------------------------------------------------
+    @total_after=0
+    @accounts_after.each do |account_after|
+      @total_after += account_after[1]
+    end
 
+    # アカウント別引き落とし後の残高
+    @accounts_all=[]
+    @accounts.each do |account|
+      a=[account.id, account.name, account.value]
+      @accounts_after.each do |account_after|
+        if account_after[0]==account.name
+          a << account_after[1]
+        end
+      end
+      @accounts_all << a
+    end
+
+
+    # ジャンルの順番変える
     @genres_array_e=[]
     @genres_array_i=[]
     @genres.each do |genre|

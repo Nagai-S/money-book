@@ -10,41 +10,23 @@ class CreditsController < ApplicationController
   def new
     form_class
     @credit=current_user.credits.build
-    @accounts=[]
-    current_user.accounts.each do |account|
-      a=["#{account.name}", "#{account.name}"]
-      @accounts << a
-    end
-
-    @days=[]
-    (1..31).each do |day|
-      a=["#{day}", "#{day}"]
-      @days << a
-    end
+    new_variable
   end
 
   def create
     form_class
-    # ----------------------------------------------------
-    @accounts=[]
-    current_user.accounts.each do |account|
-      a=["#{account.name}", "#{account.name}"]
-      @accounts << a
-    end
-
-    @days=[]
-    (1..31).each do |day|
-      a=["#{day}", "#{day}"]
-      @days << a
-    end
-    # ----------------------------------------------------
+    new_variable
 
     @credit=current_user.credits.build(credits_params)
-    if @credit.save
-      redirect_to user_credits_path
+    if @credit.pay_date==@credit.month_date
+      flash[:danger]="締め日と引き落とし日を別日にしてください"
     else
-      flash[:danger]="正しい値を入力してください"
-      render "new"
+      if @credit.save
+        redirect_to user_credits_path
+      else
+        flash[:danger]="正しい値を入力してください"
+        render "new"
+      end
     end
   end
 
@@ -70,5 +52,19 @@ class CreditsController < ApplicationController
 
     def credits_params
       params.require(:credit).permit(:name, :account, :pay_date, :month_date)
+    end
+
+    def new_variable
+      @accounts=[]
+      current_user.accounts.each do |account|
+        a=["#{account.name}", "#{account.name}"]
+        @accounts << a
+      end
+
+      @days=[]
+      (1..31).each do |day|
+        a=["#{day}", "#{day}"]
+        @days << a
+      end
     end
 end

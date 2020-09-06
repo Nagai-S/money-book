@@ -1,8 +1,21 @@
 <h1>統計情報</h1>
 
 <h2>残高</h2>
-<div class="">
-  ¥<%= @total.to_s(:delimited) %>
+<div class="col-5 ml-3">
+  <table class="table" id="table_accounts">
+    <thead>
+      <tr>
+        <th>現在残高</th>
+        <th>引き落とし後の残高</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>¥<%= @total.to_s(:delimited) %></td>
+        <td>¥<%= @total_after.to_s(:delimited) %></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <h2>アカウント残高</h2>
@@ -13,17 +26,19 @@
       <tr>
         <th>アカウント</th>
         <th>金額</th>
+        <th>引き落とし後の金額</th>
         <th></th>
       </tr>
     </thead>
 
-    <% @accounts.each do |account| %>
+    <% @accounts_all.each do |account_all| %>
 
     <tbody>
       <tr>
-        <td><%= account.name %></td>
-        <td>¥<%= account.value.to_s(:delimited) %></td>
-        <td><%= link_to "削除", user_account_path(params[:user_id], account.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %></td>
+        <td><%= account_all[1] %></td>
+        <td>¥<%= account_all[2].to_s(:delimited) %></td>
+        <td>¥<%= account_all[3].to_s(:delimited) %></td>
+        <td><%= link_to "削除", user_account_path(params[:user_id], account_all[0]), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %></td>
       </tr>
     </tbody>
 
@@ -36,13 +51,13 @@
 
 <ul class="nav-list">
   <li class="nav-list-item">
-    <%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]), data: {"turbolinks" => false} %>
+    <%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]) %>
   </li>
   <li class="nav-list-item">
-    <%= link_to "アカウント新規作成", new_user_account_path(params[:user_id]), data: {"turbolinks" => false} %>
+    <%= link_to "アカウント新規作成", new_user_account_path(params[:user_id]) %>
   </li>
   <li class="nav-list-item">
-    <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]), data: {"turbolinks" => false} %>
+    <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %>
   </li>
 </ul>
 

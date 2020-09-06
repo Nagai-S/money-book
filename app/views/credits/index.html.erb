@@ -21,8 +21,9 @@
         <td><%= credit.account %></td>
         <td><%= credit.pay_date %></td>
         <td><%= credit.month_date %></td>
-        <td><%=link_to "詳細", user_credit_path(params[:user_id], :id => credit.id), data: {"turbolinks" => false} %></td>
+        <td><%=link_to "詳細", user_credit_path(params[:user_id], :id => credit.id) %></td>
         <td><%=link_to "削除", user_credit_path(params[:user_id], :id => credit.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %></td>
+        <td><%=link_to "編集", edit_user_credit_path(params[:user_id], :id => credit.id) %></td>
       </tr>
     </tbody>
 
@@ -33,6 +34,6 @@
 
 <ul class="nav-list">
   <li class="nav-list-item">
-    <%= link_to "新規クレジットカード作成",  new_user_credit_path(params[:user_id]), data: {"turbolinks" => false} %>
+    <%= link_to "新規クレジットカード作成",  new_user_credit_path(params[:user_id]) %>
   </li>
 </ul>

@@ -4,46 +4,87 @@ class AccountsController < ApplicationController
 
   def index
     form_class
-    # 変数定義
-    # this_year=Date.today.year
-    # this_month=Date.today.month
     @total=0
 
     @accounts=current_user.accounts
     @events=current_user.events
     @genres=current_user.genres
 
+    # 未引き落としのクレジットカードが削除されていないか確認
+    @events.each do |event|
+      if event.pon==false
+        credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+        if credit
+          unless Account.find_by(:user_id => current_user.id, :name => credit.account)
+            flash[:danger]="最近使用したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+            redirect_to user_events_path
+            return
+          end
+        else
+          flash[:danger]="最近使用したクレジットカードが削除されています"
+          redirect_to user_events_path
+          return
+        end
+      end
+    end
+
+    @events.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            event.update(pon: true)
+            c_account.update(value: c_account.value-event.value)
+          end
+        end
+      end
+    end
+
     # total残高求める
     @accounts.each do |account|
       @total=@total+account.value
     end
 
-    # ------------------------------------------------------------------------------------
-    # # 最小年を求める
-    # min_year=Date.today.year
-    # @events.each do |event|
-    #   if event.date.year<this_year
-    #     min_year=account.date.year
-    #   end
-    # end
+    # 引き落とし後の残高を求める
+    @accounts_after=[]
+    @accounts.each do |account|
+      after_value=account.value
+      a=[account.name]
+      @events.each do |event|
+        if event.pon==false
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            if c_account==account
+              after_value -= event.value
+            end
+          end
+        end
+      end
+      a << after_value
+      @accounts_after << a
+    end
 
-    # # {年:{月:[events],月:[events]...}, 年:{月:[events],月:[events]...}}　作成
-    # each_year=Hash.new
-    # (min_year..this_year).each do |year|
-    #   each_month=Hash.new
-    #   (1..12).each do |month|
-    #     events=[]
-    #     @events.each do |event|
-    #       if event.date.year==year && event.date.month==month
-    #         events.push(event)
-    #       end
-    #     end
-    #     each_month.store(month,events)
-    #   end
-    #   each_year.store(year,each_month)
-    # end
-    # ------------------------------------------------------------------------------------
+    @total_after=0
+    @accounts_after.each do |account_after|
+      @total_after += account_after[1]
+    end
 
+    # アカウント別引き落とし後の残高
+    @accounts_all=[]
+    @accounts.each do |account|
+      a=[account.id, account.name, account.value]
+      @accounts_after.each do |account_after|
+        if account_after[0]==account.name
+          a << account_after[1]
+        end
+      end
+      @accounts_all << a
+    end
+
+
+    # ジャンルの順番変える
     @genres_array_e=[]
     @genres_array_i=[]
     @genres.each do |genre|

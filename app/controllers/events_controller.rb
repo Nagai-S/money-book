@@ -18,26 +18,26 @@ class EventsController < ApplicationController
     new_variable
 
     @event=current_user.events.build(events_params)
-    credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
-    c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-    if credit&&c_account
-      if @event.save
-        @event.update(iae: false)
-        account=Account.find_by(:user_id => current_user.id, :name => @event.account)
-        if account
-          @event.update(pon: true)
-          account.update(value: account.value-@event.value)
-        elsif credit
+    if @event.save
+      @event.update(iae: false)
+      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+      credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+      if account
+        @event.update(pon: true)
+        account.update(value: account.value-@event.value)
+      elsif credit
+        if Account.find_by(:user_id => current_user.id, :name => credit.account)
           a=f_pay_date(@event.date, credit)
           @event.update(pay_date: a, pon: false)
+        else
+          flash.now[:danger]="選択したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+          @event.destroy
+          render 'new' and return
         end
-        redirect_to user_events_path
-      else
-        flash.now[:danger]="正しい値を入力してください"
-        render "new"
       end
+      redirect_to user_events_path
     else
-      flash.now[:danger]="選択したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+      flash.now[:danger]="正しい値を入力してください"
       render "new"
     end
   end
@@ -64,7 +64,7 @@ class EventsController < ApplicationController
     @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
 
     before_change_action
-    
+
     @event.destroy
     redirect_to user_events_path
   end
@@ -82,38 +82,40 @@ class EventsController < ApplicationController
 
     a=current_user.events.build(events_params_update1)
     credit=Credit.find_by(:user_id => current_user.id, :name => a.account)
-    c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-    if credit&&c_account
-      if @event.update(events_params_update1)
-        @event.update(iae: false)
-        account=Account.find_by(:user_id => current_user.id, :name => @event.account)
-        credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
-        if account
-          @event.update(pay_date: nil, pon: true)
-          account.update(value: account.value-@event.value)
-        elsif credit
-          if @event.pay_date==nil
-            a=f_pay_date(@event.date, credit)
-            @event.update(pay_date: a)
-          else
-            a=Date.new(@event.pay_date.year, @event.pay_date.month, credit.pay_date)
-            @event.update(pay_date: a)
-          end
-
-          if @event.pay_date > Date.today
-            @event.update(pon: false)
-          else
-            @event.update(pon: true)
-            c_account.update(value: c_account.value-@event.value)
-          end
-        end
-        redirect_to user_events_path
+    if credit
+      if Account.find_by(:user_id => current_user.id, :name => credit.account)
       else
-        flash.now[:danger]="正しい値を入力してください"
-        render "edit"
+        flash.now[:danger]="選択したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+        render 'new' and return
       end
+    end
+    if @event.update(events_params_update1)
+      @event.update(iae: false)
+      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+      credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+      if account
+        @event.update(pay_date: nil, pon: true)
+        account.update(value: account.value-@event.value)
+      elsif credit
+        c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+        if @event.pay_date==nil
+          a=f_pay_date(@event.date, credit)
+          @event.update(pay_date: a)
+        else
+          a=Date.new(@event.pay_date.year, @event.pay_date.month, credit.pay_date)
+          @event.update(pay_date: a)
+        end
+
+        if @event.pay_date <= Date.today
+          @event.update(pon: true)
+          c_account.update(value: c_account.value-@event.value)
+        else
+          @event.update(pon: false)
+        end
+      end
+      redirect_to user_events_path
     else
-      flash.now[:danger]="選択したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+      flash.now[:danger]="正しい値を入力してください"
       render "edit"
     end
   end

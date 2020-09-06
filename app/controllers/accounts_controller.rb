@@ -15,15 +15,14 @@ class AccountsController < ApplicationController
       if event.pon==false
         credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
         if credit
-          unless Account.find_by(:user_id => current_user.id, :name => credit.account)
+          if Account.find_by(:user_id => current_user.id, :name => credit.account)
+          else
             flash[:danger]="最近使用したクレジットカードと連携しているアカウント(銀行など)が削除されています"
             redirect_to user_events_path
-            return
           end
         else
           flash[:danger]="最近使用したクレジットカードが削除されています"
           redirect_to user_events_path
-          return
         end
       end
     end

@@ -56,7 +56,7 @@
             <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %>
           </td>
           <td>
-            <%= link_to "編集", edit_user_event_path(params[:user_id], event.id), data: {"turbolinks" => false} %>
+            <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
           </td>
           <% a=event.date %>
         </tr>
@@ -91,7 +91,7 @@
             <%= link_to "削除", user_event_path(params[:user_id], event.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %>
           </td>
           <td>
-            <%= link_to "編集", edit_user_event_path(params[:user_id], event.id), data: {"turbolinks" => false} %>
+            <%= link_to "編集", edit_user_event_path(params[:user_id], event.id) %>
           </td>
           <% a=event.date %>
         </tr>

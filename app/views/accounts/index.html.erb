@@ -51,13 +51,13 @@
 
 <ul class="nav-list">
   <li class="nav-list-item">
-    <%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]), data: {"turbolinks" => false} %>
+    <%= link_to "新規振替", new_user_account_exchange_path(params[:user_id]) %>
   </li>
   <li class="nav-list-item">
-    <%= link_to "アカウント新規作成", new_user_account_path(params[:user_id]), data: {"turbolinks" => false} %>
+    <%= link_to "アカウント新規作成", new_user_account_path(params[:user_id]) %>
   </li>
   <li class="nav-list-item">
-    <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]), data: {"turbolinks" => false} %>
+    <%= link_to "振替履歴", user_account_exchanges_path(params[:user_id]) %>
   </li>
 </ul>
 

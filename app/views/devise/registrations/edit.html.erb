@@ -45,4 +45,4 @@
 アカウントを削除すると全てのデータが消えますがよろしいですか？
 <%= button_to "アカウント削除", registration_path(resource_name), method: :delete, data: { confirm: "本当によろしいですか？" }, class: "btn btn-primary", role: "button" %>
 
-<%= link_to "HOME", user_events_path(current_user), data: {"turbolinks" => false} %>
+<%= link_to "HOME", user_events_path(current_user) %>

@@ -10,8 +10,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -25,7 +25,7 @@
         <% if user_signed_in? %>
 
           <h1 class="headline">
-            <%= link_to "Money Book", user_events_path(current_user), data: {"turbolinks" => false} %>
+            <%= link_to "Money Book", user_events_path(current_user) %>
           </h1>
 
           <div class="dropdown">
@@ -33,25 +33,25 @@
               Menu
             </button>
             <div class="dropdown-menu dropdown-menu-left">
-                <li class="nav-list-item" id="border-bottom"><%= link_to "HOME", user_events_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item" id="border-bottom"><%= link_to "新規アカウント作成", new_user_account_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item"><%= link_to "新規クレジットカード作成", new_user_credit_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item" id="border-bottom"><%= link_to "クレジットカード一覧", user_credits_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item" id="border-bottom"><%= link_to "ジャンル一覧", user_genres_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item" id="border-bottom"><%= link_to "振替履歴", user_account_exchanges_path(current_user), data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path, data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item" id="border-bottom"><%= link_to "HOME", user_events_path(current_user) %></li>
+                <li class="nav-list-item" id="border-bottom"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "新規クレジットカード作成", new_user_credit_path(current_user) %></li>
+                <li class="nav-list-item" id="border-bottom"><%= link_to "クレジットカード一覧", user_credits_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
+                <li class="nav-list-item" id="border-bottom"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
+                <li class="nav-list-item" id="border-bottom"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
+                <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path %></li>
                 <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？", "turbolinks" => false} %></li>
             </div>
           </div>
 
         <% else %>
 
-          <h1 class="headline"><%= link_to "Money Book", root_path, data: {"turbolinks" => false} %></h1>
+          <h1 class="headline"><%= link_to "Money Book", root_path %></h1>
           <ul class="nav-list" id="unlogin1">
-                <li class="nav-list-item" id="unlogin2"><%= link_to "新規会員登録", new_user_registration_path, data: {"turbolinks" => false} %></li>
-                <li class="nav-list-item" id="unlogin2"><%= link_to "ログイン", new_user_session_path, data: {"turbolinks" => false} %></li>
+                <li class="nav-list-item" id="unlogin2"><%= link_to "新規会員登録", new_user_registration_path %></li>
+                <li class="nav-list-item" id="unlogin2"><%= link_to "ログイン", new_user_session_path %></li>
           </ul>
 
         <% end %>
@@ -62,13 +62,13 @@
         <ul class="nav-list">
           <li class="nav-list-item">
             <button type="button" class="btn btn-primary">
-              <%= link_to "残高", user_accounts_path(current_user), data: {"turbolinks" => false} %>
+              <%= link_to "残高", user_accounts_path(current_user) %>
             </button>
           </li>
 
           <li class="nav-list-item">
             <button type="button" class="btn btn-primary">
-              <%= link_to "新規イベント作成", new_user_event_path(current_user), data: {"turbolinks" => false} %>
+              <%= link_to "新規イベント作成", new_user_event_path(current_user) %>
             </button>
           </li>
         </ul>
@@ -81,25 +81,25 @@
       <footer>
         <% if user_signed_in? %>
         <ul class="nav-list">
-          <li class="nav-list-item" id="footer_home"><%= link_to "HOME", user_events_path(current_user), data: {"turbolinks" => false} %></li>
+          <li class="nav-list-item" id="footer_home"><%= link_to "HOME", user_events_path(current_user) %></li>
         </ul>
         <ul class="nav-list">
           <div class="row">
             <div class="col-xs-4">
-              <li class="nav-list-item"><%= link_to "新規イベント作成", new_user_event_path(current_user), data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "残高", user_accounts_path(current_user), data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user), data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "新規クレジットカード作成", new_user_credit_path(current_user), data: {"turbolinks" => false} %></li>
+              <li class="nav-list-item"><%= link_to "新規イベント作成", new_user_event_path(current_user) %></li>
+              <li class="nav-list-item"><%= link_to "残高", user_accounts_path(current_user) %></li>
+              <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
+              <li class="nav-list-item"><%= link_to "新規クレジットカード作成", new_user_credit_path(current_user) %></li>
             </div>
             <div class="col-xs-4">
-              <li class="nav-list-item"><%= link_to "クレジットカード一覧", user_credits_path(current_user), data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user), data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user), data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user), data: {"turbolinks" => false} %></li>
+              <li class="nav-list-item"><%= link_to "クレジットカード一覧", user_credits_path(current_user) %></li>
+              <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
+              <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
+              <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
             </div>
             <div class="col-xs-4">
-              <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user), data: {"turbolinks" => false} %></li>
-              <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path, data: {"turbolinks" => false} %></li>
+              <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
+              <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path %></li>
               <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？", "turbolinks" => false} %></li>
             </div>
           </div>

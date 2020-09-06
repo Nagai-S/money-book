@@ -1,4 +1,34 @@
 <h1><%= @credit.name %></h1>
+<p>未引き落としのイベントは以下です</p>
+<div class="col-5 ml-3">
+  <table class="table" id="table_accounts">
+    <thead>
+      <tr>
+        <th>日付</th>
+        <th>ジャンル</th>
+        <th>メモ</th>
+        <th>金額</th>
+        <th>引き落とし日</th>
+      </tr>
+    </thead>
+
+    <% @not_pay_page.each do |not_pay_event| %>
+
+    <tbody>
+      <tr>
+        <td><%= not_pay_event.date.year %>/<%= not_pay_event.date.month %>/<%= not_pay_event.date.day %></td>
+        <td><%= not_pay_event.genre %></td>
+        <td><%= not_pay_event.memo %></td>
+        <td><%= not_pay_event.value %></td>
+        <td><%= not_pay_event.pay_date.year %>/<%= not_pay_event.pay_date.month %>/<%= not_pay_event.pay_date.day %></td>
+      </tr>
+    </tbody>
+
+    <% end %>
+    <%= will_paginate @not_pay_page %>
+  </table>
+</div>
+
 <ul class="nav-list">
-  <li class="nav-list-item"><%= link_to "クレジットカード一覧へ戻る", user_credits_path(current_user), data: {"turbolinks" => false} %></li>
+  <li class="nav-list-item"><%= link_to "クレジットカード一覧へ戻る", user_credits_path(current_user) %></li>
 </ul>

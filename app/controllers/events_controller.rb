@@ -18,20 +18,26 @@ class EventsController < ApplicationController
     new_variable
 
     @event=current_user.events.build(events_params)
-    if @event.save
-      @event.update(iae: false)
-      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
-      if account
-        @event.update(pay_date: @event.date, pon: true)
-        account.update(value: account.value-@event.value)
+    credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+    c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+    if credit&&c_account
+      if @event.save
+        @event.update(iae: false)
+        account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+        if account
+          @event.update(pon: true)
+          account.update(value: account.value-@event.value)
+        elsif credit
+          a=f_pay_date(@event.date, credit)
+          @event.update(pay_date: a, pon: false)
+        end
+        redirect_to user_events_path
       else
-        credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
-        a=f_pay_date(@event.date, credit)
-        @event.update(pay_date: a, pon: false)
+        flash.now[:danger]="正しい値を入力してください"
+        render "new"
       end
-      redirect_to user_events_path
     else
-      flash.now[:danger]="正しい値を入力してください"
+      flash.now[:danger]="選択したクレジットカードと連携しているアカウント(銀行など)が削除されています"
       render "new"
     end
   end
@@ -54,21 +60,11 @@ class EventsController < ApplicationController
 
   def destroy
     form_class
+
     @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
-    account=Account.find_by(:user_id => params[:user_id], :name => @event.account)
-    credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
-    if @event.pon==true
-      if account
-        if @event.iae==false
-          account.update(value: account.value+@event.value)
-        else
-          account.update(value: account.value-@event.value)
-        end
-      else
-        c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-        c_account.update(value: c_account.value+@event.value)
-      end
-    end
+
+    before_change_action
+    
     @event.destroy
     redirect_to user_events_path
   end
@@ -82,56 +78,42 @@ class EventsController < ApplicationController
     form_class
     edit_variable
 
-    account=Account.find_by(:user_id => current_user.id, :name => @event.account)
-    credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
-    if @event.pon==true
-      if account
-        aoc=true
-        if @event.iae==false
-          account.update(value: account.value+@event.value)
-        else
-          account.update(value: account.value-@event.value)
-        end
-      else
-        c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-        c_account.update(value: c_account.value+@event.value)
-      end
-    end
-    
-    if @event.update(events_params_update1)
-      @event.update(iae: false)
-      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
-      if account
-        @event.update(pay_date: @event.date, pon: true)
-        account.update(value: account.value-@event.value)
-      else
+    before_change_action
+
+    a=current_user.events.build(events_params_update1)
+    credit=Credit.find_by(:user_id => current_user.id, :name => a.account)
+    c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+    if credit&&c_account
+      if @event.update(events_params_update1)
+        @event.update(iae: false)
+        account=Account.find_by(:user_id => current_user.id, :name => @event.account)
         credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
-        c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-        if @event.pon==true
-          if aoc==true
-            if @event.pay_date > Date.today
-              @event.update(pon: false)
-            else
-              @event.update(pon: true)
-              c_account.update(value: c_account.value-@event.value)
-            end
+        if account
+          @event.update(pay_date: nil, pon: true)
+          account.update(value: account.value-@event.value)
+        elsif credit
+          if @event.pay_date==nil
+            a=f_pay_date(@event.date, credit)
+            @event.update(pay_date: a)
           else
-            if @event.pay_date > Date.today
-              @event.update(pon: false)
-            else
-              c_account.update(value: c_account.value-@event.value)
-            end
+            a=Date.new(@event.pay_date.year, @event.pay_date.month, credit.pay_date)
+            @event.update(pay_date: a)
           end
-        else
-          if @event.pay_date <= Date.today
+
+          if @event.pay_date > Date.today
+            @event.update(pon: false)
+          else
             @event.update(pon: true)
             c_account.update(value: c_account.value-@event.value)
           end
         end
+        redirect_to user_events_path
+      else
+        flash.now[:danger]="正しい値を入力してください"
+        render "edit"
       end
-      redirect_to user_events_path
     else
-      flash.now[:danger]="正しい値を入力してください"
+      flash.now[:danger]="選択したクレジットカードと連携しているアカウント(銀行など)が削除されています"
       render "edit"
     end
   end
@@ -205,6 +187,7 @@ class EventsController < ApplicationController
 
     def edit_variable
       @event=Event.find_by(:user_id => params[:user_id], :id => params[:id])
+      @credit=Credit.find_by(:user_id => params[:user_id], :name => @event.account)
       @genres_e=[]
       @genres_i=[]
       current_user.genres.each do |genre|
@@ -251,6 +234,25 @@ class EventsController < ApplicationController
         @accounts_e.unshift([@event.account, @event.account])
       else
         flash.now[:danger]="このアカウントまたはクレジットカードは削除されています"
+      end
+    end
+
+    def before_change_action
+      account=Account.find_by(:user_id => params[:user_id], :name => @event.account)
+      credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+      if @event.pon==true
+        if account
+          if @event.iae==false
+            account.update(value: account.value+@event.value)
+          else
+            account.update(value: account.value-@event.value)
+          end
+        elsif credit
+          c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+          if c_account
+            c_account.update(value: c_account.value+@event.value)
+          end
+        end
       end
     end
 

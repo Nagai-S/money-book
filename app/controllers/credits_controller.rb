@@ -22,6 +22,10 @@ class CreditsController < ApplicationController
       flash[:danger]="締め日と引き落とし日を別日にしてください"
       render "new"
       return
+    elsif Account.find_by(:user_id => params[:user_id], :name => @credit.name)
+      flash[:danger]="同名のアカウントがあるためクレジットカードの名前を変えてください"
+      render "new"
+      return
     else
       if @credit.save
         redirect_to user_credits_path
@@ -52,10 +56,12 @@ class CreditsController < ApplicationController
     if a.pay_date==a.month_date
       flash[:danger]="締め日と引き落とし日を別日にしてください"
       render "edit"
+    elsif Account.find_by(:user_id => params[:user_id], :name => a.name)
+      flash[:danger]="同名のアカウントがあるためクレジットカードの名前を変えてください"
+      render "edit"
     else
       if @credit.update(credits_params)
         redirect_to user_credits_path
-        return
       else
         flash[:danger]="正しい値を入力してください"
         render "new"

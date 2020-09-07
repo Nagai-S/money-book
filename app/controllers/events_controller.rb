@@ -65,6 +65,8 @@ class EventsController < ApplicationController
 
     before_change_action
 
+    after_change_action
+
     @event.destroy
     redirect_to user_events_path
   end
@@ -91,6 +93,9 @@ class EventsController < ApplicationController
     end
     if @event.update(events_params_update1)
       @event.update(iae: false)
+
+      after_change_action
+
       account=Account.find_by(:user_id => current_user.id, :name => @event.account)
       credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
       if account
@@ -124,15 +129,12 @@ class EventsController < ApplicationController
     form_class
     edit_variable
 
-    account=Account.find_by(:user_id => current_user.id, :name => @event.account)
-    if account
-      if @event.iae==false
-        account.update(value: account.value+@event.value)
-      else
-        account.update(value: account.value-@event.value)
-      end
-    end
+    before_change_action
+
     if @event.update(events_params)
+
+      after_change_action
+
       @event.update(iae: true, pon: true)
       account=Account.find_by(:user_id => current_user.id, :name => @event.account)
       account.update(value: account.value+@event.value)
@@ -240,20 +242,32 @@ class EventsController < ApplicationController
     end
 
     def before_change_action
-      account=Account.find_by(:user_id => params[:user_id], :name => @event.account)
-      credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+      @account=Account.find_by(:user_id => params[:user_id], :name => @event.account)
+      @account_value=0
+      @credit=Credit.find_by(:user_id => current_user.id, :name => @event.account)
+      @c_account_value=0
       if @event.pon==true
-        if account
+        if @account
           if @event.iae==false
-            account.update(value: account.value+@event.value)
+            @account_value=@account.value+@event.value
           else
-            account.update(value: account.value-@event.value)
+            @account_value=@account.value-@event.value
           end
-        elsif credit
-          c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-          if c_account
-            c_account.update(value: c_account.value+@event.value)
+        elsif @credit
+          @c_account=Account.find_by(:user_id => current_user.id, :name => @credit.account)
+          if @c_account
+            @c_account_value=@c_account.value+@event.value
           end
+        end
+      end
+    end
+
+    def after_change_action
+      if @account
+        @account.update(value: @account_value)
+      elsif @credit
+        if @c_account
+          @c_account.update(value: @c_account_value)
         end
       end
     end

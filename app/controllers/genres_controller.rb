@@ -40,17 +40,12 @@ class GenresController < ApplicationController
 
   def edit
     form_class
-    @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id])
-    if @genre.iae==false
-      @selects=[["支出",false],["収入",true]]
-    else
-      @selects=[["収入",true],["支出",false]]
-    end
+    edit_variable
   end
 
   def update
     form_class
-    @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id])
+    edit_variable
     if @genre.update(genres_params)
       redirect_to user_genres_path(params[:user_id])
     else
@@ -71,5 +66,14 @@ class GenresController < ApplicationController
 
     def genres_params
       params.require(:genre).permit(:name, :iae)
+    end
+
+    def edit_variable
+      @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id])
+      if @genre.iae==false
+        @selects=[["支出",false],["収入",true]]
+      else
+        @selects=[["収入",true],["支出",false]]
+      end
     end
 end

@@ -16,7 +16,7 @@
     <% @account_exchanges.each do |account_exchange| %>
     <tbody>
       <tr>
-        <td><%= account_exchange.date %></td>
+        <td><%= account_exchange.date.year %>/<%= account_exchange.date.month %>/<%= account_exchange.date.day %></td>
         <td><%= account_exchange.bname %></td>
         <td><%= account_exchange.aname %></td>
         <td>¥<%= account_exchange.value.to_s(:delimited) %></td>

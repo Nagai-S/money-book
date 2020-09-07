@@ -19,7 +19,7 @@
         <td><%= not_pay_event.date.year %>/<%= not_pay_event.date.month %>/<%= not_pay_event.date.day %></td>
         <td><%= not_pay_event.genre %></td>
         <td><%= not_pay_event.memo %></td>
-        <td><%= not_pay_event.value %></td>
+        <td><%= not_pay_event.value.to_s(:delimited) %></td>
         <td><%= not_pay_event.pay_date.year %>/<%= not_pay_event.pay_date.month %>/<%= not_pay_event.pay_date.day %></td>
       </tr>
     </tbody>
@@ -28,6 +28,8 @@
     <%= will_paginate @not_pay_page %>
   </table>
 </div>
+<h2>未引き落としトータル</h2>
+¥<%= @total_not_pay.to_s(:delimited) %>
 
 <ul class="nav-list">
   <li class="nav-list-item"><%= link_to "クレジットカード一覧へ戻る", user_credits_path(current_user) %></li>

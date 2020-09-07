@@ -78,6 +78,10 @@ class CreditsController < ApplicationController
       end
     end
     @not_pay_page=not_pay.paginate(page: params[:page], per_page: 10)
+    @total_not_pay=0
+    not_pay.each do |not_pay_event|
+      @total_not_pay += not_pay_event.value
+    end
   end
 
   private

@@ -1,35 +1,46 @@
 <h1><%= @credit.name %></h1>
-<p>未引き落としのイベントは以下です</p>
-<div class="col-5 ml-3">
-  <table class="table" id="table_accounts">
-    <thead>
-      <tr>
-        <th>日付</th>
-        <th>ジャンル</th>
-        <th>メモ</th>
-        <th>金額</th>
-        <th>引き落とし日</th>
-      </tr>
-    </thead>
 
-    <% @not_pay_page.each do |not_pay_event| %>
+<% if @not_pay.first != {} %>
+  <p><%= @credit.name %>での未引き落としのイベントは以下です</p>
+  <% @not_pay.each do |not_pay_month| %>
+    <div class="col-5 ml-3">
+      <table class="table" id="table_accounts">
+        <caption>
+          引き落とし日　<%= not_pay_month[:date].year %>/<%= not_pay_month[:date].month %>/<%= not_pay_month[:date].day %>
+        </caption>
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>ジャンル</th>
+            <th>メモ</th>
+            <th>金額</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <tr>
-        <td><%= not_pay_event.date.year %>/<%= not_pay_event.date.month %>/<%= not_pay_event.date.day %></td>
-        <td><%= not_pay_event.genre %></td>
-        <td><%= not_pay_event.memo %></td>
-        <td><%= not_pay_event.value.to_s(:delimited) %></td>
-        <td><%= not_pay_event.pay_date.year %>/<%= not_pay_event.pay_date.month %>/<%= not_pay_event.pay_date.day %></td>
-      </tr>
-    </tbody>
+        <% not_pay_month[:event].each do |not_pay_event| %>
 
-    <% end %>
-    <%= will_paginate @not_pay_page %>
-  </table>
-</div>
-<h2>未引き落としトータル</h2>
-¥<%= @total_not_pay.to_s(:delimited) %>
+        <tbody>
+          <tr>
+            <td><%= not_pay_event.date.year %>/<%= not_pay_event.date.month %>/<%= not_pay_event.date.day %></td>
+            <td><%= not_pay_event.genre %></td>
+            <td><%= not_pay_event.memo %></td>
+            <td>¥<%= not_pay_event.value.to_s(:delimited) %></td>
+          </tr>
+        <% end %>
+          <tr class="total">
+            <td></td>
+            <td>合計</td>
+            <td></td>
+            <td>¥<%= not_pay_month[:total].to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  <% end %>
+<% else %>
+  <p>このクレジットカードを使用した未引き落としイベントはありません</p>
+<% end %>
 
 <ul class="nav-list">
   <li class="nav-list-item"><%= link_to "クレジットカード一覧へ戻る", user_credits_path(current_user) %></li>

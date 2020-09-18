@@ -46,7 +46,17 @@ class GenresController < ApplicationController
   def update
     form_class
     edit_variable
+    events=current_user.events
+    g_events=[]
+    events.each do |event|
+      if event.genre==@genre.name
+        g_events << event
+      end
+    end
     if @genre.update(genres_params)
+      g_events.each do |event|
+        event.update(genre: @genre.name)
+      end
       redirect_to user_genres_path(params[:user_id])
     else
       flash.now[:danger]="正しい値を入力してください"

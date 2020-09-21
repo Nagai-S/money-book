@@ -3,7 +3,7 @@
 <% if @not_pay != [] %>
   <p><%= @credit.name %>での未引き落としのイベントは以下です</p>
   <% @not_pay.each do |not_pay_month| %>
-    <div class="credit-show-month">
+    <div class="many-table">
       <h3 class="credit-title">引き落とし日　<%= not_pay_month[:date].year %>/<%= not_pay_month[:date].month %>/<%= not_pay_month[:date].day %></h3>
       <p>合計で¥<%= not_pay_month[:total].to_s(:delimited) %>引き落とされます</p>
       <% if not_pay_month[:event] != [] %>

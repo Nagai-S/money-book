@@ -61,106 +61,108 @@
   </li>
 </ul>
 
-<h2>月ごとの収支</h2>
+<div class="many-table">
+  <h2>月ごとの収支</h2>
 
-<% if @events!=[] %>
+  <% if @events!=[] %>
 
-<div class="col-5 ml-3 table-responsive">
-  <table class="table" id="pm">
-    <thead>
-      <tr>
-        <th>年</th>
-        <th class="border-right">月</th>
-        <th>収入</th>
-        <th class="border-right">支出</th>
-        <th>収支</th>
-      </tr>
-    </thead>
+  <div class="col-5 ml-3 table-responsive">
+    <table class="table" id="pm">
+      <thead>
+        <tr>
+          <th>年</th>
+          <th class="border-right">月</th>
+          <th>収入</th>
+          <th class="border-right">支出</th>
+          <th>収支</th>
+        </tr>
+      </thead>
 
-    <% a=0 %>
-    <% @month_pm_paginate.each do |month_pm_genre| %>
+      <% a=0 %>
+      <% @month_pm_paginate.each do |month_pm_genre| %>
 
-    <tbody>
-      <tr>
-        <% if a != month_pm_genre[:year] %>
-        <td><%= month_pm_genre[:year] %>年</td>
-        <% else %>
-        <td></td>
-        <% end %>
+      <tbody>
+        <tr>
+          <% if a != month_pm_genre[:year] %>
+          <td><%= month_pm_genre[:year] %>年</td>
+          <% else %>
+          <td></td>
+          <% end %>
 
-        <td class="border-right"><%= month_pm_genre[:month] %>月</td>
-        <td>¥<%= month_pm_genre[:in].to_s(:delimited) %></td>
-        <td class="border-right">¥-<%= month_pm_genre[:out].to_s(:delimited) %></td>
-        <td>¥<%= month_pm_genre[:pm].to_s(:delimited) %></td>
-      </tr>
-    </tbody>
+          <td class="border-right"><%= month_pm_genre[:month] %>月</td>
+          <td>¥<%= month_pm_genre[:in].to_s(:delimited) %></td>
+          <td class="border-right">¥-<%= month_pm_genre[:out].to_s(:delimited) %></td>
+          <td>¥<%= month_pm_genre[:pm].to_s(:delimited) %></td>
+        </tr>
+      </tbody>
 
-    <% a=month_pm_genre[:year] %>
-    <% end %>
+      <% a=month_pm_genre[:year] %>
+      <% end %>
 
-  </table>
-</div>
+    </table>
+  </div>
 
-<div class="col-5 ml-3 table-responsive">
-  <table class="table" id="pm">
-    <thead>
-      <tr>
-        <th>年</th>
-        <th class="border-right">月</th>
+  <div class="col-5 ml-3 table-responsive">
+    <table class="table" id="pm">
+      <thead>
+        <tr>
+          <th>年</th>
+          <th class="border-right">月</th>
 
-        <% @genres_array_e.each do |genre| %>
-        <% if genre==@genres_array_e.last %>
-        <th class="border-right">
-          <%= genre %>
-        </th>
-        <% else %>
-        <th>
-          <%= genre %>
-        </th>
-        <% end %>
-        <% end %>
+          <% @genres_array_e.each do |genre| %>
+          <% if genre==@genres_array_e.last %>
+          <th class="border-right">
+            <%= genre %>
+          </th>
+          <% else %>
+          <th>
+            <%= genre %>
+          </th>
+          <% end %>
+          <% end %>
 
-        <% @genres_array_i.each do |genre| %>
-        <th>
-          <%= genre %>
-        </th>
-        <% end %>
+          <% @genres_array_i.each do |genre| %>
+          <th>
+            <%= genre %>
+          </th>
+          <% end %>
 
-      </tr>
-    </thead>
+        </tr>
+      </thead>
 
-    <% a=0 %>
-    <% @month_pm_paginate.each do |month_pm_genre| %>
+      <% a=0 %>
+      <% @month_pm_paginate.each do |month_pm_genre| %>
 
-    <tbody>
-      <tr>
-        <% if a != month_pm_genre[:year] %>
-        <td><%= month_pm_genre[:year] %>年</td>
-        <% else %>
-        <td></td>
-        <% end %>
+      <tbody>
+        <tr>
+          <% if a != month_pm_genre[:year] %>
+          <td><%= month_pm_genre[:year] %>年</td>
+          <% else %>
+          <td></td>
+          <% end %>
 
-        <td class="border-right"><%= month_pm_genre[:month] %>月</td>
+          <td class="border-right"><%= month_pm_genre[:month] %>月</td>
 
-        <% @genres_array_e.each do |genre| %>
-        <% if genre==@genres_array_e.last %>
-        <td class="border-right">¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
-        <% else %>
-        <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
-        <% end %>
-        <% end %>
+          <% @genres_array_e.each do |genre| %>
+          <% if genre==@genres_array_e.last %>
+          <td class="border-right">¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
+          <% else %>
+          <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
+          <% end %>
+          <% end %>
 
-        <% @genres_array_i.each do |genre| %>
-        <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
-        <% end %>
-      </tr>
-    </tbody>
+          <% @genres_array_i.each do |genre| %>
+          <td>¥<%= month_pm_genre[genre].to_s(:delimited) %></td>
+          <% end %>
+        </tr>
+      </tbody>
 
-    <% a=month_pm_genre[:year] %>
-    <% end %>
-    <%= will_paginate @month_pm_paginate, :param_name => 'month', class: "center" %>
+      <% a=month_pm_genre[:year] %>
+      <% end %>
+      <%= will_paginate @month_pm_paginate, :param_name => 'month', class: "center" %>
 
-  </table>
+    </table>
+  </div>
 </div>
 
 <% else %>
@@ -168,85 +170,87 @@
 <p>まだイベントがありません</p>
 <% end %>
 
-<h2>年ごとの収支</h2>
-<% if @events!=[] %>
+<div class="many-table">
+  <h2>年ごとの収支</h2>
+  <% if @events!=[] %>
 
-<div class="col-5 ml-3 table-responsive">
-  <table class="table" id="pm">
-    <thead>
-      <tr>
-        <th class="border-right">年</th>
-        <th>収入</th>
-        <th class="border-right">支出</th>
-        <th>収支</th>
-      </tr>
-    </thead>
+  <div class="col-5 ml-3 table-responsive">
+    <table class="table" id="pm">
+      <thead>
+        <tr>
+          <th class="border-right">年</th>
+          <th>収入</th>
+          <th class="border-right">支出</th>
+          <th>収支</th>
+        </tr>
+      </thead>
 
-    <% @year_pm_paginate.each do |year_pm_genre| %>
-    <tbody>
-      <tr>
-        <td class="border-right"><%= year_pm_genre[:year] %>年</td>
-        <td>¥<%= year_pm_genre[:in].to_s(:delimited) %></td>
-        <td class="border-right">¥-<%= year_pm_genre[:out].to_s(:delimited) %></td>
-        <td>¥<%= year_pm_genre[:pm].to_s(:delimited) %></td>
-      </tr>
-    </tbody>
+      <% @year_pm_paginate.each do |year_pm_genre| %>
+      <tbody>
+        <tr>
+          <td class="border-right"><%= year_pm_genre[:year] %>年</td>
+          <td>¥<%= year_pm_genre[:in].to_s(:delimited) %></td>
+          <td class="border-right">¥-<%= year_pm_genre[:out].to_s(:delimited) %></td>
+          <td>¥<%= year_pm_genre[:pm].to_s(:delimited) %></td>
+        </tr>
+      </tbody>
 
-    <% end %>
+      <% end %>
 
-  </table>
-</div>
+    </table>
+  </div>
 
-<div class="col-5 ml-3 table-responsive">
-  <table class="table" id="pm">
-    <thead>
-      <tr>
-        <th class="border-right">年</th>
+  <div class="col-5 ml-3 table-responsive">
+    <table class="table" id="pm">
+      <thead>
+        <tr>
+          <th class="border-right">年</th>
 
-        <% @genres_array_e.each do |genre| %>
-        <% if genre==@genres_array_e.last %>
-        <th class="border-right">
-          <%= genre %>
-        </th>
-        <% else %>
-        <th>
-          <%= genre %>
-        </th>
-        <% end %>
-        <% end %>
+          <% @genres_array_e.each do |genre| %>
+          <% if genre==@genres_array_e.last %>
+          <th class="border-right">
+            <%= genre %>
+          </th>
+          <% else %>
+          <th>
+            <%= genre %>
+          </th>
+          <% end %>
+          <% end %>
 
-        <% @genres_array_i.each do |genre| %>
-        <th>
-          <%= genre %>
-        </th>
-        <% end %>
+          <% @genres_array_i.each do |genre| %>
+          <th>
+            <%= genre %>
+          </th>
+          <% end %>
 
-      </tr>
-    </thead>
+        </tr>
+      </thead>
 
-    <% @year_pm_paginate.each do |year_pm_genre| %>
-    <tbody>
-      <tr>
-        <td class="border-right"><%= year_pm_genre[:year] %>年</td>
+      <% @year_pm_paginate.each do |year_pm_genre| %>
+      <tbody>
+        <tr>
+          <td class="border-right"><%= year_pm_genre[:year] %>年</td>
 
-        <% @genres_array_e.each do |genre| %>
-        <% if genre==@genres_array_e.last %>
-        <td class="border-right">¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
-        <% else %>
-        <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
-        <% end %>
-        <% end %>
+          <% @genres_array_e.each do |genre| %>
+          <% if genre==@genres_array_e.last %>
+          <td class="border-right">¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
+          <% else %>
+          <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
+          <% end %>
+          <% end %>
 
-        <% @genres_array_i.each do |genre| %>
-        <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
-        <% end %>
-      </tr>
-    </tbody>
+          <% @genres_array_i.each do |genre| %>
+          <td>¥<%= year_pm_genre[genre].to_s(:delimited) %></td>
+          <% end %>
+        </tr>
+      </tbody>
 
-    <% end %>
-    <%= will_paginate @year_pm_paginate, :param_name => 'year', class: "center" %>
+      <% end %>
+      <%= will_paginate @year_pm_paginate, :param_name => 'year', class: "center" %>
 
-  </table>
+    </table>
+  </div>
 </div>
 
 <% else %>

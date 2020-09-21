@@ -60,7 +60,7 @@
               <td><%= not_pay_ac.date.year %>/<%= not_pay_ac.date.month %>/<%= not_pay_ac.date.day %></td>
               <td><%= not_pay_ac.bname %></td>
               <td><%= not_pay_ac.aname %></td>
-              <td><%= not_pay_ac.value.to_s(:delimited) %></td>
+              <td>¥<%= not_pay_ac.value.to_s(:delimited) %></td>
             </tr>
             <% end %>
           </table>

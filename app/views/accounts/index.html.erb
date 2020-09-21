@@ -1,7 +1,7 @@
 <h1>統計情報</h1>
 
 <h2>残高</h2>
-<div class="col-5 ml-3">
+<div class="col-5 ml-3 table-responsive">
   <table class="table" id="table_accounts">
     <thead>
       <tr>
@@ -20,7 +20,7 @@
 
 <h2>アカウント残高</h2>
 
-<div class="col-5 ml-3">
+<div class="col-5 ml-3 table-responsive">
   <table class="table" id="table_accounts">
     <thead>
       <tr>
@@ -65,7 +65,7 @@
 
 <% if @events!=[] %>
 
-<div class="col-5 ml-3">
+<div class="col-5 ml-3 table-responsive">
   <table class="table" id="pm">
     <thead>
       <tr>
@@ -97,12 +97,11 @@
 
     <% a=month_pm_genre[:year] %>
     <% end %>
-    <%= will_paginate @month_pm_paginate, :param_name => 'month', class: "center" %>
 
   </table>
 </div>
 
-<div class="col-5 ml-3">
+<div class="col-5 ml-3 table-responsive">
   <table class="table" id="pm">
     <thead>
       <tr>
@@ -172,7 +171,7 @@
 <h2>年ごとの収支</h2>
 <% if @events!=[] %>
 
-<div class="col-5 ml-3">
+<div class="col-5 ml-3 table-responsive">
   <table class="table" id="pm">
     <thead>
       <tr>
@@ -194,12 +193,11 @@
     </tbody>
 
     <% end %>
-    <%= will_paginate @year_pm_paginate, :param_name => 'year', class: "center" %>
 
   </table>
 </div>
 
-<div class="col-5 ml-3">
+<div class="col-5 ml-3 table-responsive">
   <table class="table" id="pm">
     <thead>
       <tr>

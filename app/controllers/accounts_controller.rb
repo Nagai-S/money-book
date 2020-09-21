@@ -11,32 +11,6 @@ class AccountsController < ApplicationController
     @genres=current_user.genres
     @account_exchanges=current_user.account_exchanges
 
-    # 引き落とし日を過ぎていたら計算する
-    @events.each do |event|
-      if event.pon==false
-        if Date.today>=event.pay_date
-          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
-          if credit
-            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-            event.update(pon: true)
-            c_account.update(value: c_account.value-event.value)
-          end
-        end
-      end
-    end
-    @account_exchanges.each do |event|
-      if event.pon==false
-        if Date.today>=event.pay_date
-          credit=Credit.find_by(:user_id => current_user.id, :name => event.bname)
-          if credit
-            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-            event.update(pon: true)
-            c_account.update(value: c_account.value-event.value)
-          end
-        end
-      end
-    end
-
     # 未引き落としのクレジットカードが削除されていないか確認
     @events.each do |event|
       if event.pon==false
@@ -65,6 +39,32 @@ class AccountsController < ApplicationController
         else
           flash[:danger]="最近使用したクレジットカードが削除されています"
           redirect_to user_events_path
+        end
+      end
+    end
+
+    # 引き落とし日を過ぎていたら計算する
+    @events.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            event.update(pon: true)
+            c_account.update(value: c_account.value-event.value)
+          end
+        end
+      end
+    end
+    @account_exchanges.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.bname)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            event.update(pon: true)
+            c_account.update(value: c_account.value-event.value)
+          end
         end
       end
     end

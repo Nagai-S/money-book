@@ -3,7 +3,7 @@
 <% if @not_pay.first != {} %>
   <p><%= @credit.name %>での未引き落としのイベントは以下です</p>
   <% @not_pay.each do |not_pay_month| %>
-    <div class="col-5 ml-3">
+    <div class="col-5 ml-3 table-responsive">
       <table class="table" id="table_accounts">
         <caption>
           引き落とし日　<%= not_pay_month[:date].year %>/<%= not_pay_month[:date].month %>/<%= not_pay_month[:date].day %>

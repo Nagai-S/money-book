@@ -41,6 +41,67 @@ class ApplicationController < ActionController::Base
     return pay_day
   end
 
+  def change_pon
+    @events=current_user.events
+    @account_exchanges=current_user.account_exchanges
+    # 未引き落としのクレジットカードが削除されていないか確認
+    @events.each do |event|
+      if event.pon==false
+        credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+        if credit
+          if Account.find_by(:user_id => current_user.id, :name => credit.account)
+          else
+            flash[:danger]="最近使用したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+            redirect_to user_events_path
+          end
+        else
+          flash[:danger]="最近使用したクレジットカードが削除されています"
+          redirect_to user_events_path
+        end
+      end
+    end
+    @account_exchanges.each do |event|
+      if event.pon==false
+        credit=Credit.find_by(:user_id => current_user.id, :name => event.bname)
+        if credit
+          if Account.find_by(:user_id => current_user.id, :name => credit.account)
+          else
+            flash[:danger]="最近使用したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+            redirect_to user_events_path
+          end
+        else
+          flash[:danger]="最近使用したクレジットカードが削除されています"
+          redirect_to user_events_path
+        end
+      end
+    end
+
+    # 引き落とし日を過ぎていたら計算する
+    @events.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            event.update(pon: true)
+            c_account.update(value: c_account.value-event.value)
+          end
+        end
+      end
+    end
+    @account_exchanges.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.bname)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            event.update(pon: true)
+            c_account.update(value: c_account.value-event.value)
+          end
+        end
+      end
+    end
+  end
   private
     def correct_user
       @user=User.find(params[:user_id])

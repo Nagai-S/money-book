@@ -8,6 +8,7 @@
         <th>振替元アカウント</th>
         <th>振替先アカウント</th>
         <th>金額</th>
+        <th>引き落とし日</th>
         <th></th>
         <th></th>
       </tr>
@@ -20,6 +21,11 @@
         <td><%= account_exchange.bname %></td>
         <td><%= account_exchange.aname %></td>
         <td>¥<%= account_exchange.value.to_s(:delimited) %></td>
+        <% if account_exchange.pay_date %>
+          <td><%= account_exchange.pay_date.year %>/<%= account_exchange.pay_date.month %>/<%= account_exchange.pay_date.day %></td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= link_to "削除", user_account_exchange_path(params[:user_id], account_exchange.id), method: :DELETE, data: {confirm: "削除してよろしいですか？", "turbolinks" => false} %></td>
         <td><%= link_to "編集", edit_user_account_exchange_path(params[:user_id], account_exchange.id) %></td>
       </tr>
@@ -32,5 +38,8 @@
 <ul class="nav-list">
   <li class="nav-list-item">
     <%= link_to "アカウント一覧へ戻る", user_accounts_path %>
+  </li>
+  <li class="nav-list-item">
+    <%= link_to "新規振替", new_user_account_exchange_path %>
   </li>
 </ul>

@@ -40,8 +40,31 @@ class CreditsController < ApplicationController
 
   def destroy
     form_class
-    Credit.find_by(:user_id => params[:user_id], :id => params[:id]).destroy
-    redirect_to user_credits_path
+    @credit=Credit.find_by(:user_id => params[:user_id], :id => params[:id])
+    a=true
+    current_user.events.each do |event|
+      if event.pon==false
+        if event.account==@credit.name
+          a=false
+          break
+        end
+      end
+    end
+    current_user.account_exchanges.each do |event|
+      if event.pon==false
+        if event.bname==@credit.name
+          a=false
+          break
+        end
+      end
+    end
+    if a
+      @credit.destroy
+      redirect_to user_credits_path
+    else
+      flash[:danger]="このクレジットカードを使用した未引き落としのイベントまたは振替があるためこのカードは削除できません"
+      redirect_to user_accounts_path
+    end
   end
 
   def edit
@@ -179,27 +202,5 @@ class CreditsController < ApplicationController
       @month_days.unshift(["#{@credit.month_date}", "#{@credit.month_date}"])
       @pay_days.delete(["#{@credit.pay_date}", "#{@credit.pay_date}"])
       @pay_days.unshift(["#{@credit.pay_date}", "#{@credit.pay_date}"])
-    end
-
-    def f_pay_date(event_date, credit)
-      pay_day=Date.today
-      if credit.pay_date > credit.month_date
-        if credit.month_date < event_date.day
-          a=event_date.next_month
-          pay_day=Date.new(a.year, a.month, credit.pay_date)
-        else
-          pay_day=Date.new(event_date.year, event_date.month, credit.pay_date)
-        end
-      else
-        if credit.month_date < event_date.day
-          a=event_date.next_month(2)
-          pay_day=Date.new(a.year, a.month, credit.pay_date)
-        else
-          a=event_date.next_month
-          pay_day=Date.new(a.year, a.month, credit.pay_date)
-        end
-      end
-
-      return pay_day
     end
 end

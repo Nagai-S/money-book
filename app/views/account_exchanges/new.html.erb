@@ -11,14 +11,14 @@
   <div class="row">
     <div class="<%= @form_class %>">
       <%= f.label :bname, "振替もとアカウントを選択してください" %>
-      <%= f.select :bname, @names, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
+      <%= f.select :bname, @bnames, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
     </div>
   </div>
 
   <div class="row">
     <div class="<%= @form_class %>">
       <%= f.label :aname, "振替先アカウントを入力してください" %>
-      <%= f.select :aname, @names, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
+      <%= f.select :aname, @anames, {include_blank: '選択ボックス'}, class: "form-control", id: "select" %>
     </div>
   </div>
 

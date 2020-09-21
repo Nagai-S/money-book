@@ -19,6 +19,28 @@ class ApplicationController < ActionController::Base
     @form_class="form-group col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
   end
 
+  def f_pay_date(event_date, credit)
+    pay_day=Date.today
+    if credit.pay_date > credit.month_date
+      if credit.month_date < event_date.day
+        a=event_date.next_month
+        pay_day=Date.new(a.year, a.month, credit.pay_date)
+      else
+        pay_day=Date.new(event_date.year, event_date.month, credit.pay_date)
+      end
+    else
+      if credit.month_date < event_date.day
+        a=event_date.next_month(2)
+        pay_day=Date.new(a.year, a.month, credit.pay_date)
+      else
+        a=event_date.next_month
+        pay_day=Date.new(a.year, a.month, credit.pay_date)
+      end
+    end
+
+    return pay_day
+  end
+
   private
     def correct_user
       @user=User.find(params[:user_id])

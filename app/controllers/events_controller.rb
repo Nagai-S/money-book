@@ -88,7 +88,7 @@ class EventsController < ApplicationController
       if Account.find_by(:user_id => current_user.id, :name => credit.account)
       else
         flash.now[:danger]="選択したクレジットカードと連携しているアカウント(銀行など)が削除されています"
-        render 'new' and return
+        render 'edit' and return
       end
     end
     if @event.update(events_params_update1)
@@ -270,27 +270,5 @@ class EventsController < ApplicationController
           @c_account.update(value: @c_account_value)
         end
       end
-    end
-
-    def f_pay_date(event_date, credit)
-      pay_day=Date.today
-      if credit.pay_date > credit.month_date
-        if credit.month_date < event_date.day
-          a=event_date.next_month
-          pay_day=Date.new(a.year, a.month, credit.pay_date)
-        else
-          pay_day=Date.new(event_date.year, event_date.month, credit.pay_date)
-        end
-      else
-        if credit.month_date < event_date.day
-          a=event_date.next_month(2)
-          pay_day=Date.new(a.year, a.month, credit.pay_date)
-        else
-          a=event_date.next_month
-          pay_day=Date.new(a.year, a.month, credit.pay_date)
-        end
-      end
-
-      return pay_day
     end
 end

@@ -9,6 +9,33 @@ class AccountsController < ApplicationController
     @accounts=current_user.accounts
     @events=current_user.events
     @genres=current_user.genres
+    @account_exchanges=current_user.account_exchanges
+
+    # 引き落とし日を過ぎていたら計算する
+    @events.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            event.update(pon: true)
+            c_account.update(value: c_account.value-event.value)
+          end
+        end
+      end
+    end
+    @account_exchanges.each do |event|
+      if event.pon==false
+        if Date.today>=event.pay_date
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.bname)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            event.update(pon: true)
+            c_account.update(value: c_account.value-event.value)
+          end
+        end
+      end
+    end
 
     # 未引き落としのクレジットカードが削除されていないか確認
     @events.each do |event|
@@ -26,16 +53,18 @@ class AccountsController < ApplicationController
         end
       end
     end
-
-    @events.each do |event|
+    @account_exchanges.each do |event|
       if event.pon==false
-        if Date.today>=event.pay_date
-          credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
-          if credit
-            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
-            event.update(pon: true)
-            c_account.update(value: c_account.value-event.value)
+        credit=Credit.find_by(:user_id => current_user.id, :name => event.bname)
+        if credit
+          if Account.find_by(:user_id => current_user.id, :name => credit.account)
+          else
+            flash[:danger]="最近使用したクレジットカードと連携しているアカウント(銀行など)が削除されています"
+            redirect_to user_events_path
           end
+        else
+          flash[:danger]="最近使用したクレジットカードが削除されています"
+          redirect_to user_events_path
         end
       end
     end
@@ -53,6 +82,17 @@ class AccountsController < ApplicationController
       @events.each do |event|
         if event.pon==false
           credit=Credit.find_by(:user_id => current_user.id, :name => event.account)
+          if credit
+            c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
+            if c_account==account
+              after_value -= event.value
+            end
+          end
+        end
+      end
+      @account_exchanges.each do |event|
+        if event.pon==false
+          credit=Credit.find_by(:user_id => current_user.id, :name => event.bname)
           if credit
             c_account=Account.find_by(:user_id => current_user.id, :name => credit.account)
             if c_account==account
@@ -213,7 +253,20 @@ class AccountsController < ApplicationController
 
   def destroy
     form_class
-    Account.find_by(:user_id => params[:user_id], :id => params[:id]).destroy
+    @account=Account.find_by(:user_id => params[:user_id], :id => params[:id])
+    a=true
+    current_user.credits.each do |credit|
+      if credit.account==@account.name
+        a=false
+        break
+      end
+    end
+    if a
+      @account.destroy
+    else
+      flash[:danger]="このアカウントに連携したクレジットカードが存在するためこのアカウントは削除できません"
+      redirect_to user_accounts_path and return
+    end
     redirect_to user_accounts_path
   end
 

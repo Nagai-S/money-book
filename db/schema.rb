@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200904071750) do
+ActiveRecord::Schema.define(version: 20200921063718) do
 
   create_table "account_exchanges", force: :cascade do |t|
     t.string "bname"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20200904071750) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "pay_date"
+    t.boolean "pon", default: true, null: false
     t.index ["user_id"], name: "index_account_exchanges_on_user_id"
   end
 

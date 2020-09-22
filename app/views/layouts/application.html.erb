@@ -3,13 +3,13 @@
   <head>
     <title>MoneyBook</title>
     <%= csrf_meta_tags %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -61,15 +61,11 @@
         <% if user_signed_in? %>
         <ul class="nav-list">
           <li class="nav-list-item">
-            <button type="button" class="btn btn-primary">
-              <%= link_to "残高", user_accounts_path(current_user) %>
-            </button>
+            <%= link_to "残高", user_accounts_path(current_user), {role: "button", class: "btn btn-primary"} %>
           </li>
 
           <li class="nav-list-item">
-            <button type="button" class="btn btn-primary">
-              <%= link_to "新規イベント作成", new_user_event_path(current_user) %>
-            </button>
+            <%= link_to "新規イベント作成", new_user_event_path(current_user), {role: "button", class: "btn btn-primary"} %>
           </li>
         </ul>
         <% end %>
@@ -105,7 +101,7 @@
           </div>
         </ul>
         <% end %>
-      	<p>© All rights reserved by Nagai Shogo</p>
+      	<p>© All rights reserved by S.N.</p>
       </footer>
     </div>
     </div>

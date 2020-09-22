@@ -63,7 +63,7 @@ class CreditsController < ApplicationController
       redirect_to user_credits_path
     else
       flash[:danger]="このクレジットカードを使用した未引き落としのイベントまたは振替があるためこのカードは削除できません"
-      redirect_to user_accounts_path
+      redirect_to user_credits_path
     end
   end
 

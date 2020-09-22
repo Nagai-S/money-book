@@ -86,7 +86,6 @@ header .dropdown-menu{
 header .btn{
   background-color: LightBlue;
   color: inherit;
-  font-weight: lighter;
 }
 
 header #border-bottom{
@@ -109,20 +108,15 @@ header #border-bottom{
 
 .btn{
   margin: 15px;
-  background-color: #F0F8FF;
+  background-color: LightBlue;
   font-weight: bold;
-  font-size: 20px
+  font-size: 20px;
+  color: inherit;
 }
 
 #error{
   color: red;
   list-style: none;
-}
-
-btn{
-  color: inherit;
-  background-color: #F0F8FF;
-  font-size: 20px;
 }
 
 .many-table{
@@ -248,7 +242,7 @@ form #user{
 
 form .btn{
   color: inherit;
-  background-color: #F0F8FF;
+  background-color: LightBlue;
   font-size: 20px;
 }
 

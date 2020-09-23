@@ -34,13 +34,17 @@ body{
  }
 
 /* header */
- header {
-   width: 100%;
-   padding: 15px 0;
-   margin: 0 auto;
-   text-align: left;
-   background-color: #F0F8FF;
- }
+header {
+ width: 100%;
+ padding: 15px 0;
+ margin: 0 auto;
+ text-align: left;
+ background-color: #F0F8FF;
+}
+
+header .header_display{
+  display: flex;
+}
 
 header .headline{
   font-size: 50px;
@@ -76,8 +80,17 @@ header #unlogin2 {
   font-size: 20px;
 }
 
+header .nav1{
+  margin-left: auto;
+}
+
+header .nav1, .nav2{
+  list-style: none;
+  align-self: flex-end;
+}
+
 header .dropdown{
-  text-align: right;
+  align-self: flex-end;
 }
 
 header .dropdown-menu{
@@ -91,6 +104,18 @@ header .btn{
 
 header #border-bottom{
     border-bottom: 1px solid #ddd
+}
+
+/* スマホ版 */
+@media (max-width: 400px) {
+  .header_display{
+    display: flex;
+    flex-direction: column;
+  }
+
+  header .nav1, .nav2, .dropdown{
+    margin: auto;
+  }
 }
 /* ------------------------------ */
 

@@ -38,12 +38,13 @@ body{
    width: 100%;
    padding: 15px 0;
    margin: 0 auto;
-   text-align: center;
+   text-align: left;
    background-color: #F0F8FF;
  }
 
 header .headline{
   font-size: 50px;
+  margin-left: 50px;
 }
 
 header .nav-list {

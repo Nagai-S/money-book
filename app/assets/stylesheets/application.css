@@ -95,6 +95,7 @@ header .dropdown{
 
 header .dropdown-menu{
   background-color: #F0F8FF;
+  width: 100%;
 }
 
 header .btn{
@@ -104,6 +105,11 @@ header .btn{
 
 header #border-bottom{
     border-bottom: 1px solid #ddd
+}
+
+.dropdown-menu button{
+  background-color: #F0F8FF;
+  border: none;
 }
 
 /* スマホ版 */

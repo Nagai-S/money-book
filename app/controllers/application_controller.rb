@@ -1,7 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!, only: [:after_sign_in_path_for, :after_sign_up_path_for]
-  before_action :correct_user, only: [:after_sign_in_path_for, :after_sign_up_path_for]
+  before_action :authenticate_user!, only: [:after_sign_in_path_for,
+                                            :after_sign_up_path_for,
+                                            :after_sign_out_path_for,
+                                            :f_pay_date,
+                                            :change_pon]
+  before_action :correct_user, only: [:after_sign_in_path_for,
+                                            :after_sign_up_path_for,
+                                            :after_sign_out_path_for,
+                                            :f_pay_date,
+                                            :change_pon]
 
   def after_sign_in_path_for(resource)
     user_events_path(current_user) # ログイン後に遷移するpathを設定
@@ -102,6 +110,7 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
   private
     def correct_user
       @user=User.find(params[:user_id])

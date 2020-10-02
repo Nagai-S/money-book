@@ -8,6 +8,16 @@ class EventsController < ApplicationController
     @events=current_user.events.paginate(page: params[:page])
   end
 
+  def search
+    form_class
+    search=params[:search]
+    search_event=current_user.events
+    if search
+      search_event=Event.where(user_id: current_user.id).where('memo LIKE ?', "%#{search}%")
+    end
+    @events=search_event.paginate(page: params[:page])
+  end
+
   def new
     form_class
     new_variable
@@ -271,4 +281,5 @@ class EventsController < ApplicationController
         end
       end
     end
+
 end

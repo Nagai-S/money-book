@@ -27,9 +27,7 @@ body{
 
  .wrapper{
   width: 100%;
-  /* display: flex; */
   position: relative;
-  /* flex-direction: column; */
   min-height: 100vh;
  }
 
@@ -301,7 +299,20 @@ form .btn{
   background-color: #F0F8FF;
 }
 
-/* ------------------------------ */
+/* search */
+.search-h{
+  text-align: left;
+  margin-left: 140px;
+}
+
+.search-area{
+  height: 80px;
+}
+.search-memo{
+  position: relative;
+  top: 20px;
+  bottom: 30px;
+}
 
 /* footer */
 footer {

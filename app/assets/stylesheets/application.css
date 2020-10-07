@@ -469,6 +469,18 @@ form .btn{
   background-color: #E8E8E8;
 }
 
+.search-h_const{
+  font-size: 25px;
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  font-weight: normal;
+  border: solid 1px rgb(134,134,139);
+  background-color: #E8E8E8;
+}
+
 .search-h:hover{
   cursor: pointer;
   opacity: 0.7;
@@ -488,6 +500,19 @@ form .btn{
   height: 140px;
 }
 
+.search_wrapper_const{
+  position: relative;
+  background-color: #E8E8E8;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  border: solid 1px rgb(134,134,139);
+  border-top: none;
+  padding: 15px 0;
+  height: 140px;
+}
+
 .search-memo{
   position: relative;
   top: 20px;
@@ -495,6 +520,15 @@ form .btn{
 }
 
 .search_wrapper .btn{
+  position: absolute;
+  bottom: 8px;
+  left: 40%;
+  right: 40%;
+  margin: auto;
+  width: 10%;
+}
+
+.search_wrapper_const .btn{
   position: absolute;
   bottom: 8px;
   left: 40%;

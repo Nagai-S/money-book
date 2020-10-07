@@ -123,6 +123,8 @@ header .headline{
     position: absolute;
     left: 10px;
     right: 10px;
+    padding-left: 0;
+    margin-left: 0;
   }
 
   .header_list{

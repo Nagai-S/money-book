@@ -3,7 +3,7 @@
 <div class="search_wrapper_const" id="search_close">
   <%= form_tag(user_search_path,:method => 'get', class: "form1") do %>
     <div class="row">
-      <div class="search-memo col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="search-memo col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
         <%= text_field_tag :search, @search, {placeholder: "メモで検索", class: "form-control", id: "name"} %>
       </div>
     </div>

@@ -13,28 +13,30 @@
       <div class="tab-content">
         <div class="tab-pane active" id="tab_a" role="tabpanel">
             <%= form_for :event, url:user_events_up1_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="form_wrapper">
+              <%= render :partial => 'form_edit1', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_edit1', :locals => {:f => f} %>
+              <%= render :partial => 'form_e', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_e', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit2', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_edit2', :locals => {:f => f} %>
-
-            <%= render :partial => 'form_edit3_e', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit3_e', :locals => {:f => f} %>
+            </div>
 
             <% end %>
         </div>
 
         <div class="tab-pane" id="tab_b" role="tabpanel">
             <%= form_for :event, url:user_events_up2_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="form_wrapper" id="income">
+              <%= render :partial => 'form_new1', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_new1', :locals => {:f => f} %>
+              <%= render :partial => 'form_i', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_i', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit2', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_edit2', :locals => {:f => f} %>
-
-            <%= render :partial => 'form_edit3_i', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit3_i', :locals => {:f => f} %>
+            </div>
 
             <% end %>
         </div>
@@ -54,37 +56,33 @@
       <div class="tab-content">
         <div class="tab-pane" id="tab_a" role="tabpanel">
             <%= form_for :event, url:user_events_up1_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="form_wrapper">
+              <%= render :partial => 'form_new1', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_new1', :locals => {:f => f} %>
+              <%= render :partial => 'form_e', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_e', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit2', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_edit2', :locals => {:f => f} %>
-
-            <%= render :partial => 'form_edit3_e', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit3_e', :locals => {:f => f} %>
+            </div>
 
             <% end %>
         </div>
 
         <div class="tab-pane active" id="tab_b" role="tabpanel">
             <%= form_for :event, url:user_events_up2_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+            <div class="form_wrapper" id="income">
+              <%= render :partial => 'form_new1', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_new1', :locals => {:f => f} %>
+              <%= render :partial => 'form_i', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_i', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit2', :locals => {:f => f} %>
 
-            <%= render :partial => 'form_edit2', :locals => {:f => f} %>
-
-            <%= render :partial => 'form_edit3_i', :locals => {:f => f} %>
+              <%= render :partial => 'form_edit3_i', :locals => {:f => f} %>
+            </div>
 
             <% end %>
         </div>
       </div>
     </div>
     <% end %>
-
-    <ul class="nav-list">
-      <li class="nav-list-item">
-        <%= link_to "イベント一覧へ戻る", user_events_path %>
-      </li>
-    </ul>

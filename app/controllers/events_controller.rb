@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   def index
     form_class
     change_pon
+    new_variable
     @events=current_user.events.paginate(page: params[:page])
   end
 

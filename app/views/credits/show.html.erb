@@ -1,84 +1,80 @@
 <h1><%= @credit.name %></h1>
 
 <% if @not_pay != [] %>
-  <p><%= @credit.name %>での未引き落としのイベントは以下です</p>
+  <p class="explanation"><%= @credit.name %>での未引き落としのイベントは以下です</p>
   <% @not_pay.each do |not_pay_month| %>
-    <div class="many-table row">
-      <h3 class="credit-title">引き落とし日　<%= not_pay_month[:date].year %>/<%= not_pay_month[:date].month %>/<%= not_pay_month[:date].day %></h3>
-      <p>合計で¥<%= not_pay_month[:total].to_s(:delimited) %>引き落とされます</p>
-      <div class="table-responsive col-xs-12 col-md-6">
-        <table class="table" id="table_accounts">
-          <caption>
-            イベント
-          </caption>
-          <thead>
-            <tr>
-              <th>日付</th>
-              <th>ジャンル</th>
-              <th>メモ</th>
-              <th>金額</th>
-            </tr>
-          </thead>
+      <h2 class="credit-title">引き落とし日　<%= not_pay_month[:date].year %>/<%= not_pay_month[:date].month %>/<%= not_pay_month[:date].day %></h2>
+      <p class="explanation2">合計で¥<%= not_pay_month[:total].to_s(:delimited) %>引き落とされます</p>
+      <div class="table_contents row">
+        <div class="table-responsive col-xs-12 col-md-6">
+          <table class="table" id="table_accounts">
+            <caption>
+              イベント
+            </caption>
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>ジャンル</th>
+                <th>メモ</th>
+                <th>金額</th>
+              </tr>
+            </thead>
 
-          <% if not_pay_month[:event] != [] %>
+            <% if not_pay_month[:event] != [] %>
 
-          <% not_pay_month[:event].each do |not_pay_event| %>
+            <% not_pay_month[:event].each do |not_pay_event| %>
 
-          <tbody>
-            <tr>
-              <td><%= not_pay_event.date.year %>/<%= not_pay_event.date.month %>/<%= not_pay_event.date.day %></td>
-              <td><%= not_pay_event.genre %></td>
-              <td><%= not_pay_event.memo %></td>
-              <td>¥<%= not_pay_event.value.to_s(:delimited) %></td>
-            </tr>
-          </tbody>
+            <tbody>
+              <tr>
+                <td><%= not_pay_event.date.year %>/<%= not_pay_event.date.month %>/<%= not_pay_event.date.day %></td>
+                <td><%= not_pay_event.genre %></td>
+                <td><%= not_pay_event.memo %></td>
+                <td>¥<%= not_pay_event.value.to_s(:delimited) %></td>
+              </tr>
+            </tbody>
+            <% end %>
+
+            <% end %>
+          </table>
+          <% if not_pay_month[:event] == [] %>
+            <p>イベントで未引き落としのものはありません</p>
           <% end %>
+        </div>
 
+        <div class="table-responsive col-xs-12 col-md-6">
+          <table class="table" id="table_accounts">
+            <caption>
+              振替
+            </caption>
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>振替先アカウント</th>
+                <th>金額</th>
+              </tr>
+            </thead>
+
+            <% if not_pay_month[:ac_ex] != [] %>
+
+            <% not_pay_month[:ac_ex].each do |not_pay_ac| %>
+
+            <tbody>
+              <tr>
+                <td><%= not_pay_ac.date.year %>/<%= not_pay_ac.date.month %>/<%= not_pay_ac.date.day %></td>
+                <td><%= not_pay_ac.aname %></td>
+                <td>¥<%= not_pay_ac.value.to_s(:delimited) %></td>
+              </tr>
+            </tbody>
+            <% end %>
+
+            <% end %>
+          </table>
+          <% if not_pay_month[:ac_ex] == [] %>
+            <p>振替で未引き落としのものはありません</p>
           <% end %>
-        </table>
-        <% if not_pay_month[:event] == [] %>
-          <p>イベントで未引き落としのものはありません</p>
-        <% end %>
-      </div>
-
-      <div class="table-responsive col-xs-12 col-md-6">
-        <table class="table" id="table_accounts">
-          <caption>
-            振替
-          </caption>
-          <thead>
-            <tr>
-              <th>日付</th>
-              <th>振替先アカウント</th>
-              <th>金額</th>
-            </tr>
-          </thead>
-
-          <% if not_pay_month[:ac_ex] != [] %>
-
-          <% not_pay_month[:ac_ex].each do |not_pay_ac| %>
-
-          <tbody>
-            <tr>
-              <td><%= not_pay_ac.date.year %>/<%= not_pay_ac.date.month %>/<%= not_pay_ac.date.day %></td>
-              <td><%= not_pay_ac.aname %></td>
-              <td>¥<%= not_pay_ac.value.to_s(:delimited) %></td>
-            </tr>
-          </tbody>
-          <% end %>
-
-          <% end %>
-        </table>
-        <% if not_pay_month[:ac_ex] == [] %>
-          <p>振替で未引き落としのものはありません</p>
-        <% end %>
-      </div>
+        </div>
     </div>
   <% end %>
 <% else %>
   <p>このクレジットカードを使用した未引き落としイベントはありません</p>
 <% end %>
-
-<ul class="nav-list">
-  <li class="nav-list-item"><%= link_to "クレジットカード一覧へ戻る", user_credits_path(current_user) %></li>
-</ul>

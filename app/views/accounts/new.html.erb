@@ -1,6 +1,8 @@
 <h1>新規アカウント作成</h1>
 <%= form_for :account, url:user_accounts_path do |f| %>
 
+<div class="form_wrapper">
+
   <div class="row">
     <div class='<%= @form_class %>'>
       <%= f.label :name, "名前を入力してください" %>
@@ -16,11 +18,6 @@
   </div>
 
   <%= f.submit "アカウント作成", class: "btn btn-primary", role: "button" %>
+</div>
 
 <% end %>
-
-<ul class="nav-list">
-  <li class="nav-list-item">
-    <%= link_to "アカウント一覧へ戻る", user_accounts_path %>
-  </li>
-</ul>

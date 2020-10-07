@@ -22,65 +22,38 @@
 
       <header>
         <% if user_signed_in? %>
-        <div class="header_display">
+          <div class="menu close">=</div>
+          <div class="menu open">×</div>
+
           <h1 class="headline">
             <%= link_to "Money Book", user_events_path(current_user) %>
           </h1>
 
-          <li class="nav1">
-            <%= link_to "残高", user_accounts_path(current_user), {role: "button", class: "btn btn-primary"} %>
-          </li>
-
-          <li class="nav2">
-            <%= link_to "新規イベント作成", new_user_event_path(current_user), {role: "button", class: "btn btn-primary"} %>
-          </li>
-
-          <div class="dropdown">
-            <button class="btn btn-primary btn-lg dropdown-toggle" type="button" data-toggle="dropdown">
-              Menu
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <!-- <button> -->
-                <li class="nav-list-item" id="border-bottom"><%= link_to "HOME", user_events_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item" id="border-bottom"><%= link_to "新規アカウント", new_user_account_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item"><%= link_to "新規クレカ", new_user_credit_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item" id="border-bottom"><%= link_to "クレカ一覧", user_credits_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item"><%= link_to "新規ジャンル", new_user_genre_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item" id="border-bottom"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item" id="border-bottom"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path %></li>
-              <!-- </button>
-              <button> -->
-                <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？", "turbolinks" => false} %></li>
-              <!-- </button> -->
-            </div>
+          <div class="header_list">
+            <ul>
+              <li><%= link_to "トップ", user_events_path(current_user) %></li>
+              <li><%= link_to "新規入力", new_user_event_path(current_user) %></li>
+              <li><%= link_to "残高", user_accounts_path(current_user) %></li>
+              <li><%= link_to "クレジットカード", user_credits_path(current_user) %></li>
+              <li><%= link_to "ジャンル", user_genres_path(current_user) %></li>
+              <li class="last"><%= link_to "登録情報", edit_user_registration_path %></li>
+            </ul>
           </div>
-        </div>
+
+          <div class="dropdown_list" id="close">
+            <ul>
+              <li><%= link_to "トップ", user_events_path(current_user) %></li>
+              <li><%= link_to "新規入力", new_user_event_path(current_user) %></li>
+              <li><%= link_to "残高", user_accounts_path(current_user) %></li>
+              <li><%= link_to "クレジットカード", user_credits_path(current_user) %></li>
+              <li><%= link_to "ジャンル", user_genres_path(current_user) %></li>
+              <li class="last"><%= link_to "登録情報", edit_user_registration_path %></li>
+            </ul>
+          </div>
 
         <% else %>
 
           <h1 class="headline"><%= link_to "Money Book", root_path %></h1>
-          <ul class="nav-list" id="unlogin1">
-            <li class="nav-list-item" id="unlogin2"><%= link_to "新規会員登録", new_user_registration_path %></li>
-            <li class="nav-list-item" id="unlogin2"><%= link_to "ログイン", new_user_session_path %></li>
-          </ul>
 
         <% end %>
       </header>
@@ -93,33 +66,47 @@
       </div>
       </div>
       <footer>
-        <% if user_signed_in? %>
-        <ul class="nav-list">
-          <li class="nav-list-item" id="footer_home"><%= link_to "HOME", user_events_path(current_user) %></li>
-        </ul>
-        <ul class="nav-list">
-          <div class="row">
-            <div class="col-xs-4">
-              <li class="nav-list-item"><%= link_to "新規イベント作成", new_user_event_path(current_user) %></li>
-              <li class="nav-list-item"><%= link_to "残高", user_accounts_path(current_user) %></li>
-              <li class="nav-list-item"><%= link_to "新規アカウント作成", new_user_account_path(current_user) %></li>
-              <li class="nav-list-item"><%= link_to "新規クレジットカード作成", new_user_credit_path(current_user) %></li>
-            </div>
-            <div class="col-xs-4">
-              <li class="nav-list-item"><%= link_to "クレジットカード一覧", user_credits_path(current_user) %></li>
-              <li class="nav-list-item"><%= link_to "新規ジャンル作成", new_user_genre_path(current_user) %></li>
-              <li class="nav-list-item"><%= link_to "ジャンル一覧", user_genres_path(current_user) %></li>
-              <li class="nav-list-item"><%= link_to "新規振替", new_user_account_exchange_path(current_user) %></li>
-            </div>
-            <div class="col-xs-4">
-              <li class="nav-list-item"><%= link_to "振替履歴", user_account_exchanges_path(current_user) %></li>
-              <li class="nav-list-item"><%= link_to "登録情報", edit_user_registration_path %></li>
-              <li class="nav-list-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？", "turbolinks" => false} %></li>
-            </div>
-          </div>
-        </ul>
-        <% end %>
-      	<p>© All rights reserved by S.N.</p>
+      <% if user_signed_in? %>
+      <div class="footer_menu" id="login_footer">
+        <div class="index1">
+          <ul>
+            <li class="top_bold">一覧</li>
+            <li><%= link_to "トップ", user_events_path(current_user) %></li>
+            <li><%= link_to "残高", user_accounts_path(current_user) %></li>
+            <li><%= link_to "クレジットカード", user_credits_path(current_user) %></li>
+            <li><%= link_to "ジャンル", user_genres_path(current_user) %></li>
+            <li><%= link_to "振替", user_account_exchanges_path(current_user) %></li>
+          </ul>
+        </div>
+        <div class="index2">
+          <ul>
+            <li class="top_bold">新規作成</li>
+            <li><%= link_to "新規入力", new_user_event_path(current_user) %></li>
+            <li><%= link_to "アカウント", new_user_account_path(current_user) %></li>
+            <li><%= link_to "クレジットカード", new_user_credit_path(current_user) %></li>
+            <li><%= link_to "ジャンル", new_user_genre_path(current_user) %></li>
+            <li><%= link_to "振替", new_user_account_exchange_path(current_user) %></li>
+          </ul>
+        </div>
+        <div class="index3">
+          <ul>
+            <li class="top_bold">その他</li>
+            <li><%= link_to "検索", user_search_path(current_user) %></li>
+            <li><%= link_to "登録情報", edit_user_registration_path %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？"} %></li>
+          </ul>
+        </div>
+      </div>
+      <% end %>
+        <div class="footer_list">
+          <ul>
+            <li><%= link_to "プライバシーポリシー", "#" %></li>
+            <li><%= link_to "利用規約", "#" %></li>
+            <li><%= link_to "お問い合わせ", "#" %></li>
+            <li class="last"><%= link_to "管理者情報", "#" %></li>
+          </ul>
+        </div>
+        <p>© All rights reserved by S.N.</p>
       </footer>
     </div>
   </body>

@@ -1,5 +1,6 @@
-<h2 class="search-h">メモで検索</h2>
-<%= form_tag(user_search_path,:method => 'get', class: "form1") do %>
+<div class="search-h">検索する</div>
+<div class="search_wrapper" id="search_close">
+  <%= form_tag(user_search_path,:method => 'get', class: "form1") do %>
   <div class="row">
     <div class="search-area">
       <div class="search-memo col-xs-12 col-sm-8 col-sm-offset-1">
@@ -10,58 +11,60 @@
       </div>
     </div>
   </div>
-<% end %>
+  <% end %>
+</div>
 
-<div class="table-responsive">
-  <table class="table" id="table_events">
-    <thead>
-      <tr>
-        <th>日付</th>
-        <th>ジャンル</th>
-        <th>アカウント</th>
-        <th>メモ</th>
-        <th>金額</th>
-        <th>引き落とし日</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+<div class="table_contents">
+  <div class="table-responsive">
+    <table class="table" id="table_events">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>ジャンル</th>
+          <th>アカウント</th>
+          <th>メモ</th>
+          <th>金額</th>
+          <th>引き落とし日</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-    <% a=0 %>
-    <% @events.each do |event| %>
-    <tbody>
-      <% if event.iae==false %>
+      <% a=0 %>
+      <% @events.each do |event| %>
+      <tbody>
+        <% if event.iae==false %>
         <tr class="false">
           <% if event.date != a %>
-            <td>
-              <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
-            </td>
+          <td>
+            <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
+          </td>
           <% else %>
-            <td>
-            </td>
+          <td>
+          </td>
           <% end %>
 
           <td><%= event.genre %></td>
           <td><%= event.account %></td>
 
           <% if event.memo %>
-            <td><%= event.memo %></td>
+          <td><%= event.memo %></td>
           <% else %>
-            <td>
-            </td>
+          <td>
+          </td>
           <% end %>
 
           <td>
-           ¥-<%= event.value.to_s(:delimited) %>
+            ¥-<%= event.value.to_s(:delimited) %>
           </td>
 
           <% if event.pay_date %>
-            <td>
-              <%= "#{event.pay_date.year}/#{event.pay_date.month}/#{event.pay_date.day}" %>
-            </td>
+          <td>
+            <%= "#{event.pay_date.year}/#{event.pay_date.month}/#{event.pay_date.day}" %>
+          </td>
           <% else %>
-            <td>
-            </td>
+          <td>
+          </td>
           <% end %>
 
           <td>
@@ -72,29 +75,29 @@
           </td>
           <% a=event.date %>
         </tr>
-      <% else %>
+        <% else %>
         <tr class="true">
           <% if event.date != a %>
-            <td>
-              <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
-            </td>
+          <td>
+            <%= event.date.year %>/<%= event.date.month %>/<%= event.date.day %>
+          </td>
           <% else %>
-            <td>
-            </td>
+          <td>
+          </td>
           <% end %>
 
           <td><%= event.genre %></td>
           <td><%= event.account %></td>
 
           <% if event.memo %>
-            <td><%= event.memo %></td>
+          <td><%= event.memo %></td>
           <% else %>
-            <td>
-            </td>
+          <td>
+          </td>
           <% end %>
 
           <td>
-           ¥<%= event.value.to_s(:delimited) %>
+            ¥<%= event.value.to_s(:delimited) %>
           </td>
 
           <td></td>
@@ -107,10 +110,11 @@
           </td>
           <% a=event.date %>
         </tr>
+        <% end %>
+      </tbody>
       <% end %>
-    </tbody>
-    <% end %>
-    <%= will_paginate @events %>
-  </table>
+      <%= will_paginate @events %>
+    </table>
+  </div>
 </div>
 <%= will_paginate @events %>

@@ -1,6 +1,7 @@
 <h2>登録情報変更</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<div class="form_wrapper">
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="row">
@@ -11,7 +12,7 @@
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>現在次のアドレスの認証を待っています <%= resource.unconfirmed_email %></div>
+  <div>現在次のアドレスの認証を待っています <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="row">
@@ -36,13 +37,21 @@
   </div>
 
 
-    <%= f.submit "変更", class: "btn btn-primary", role: "button" %>
+  <%= f.submit "変更", class: "btn btn-primary", role: "button" %>
+</div>
 
 <% end %>
 
-<h2>アカウント削除</h2>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <h2>アカウント削除</h2>
+    <p>
+      アカウントを削除すると全てのデータが消えますがよろしいですか？
+    </p>
+    <%= button_to "アカウント削除", registration_path(resource_name), method: :delete, data: { confirm: "本当によろしいですか？" }, class: "btn btn-primary", role: "button" %>
+  </div>
+</div>
 
-アカウントを削除すると全てのデータが消えますがよろしいですか？
-<%= button_to "アカウント削除", registration_path(resource_name), method: :delete, data: { confirm: "本当によろしいですか？" }, class: "btn btn-primary", role: "button" %>
-
-<%= link_to "HOME", user_events_path(current_user) %>
+<div class="logout_buton">
+  <%= button_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？"}, class: "btn btn-primary", role: "button" %>
+</div>

@@ -1,6 +1,7 @@
 <h1>振替を編集</h1>
 
 <%= form_for :account_exchange, url:user_account_exchange_path(params[:user_id], params[:id]), method: :PUT do |f| %>
+<div class="form_wrapper">
   <div class="row">
     <div class="<%= @form_class %>">
       <%= f.label :date, "日付を選択してください", class: "date_label"%>
@@ -30,20 +31,15 @@
   </div>
 
   <% if @before_credit %>
-    <div class="row">
-      <div class="<%= @form_class %>">
-        <%= f.label :pay_date, "引き落とし月を選択してください", class: "date_label" %>
-        <%= f.date_select :pay_date, {discard_day:true, selected: @account_exchange.pay_date}, class: "form-control", id: "date" %>
-      </div>
+  <div class="row">
+    <div class="<%= @form_class %>">
+      <%= f.label :pay_date, "引き落とし月を選択してください", class: "date_label" %>
+      <%= f.date_select :pay_date, {discard_day:true, selected: @account_exchange.pay_date}, class: "form-control", id: "date" %>
     </div>
+  </div>
   <% end %>
 
-    <%= f.submit "振替を編集する", class: "btn btn-primary", role: "button" %>
+  <%= f.submit "振替を編集する", class: "btn btn-primary", role: "button" %>
+</div>
 
 <% end %>
-
-<ul class="nav-list">
-  <li class="nav-list-item">
-    <%= link_to "振替履歴一覧へ戻る", user_account_exchanges_path %>
-  </li>
-</ul>

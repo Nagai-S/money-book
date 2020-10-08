@@ -60,4 +60,16 @@ $(function(){
         $("footer").css("height", 100 + "px");
       }
     });
+
+    $('.delete_account').click(function(){
+        if(document.getElementById('delete_open')) {
+            let element = $('.delete_wrapper');
+            $('.delete_wrapper').slideUp();
+            element.attr('id', 'delete_close');
+        }else {
+            let element = $('.delete_wrapper');
+            element.attr('id', 'delete_open');
+            $('.delete_wrapper').slideDown();
+        }
+    });
 });

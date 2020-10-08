@@ -42,8 +42,8 @@ body{
  }
 
  .alert-alert{
-   background-color: red;
-   color: white;
+   background-color: rgb(242, 222, 222);
+   color: rgb(169, 68, 66);
  }
 
 /* header */
@@ -185,6 +185,7 @@ header .headline{
   }
 
   .dropdown_list a{
+    display: block;
     color: rgb(245,245,247);
     padding-left: 100px;
   }
@@ -492,6 +493,7 @@ form .btn{
   margin-bottom: 0;
   font-weight: normal;
   border: solid 1px rgb(134,134,139);
+  border-bottom: none;
   background-color: #E8E8E8;
 }
 
@@ -585,6 +587,38 @@ form .btn{
     margin: auto;
     width: 50%;
   }
+}
+
+.delete_account{
+  font-size: 16px;
+  margin-top: 30px;
+  display: block;
+  border: solid 1px rgb(134,134,139);
+  background-color: rgb(242, 222, 222);
+  color: rgb(169, 68, 66);
+}
+
+.delete_account:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.delete_wrapper{
+  display: none;
+  background-color: rgb(242, 222, 222);
+  border: solid 1px rgb(134,134,139);
+  border-top: none;
+}
+
+.delete_wrapper p{
+  text-align: left;
+  padding: 10px;
+  color: rgb(169, 68, 66);
+}
+
+.delete_wrapper .btn{
+  margin-bottom: 10px;
+  background-color: red;
 }
 
 /* footer */

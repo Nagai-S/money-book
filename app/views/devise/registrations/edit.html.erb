@@ -43,15 +43,17 @@
 <% end %>
 
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-    <h2>アカウント削除</h2>
-    <p>
-      アカウントを削除すると全てのデータが消えますがよろしいですか？
-    </p>
-    <%= button_to "アカウント削除", registration_path(resource_name), method: :delete, data: { confirm: "本当によろしいですか？" }, class: "btn btn-primary", role: "button" %>
+  <div class="col-xs-6 col-xs-offset-3">
+    <div class="delete_account">アカウント削除</div>
+    <div class="delete_wrapper" id="delete_close">
+      <p>
+        アカウントを削除すると全てのデータが消えますがよろしいですか？
+      </p>
+      <%= button_to "アカウント削除", registration_path(resource_name), method: :delete, data: { confirm: "本当によろしいですか？" }, class: "btn btn-primary", role: "button" %>
+    </div>
   </div>
 </div>
 
 <div class="logout_buton">
-  <%= button_to "ログアウト", destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしてよろしいですか？"}, class: "btn btn-primary", role: "button" %>
+  <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-primary", role: "button" %>
 </div>

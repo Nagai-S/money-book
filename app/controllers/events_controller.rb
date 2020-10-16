@@ -59,7 +59,7 @@ class EventsController < ApplicationController
       search_event=search_event.where(account: @account)
     end
     if params[:money_or_not]=="1"
-      search_event=search_event.where('value >= ? and value <= ?', @moeny1.to_i, @money2.to_i)
+      search_event=search_event.where('value >= ? and value <= ?', @money1.to_i, @money2.to_i)
     end
     @events=search_event.paginate(page: params[:page])
 

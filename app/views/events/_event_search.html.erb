@@ -1,0 +1,71 @@
+<div class="search_column">
+  <%= form_with(url: user_search_path(current_user), :method => :get, class: "form1", local: true) do |f| %>
+    <div class="iae_search">
+      <label>収支を選択してください</label>
+      <div class="">
+        <%= f.select :iae, [["すべて","0"],["支出",false],["収入",true]], {selected: iae}, class: "form-control", id: "select_js1" %>
+      </div>
+    </div>
+
+    <div class="date_search">
+      <div class="date_or_not">
+        <label>日付</label>
+        <%= f.select :date_or_not, [["選択しない","0"],["選択する","1"]], {},class: "form-control", id: "select_js2" %>
+      </div>
+      <div class="date_area">
+        <label>日付範囲を選択してください</label><br/>
+        <%= f.date_select :date1, {start_year:Time.now.year, end_year:1970, selected: date1}, class: "form-control", id: "date_s" %>〜
+        <%= f.date_select :date2, {start_year:Time.now.year, end_year:1970, selected: date2}, class: "form-control", id: "date_s" %>
+      </div>
+    </div>
+
+    <div class="row acount_genre">
+
+      <div class="genre_search col-xs-10 col-xs-offset-1 col-lg-5" id="e">
+        <label>ジャンル</label>
+        <%= f.select :genre, @genres_e, {selected: genre}, class: "form-control", id: "select" %>
+      </div>
+      <div class="genre_search col-xs-10 col-xs-offset-1 col-lg-5" id="i">
+        <label>ジャンル</label>
+        <%= f.select :genre, @genres_i, {selected: genre}, class: "form-control", id: "select" %>
+      </div>
+      <div class="genre_search col-xs-10 col-xs-offset-1 col-lg-5" id="all">
+        <label>ジャンル</label>
+        <%= f.select :genre, @all_genres, {selected: genre}, class: "form-control", id: "select" %>
+      </div>
+
+      <div class="account_search col-xs-10 col-xs-offset-1 col-lg-5">
+        <label>アカウント</label>
+        <%= f.select :account, @accounts_e, {selected: account}, class: "form-control", id: "select" %>
+      </div>
+
+    </div>
+
+
+    <div class="search-memo">
+      <label>メモで検索</label>
+      <div class="search_input">
+        <%= f.text_field :search, value: search, placeholder: "メモで検索", class: "form-control", id: "name" %>
+      </div>
+    </div>
+
+    <div class="money_search">
+      <div class="money_or_not">
+        <label>金額</label>
+        <%= f.select :money_or_not, [["選択しない","0"],["選択する","1"]], {}, class: "form-control", id: "select_js3" %>
+      </div>
+      <div class="money_area">
+        <label>金額の範囲を入力してください</label><br/>
+        <div class="money_inline">
+          <%= f.text_field :money1, value: money1, class: "form-control", id: "name" %> 〜
+          <%= f.text_field :money2, value: money2, class: "form-control", id: "name" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="search_btn">
+      <%= f.submit "検索", class: "btn btn-primary", role: "button" %>
+    </div>
+
+  <% end %>
+</div>

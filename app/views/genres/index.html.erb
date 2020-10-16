@@ -1,4 +1,14 @@
 <h1>ジャンル一覧</h1>
+
+<div class="account">
+  <% if current_user.genres==[] %>
+  <p>まずはこちらからジャンル(食費、給料など)の追加をしましょう。</p>
+  <% end %>
+  <div class="new_account">
+    <li><%= link_to "ジャンル追加", new_user_credit_path %></li>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-xs-12 col-sm-6">
 

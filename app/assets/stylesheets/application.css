@@ -270,6 +270,65 @@ header .headline{
   font-size: 20px;
 }
 
+.account{
+  position: relative;
+  width: 50%;
+  margin: auto;
+  margin-top: 30px;
+  border: solid 1px rgb(134,134,139);
+  padding: 20px 0;
+  background-color: #E8E8E8;
+  border-radius: 10px;
+}
+
+.new_account li{
+  font-size: 20px;
+  list-style: none;
+  display: block;
+  border: solid 1px #E8E8E8;
+  margin-bottom: 10px;
+  background-color: lightblue;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+
+.account a{
+  color: black;
+  display: block;
+}
+
+.account a:hover{
+  text-decoration: none;
+  opacity: 0.7;
+}
+
+.account p{
+  font-size: 18px;
+  text-align: left;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.account_exchange li{
+  display: inline-block;
+  font-size: 20px;
+  list-style: none;
+  border: solid 1px #E8E8E8;
+  margin-bottom: 10px;
+  background-color: #F0F8FF;
+  width: 30%;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+
+.account_exchange a{
+  line-height: 100px;
+}
+
 @media (max-width: 670px) {
   .home{
     width: 90%
@@ -277,6 +336,14 @@ header .headline{
 
   .home li{
     width: 80%
+  }
+
+  .account{
+    width: 90%;
+  }
+
+  .account li{
+    width: 90%;
   }
 }
 
@@ -395,6 +462,12 @@ form #date{
   font-size: 16px;
 }
 
+form #date_s{
+  width: 15%;
+  display: inline-block;
+  font-size: 16px;
+}
+
 form #select{
   margin: auto;
   font-size: 16px;
@@ -472,6 +545,12 @@ form .btn{
 }
 
 /* search */
+.search_total{
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .search-h{
   font-size: 20px;
   display: block;
@@ -503,7 +582,7 @@ form .btn{
 }
 
 .search_wrapper{
-  position: relative;
+  /* position: relative; */
   display: none;
   background-color: #E8E8E8;
   width: 80%;
@@ -513,11 +592,11 @@ form .btn{
   border: solid 1px rgb(134,134,139);
   border-top: none;
   padding: 15px 0;
-  height: 140px;
+  /* height: 140px; */
 }
 
 .search_wrapper_const{
-  position: relative;
+  /* position: relative; */
   background-color: #E8E8E8;
   width: 80%;
   margin-left: auto;
@@ -526,31 +605,128 @@ form .btn{
   border: solid 1px rgb(134,134,139);
   border-top: none;
   padding: 15px 0;
-  height: 140px;
+  /* height: 140px; */
+}
+
+.form1{
+  width: 100%
+}
+
+.search_column{
+  display: flex;
+  flex-direction: column;
+}
+
+.iae_search{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 100%;
+  margin: auto;
+}
+
+.iae_search label{
+  align-self: flex-end;
+  margin-right: 10px;
+}
+
+.date_search{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.date_or_not{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.date_or_not label{
+  align-self: flex-end;
+  margin-right: 10px
+}
+
+.date_or_not select{
+  width: 20%;
+}
+
+.date_area{
+  display: none;
+  font-size: 16px
+}
+
+.acount_genre{
+  margin-right: 8%
+}
+
+#i{
+  display: none;
+}
+#e{
+  display: none;
+}
+#all{
+  display: block;
+}
+
+.account_search{
+  margin-bottom: 10px
 }
 
 .search-memo{
-  position: relative;
-  top: 20px;
-  bottom: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.search_wrapper .btn{
-  position: absolute;
-  bottom: 8px;
-  left: 40%;
-  right: 40%;
-  margin: auto;
-  width: 10%;
+.search-memo label{
+  margin-right: 10px;
+  align-self: flex-end;
 }
 
-.search_wrapper_const .btn{
-  position: absolute;
-  bottom: 8px;
-  left: 40%;
-  right: 40%;
+.search_input input{
+  flex-basis: 80%;
+}
+
+.money_search{
+  margin-bottom: 10px;
+}
+
+.money_or_not{
+  display: flex;
+  justify-content: center;
   margin: auto;
-  width: 10%;
+  margin-bottom: 10px;
+}
+
+.money_or_not label{
+  align-self: flex-end;
+  margin-right: 10px
+}
+
+.money_or_not select{
+  width: 20%;
+}
+
+.money_area{
+  display: none;
+}
+
+.money_inline{
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.search_btn{
+  margin-top: 10px;
+}
+
+.search_btn .btn{
+  margin: auto;
+  width: 30%;
 }
 
 @media (max-width: 670px) {
@@ -570,21 +746,26 @@ form .btn{
     width: 95%;
   }
 
-  .search_wrapper .btn{
-    position: absolute;
-    bottom: 8px;
-    left: 25%;
-    right: 25%;
+  .search_btn .btn{
     margin: auto;
     width: 50%;
   }
 
-  .search_wrapper_const .btn{
-    position: absolute;
-    bottom: 8px;
-    left: 25%;
-    right: 25%;
-    margin: auto;
+  form #date_s{
+    width: 30%;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .date_or_not select{
+    width: 50%;
+  }
+
+  .acount_genre{
+    margin-right: auto;
+  }
+
+  .money_or_not select{
     width: 50%;
   }
 }

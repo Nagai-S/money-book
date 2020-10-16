@@ -5,19 +5,72 @@ class EventsController < ApplicationController
   def index
     form_class
     change_pon
-    new_variable
+    search_variable
     @events=current_user.events.paginate(page: params[:page])
   end
 
   def search
     form_class
-    new_variable
+    search_variable
     @search=params[:search]
+    @iae=params[:iae]
+
+    month1=params["date1(2i)"]
+    day1=params["date1(3i)"]
+    if (month1=="4" || month1=="6" || month1=="9" || month1=="11") && day1=="31"
+      day1="30"
+    elsif month1=="2" && (day1.to_i > 28)
+      day1=28
+    end
+
+    month2=params["date2(2i)"]
+    day2=params["date2(3i)"]
+    if (month2=="4" || month2=="6" || month2=="9" || month2=="11") && day2=="31"
+      day2="30"
+    elsif month2=="2" && (day2>28)
+      day2=28
+    end
+
+    @date1=Date.new(params["date1(1i)"].to_i,month1.to_i,day1.to_i)
+    @date2=Date.new(params["date2(1i)"].to_i,month2.to_i,day2.to_i)
+
+    @genre=params[:genre]
+    @account=params[:account]
+    @money1=params[:money1]
+    @money2=params[:money2]
     search_event=current_user.events
-    if @search
-      search_event=Event.where(user_id: current_user.id).where('memo LIKE ?', "%#{@search}%")
+    if @search!=""
+      search_event=search_event.where('memo LIKE ?', "%#{@search}%")
+    end
+    if @iae!="0"
+      if @iae=="false"
+        search_event=search_event.where(iae: false)
+      else
+        search_event=search_event.where(iae: true)
+      end
+    end
+    if params[:date_or_not]=="1"
+      search_event=search_event.where('date >= ? and date <= ?', @date1, @date2)
+    end
+    if @genre!="0"
+      search_event=search_event.where(genre: @genre)
+    end
+    if @account!="0"
+      search_event=search_event.where(account: @account)
+    end
+    if params[:money_or_not]=="1"
+      search_event=search_event.where('value >= ? and value <= ?', @moeny1.to_i, @money2.to_i)
     end
     @events=search_event.paginate(page: params[:page])
+
+    @total=0
+    search_event.each do |event|
+      if event.iae==true
+        @total += event.value
+      else
+        @total -= event.value
+      end
+    end
   end
 
   def new
@@ -174,7 +227,36 @@ class EventsController < ApplicationController
       params.require(:event).permit(:date, :genre, :account, :value, :memo, :pay_date)
     end
 
+    def search_variable
+      @all_genres=[["すべて","0"]]
+      @genres_e=[["すべて","0"]]
+      @genres_i=[["すべて","0"]]
+      current_user.genres.each do |genre|
+        if genre.iae==false
+          a=["#{genre.name}", "#{genre.name}"]
+          @genres_e.push(a)
+        else
+          a=["#{genre.name}", "#{genre.name}"]
+          @genres_i.push(a)
+        end
+        a=["#{genre.name}", "#{genre.name}"]
+        @all_genres << a
+      end
+
+      @accounts_e=[["すべて","0"]]
+      current_user.accounts.each do |account|
+        a=["#{account.name}", "#{account.name}"]
+        @accounts_e.push(a)
+      end
+
+      current_user.credits.each do |credit|
+        a=["#{credit.name}", "#{credit.name}"]
+        @accounts_e << a
+      end
+    end
+
     def new_variable
+      @all_genres=[]
       @genres_e=[]
       @genres_i=[]
       current_user.genres.each do |genre|
@@ -185,6 +267,8 @@ class EventsController < ApplicationController
           a=["#{genre.name}", "#{genre.name}"]
           @genres_i.push(a)
         end
+        a=["#{genre.name}", "#{genre.name}"]
+        @all_genres << a
       end
 
       @accounts_e=[]

@@ -72,4 +72,51 @@ $(function(){
             $('.delete_wrapper').slideDown();
         }
     });
+
+    $('#select_js2').change(function() {
+      // 選択されているvalue属性値を取り出す
+      var val = $('#select_js2').val();
+      if (val=="0") {
+        $('.date_area').slideUp();
+      }else{
+        $('.date_area').slideDown();
+      }
+    });
+
+  $('#select_js1').change(function() {
+    // 選択されているvalue属性値を取り出す
+    var val = $('#select_js1').val();
+    if (val=="0") {
+      $('#all').css("display", "block");
+      $('#e').css("display", "none");
+      $('#i').css("display", "none");
+    }else if (val=="true") {
+      $('#i').css("display", "block");
+      $('#e').css("display", "none");
+      $('#all').css("display", "none");
+    }else{
+      $('#e').css("display", "block");
+      $('#i').css("display", "none");
+      $('#all').css("display", "none");
+    }
+  });
+
+  $('#select_js3').change(function() {
+    // 選択されているvalue属性値を取り出す
+    var val = $('#select_js3').val();
+    if (val=="0") {
+      $('.money_area').slideUp();
+    }else{
+      $('.money_area').slideDown();
+    }
+  });
+
+  // var select1=document.getElementsByName("[date1(2i)]");
+  // $('name="[date1(2i)]"').change(function() {
+  //   // 選択されているvalue属性値を取り出す
+  //   var val = $('name="[date1(2i)]"').val();
+  //   if (val=="2" || val=="4" || val=="6" || val=="9" || val=="11") {
+  //     select1.remove(30)
+  //   }
+  // });
 });

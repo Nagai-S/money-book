@@ -73,6 +73,16 @@ class EventsController < ApplicationController
         @total -= event.value
       end
     end
+    if @date_or_not=="0"
+      @css1="none"
+    else
+      @css1="block"
+    end
+    if @money_or_not=="0"
+      @css2="none"
+    else
+      @css2="block"
+    end
   end
 
   def new

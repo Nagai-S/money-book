@@ -1,38 +1,31 @@
 <h1>新規イベント作成</h1>
 <div>
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="active" role="presentation">
-      <a aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">支出</a>
-    </li>
-    <li role="presentation">
-      <a aria-controls="tab_b" data-toggle="tab" href="#tab_b" role="tab">収入</a>
-    </li>
-  </ul>
+
+  <%= render :partial => 'form_tab', :locals => {taba: "active", tabb: ""} %>
 
   <div class="tab-content">
-    <div class="tab-pane active" id="tab_a" role="tabpanel">
-      <%= form_for :event, url:user_events1_path do |f| %>
-      <div class="form_wrapper">
-        <%= render :partial => 'form_new1', :locals => {:f => f} %>
+    <%= render :partial => 'form', :locals => {active: "active",
+                                                aob: "a",
+                                                url: user_events1_path,
+                                                backcolor: "",
+                                                date_s: Date.today,
+                                                genre: @genres_e,
+                                                genre_s: "",
+                                                account: @accounts_e,
+                                                account_s: "",
+                                                memo: "",
+                                                money: ""} %>
 
-        <%= render :partial => 'form_e', :locals => {:f => f} %>
-
-        <%= render :partial => 'form_new2', :locals => {:f => f} %>
-      </div>
-
-      <% end %>
-    </div>
-    <div class="tab-pane" id="tab_b" role="tabpanel">
-      <%= form_for :event, url:user_events2_path do |f| %>
-      <div class="form_wrapper" id="income">
-        <%= render :partial => 'form_new1', :locals => {:f => f} %>
-
-        <%= render :partial => 'form_i', :locals => {:f => f} %>
-
-        <%= render :partial => 'form_new2', :locals => {:f => f} %>
-      </div>
-
-      <% end %>
-    </div>
+    <%= render :partial => 'form', :locals => {active: "",
+                                                aob: "b",
+                                                url: user_events2_path,
+                                                backcolor: "income",
+                                                date_s: Date.today,
+                                                genre: @genres_i,
+                                                genre_s: "",
+                                                account: @accounts_i,
+                                                account_s: "",
+                                                memo: "",
+                                                money: ""} %>
   </div>
 </div>

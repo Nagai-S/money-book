@@ -34,18 +34,18 @@ class GenresController < ApplicationController
 
   def destroy
     form_class
-    @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id]).destroy
+    Genre.find_by(:user_id => params[:user_id], :id => params[:id]).destroy
     redirect_to user_genres_path(params[:user_id])
   end
 
   def edit
     form_class
-    edit_variable
+    @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id])
   end
 
   def update
     form_class
-    edit_variable
+    @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id])
     events=current_user.events
     g_events=[]
     events.each do |event|
@@ -76,14 +76,5 @@ class GenresController < ApplicationController
 
     def genres_params
       params.require(:genre).permit(:name, :iae)
-    end
-
-    def edit_variable
-      @genre=Genre.find_by(:user_id => params[:user_id], :id => params[:id])
-      if @genre.iae==false
-        @selects=[["支出",false],["収入",true]]
-      else
-        @selects=[["収入",true],["支出",false]]
-      end
     end
 end

@@ -268,6 +268,7 @@ class EventsController < ApplicationController
     end
 
     def new_variable
+      @credit=false
       @all_genres=[]
       @genres_e=[]
       @genres_i=[]
@@ -302,6 +303,13 @@ class EventsController < ApplicationController
       @credit=Credit.find_by(:user_id => params[:user_id], :name => @event.account)
       @genres_e=[]
       @genres_i=[]
+      if @event.iae==true
+        @taba=""
+        @tabb="active"
+      else
+        @tabb=""
+        @taba="active"
+      end
       current_user.genres.each do |genre|
         if genre.iae==false
           a=["#{genre.name}", "#{genre.name}"]
@@ -325,25 +333,16 @@ class EventsController < ApplicationController
         @accounts_e << a
       end
 
-      if Genre.find_by(:user_id => current_user.id, :name => @event.genre)
-        if @event.iae==false
-          @genres_e.delete([@event.genre, @event.genre])
-          @genres_e.unshift([@event.genre, @event.genre])
-        else
-          @genres_i.delete([@event.genre, @event.genre])
-          @genres_i.unshift([@event.genre, @event.genre])
-        end
+      genre=Genre.find_by(:user_id => current_user.id, :name => @event.genre)
+      if genre
+        @genre_s=["#{genre.name}", "#{genre.name}"]
       else
         flash.now[:danger]="このジャンルは削除されています"
       end
-      if Account.find_by(:user_id => current_user.id, :name => @event.account)
-        @accounts_e.delete([@event.account, @event.account])
-        @accounts_e.unshift([@event.account, @event.account])
-        @accounts_i.delete([@event.account, @event.account])
-        @accounts_i.unshift([@event.account, @event.account])
-      elsif Credit.find_by(:user_id => current_user.id, :name => @event.account)
-        @accounts_e.delete([@event.account, @event.account])
-        @accounts_e.unshift([@event.account, @event.account])
+
+      account=Account.find_by(:user_id => current_user.id, :name => @event.account)
+      if account || @credit
+        @account_s=["#{@event.account}", "#{@event.account}"]
       else
         flash.now[:danger]="このアカウントまたはクレジットカードは削除されています"
       end

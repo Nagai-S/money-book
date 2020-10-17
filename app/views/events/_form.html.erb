@@ -1,0 +1,53 @@
+<div class="tab-pane <%= active %>" id="tab_<%= aob %>" role="tabpanel">
+  <%= form_for :event, url:url do |f| %>
+  <div class="form_wrapper" id="<%= backcolor %>">
+
+    <div class="row">
+      <div class="<%= @form_class %>">
+        <%= f.label :date, "日付を選択してください", class: "date_label" %>
+        <%= f.date_select :date, {selected: date_s}, class: "form-control", id: "date" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="<%= @form_class %>">
+        <%= f.label :genre, "ジャンルを選択してください" %>
+        <%= f.select :genre, genre,{selected: genre_s}, class: "form-control", id: "select" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="<%= @form_class %>">
+        <%= f.label :account, "アカウントを選択してください" %>
+        <%= f.select :account, account, {selected: account_s}, class: "form-control", id: "select" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="<%= @form_class %>">
+        <%= f.label :memo, "メモ" %>
+        <%= f.text_field :memo, value: memo, class: "form-control", id: "text" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="<%= @form_class %>">
+        <%= f.label :value, "金額を入力してください" %>
+        <%= f.text_field :value, value: money, class: "form-control", id: "value" %>
+      </div>
+    </div>
+
+    <% if @credit %>
+      <div class="row">
+        <div class="<%= @form_class %>">
+          <%= f.label :pay_date, "引き落とし月を選択してください", class: "date_label" %>
+          <%= f.date_select :pay_date, {discard_day:true, selected: @event.pay_date}, class: "form-control", id: "date" %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= f.submit "イベント登録", class: "btn btn-primary", role: "button" %>
+
+  </div>
+  <% end %>
+</div>

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     resources:credits
     post "/events1" => "events#create1"
     post "/events2" => "events#create2"
-    put "/events_up1/:id" => "events#update1", as: "events_up1"
-    put "/events_up2/:id" => "events#update2", as: "events_up2"
+    post "/events_up1/:id" => "events#update1", as: "events_up1"
+    post "/events_up2/:id" => "events#update2", as: "events_up2"
     get "/search" => "events#search"
   end
 

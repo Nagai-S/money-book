@@ -135,6 +135,7 @@ class AccountExchangesController < ApplicationController
     end
 
     def new_variable
+      @before_credit=false
       @accounts=current_user.accounts
       @credits=current_user.credits
       @bnames=[]
@@ -168,20 +169,16 @@ class AccountExchangesController < ApplicationController
         @bnames << name
       end
 
-      if Account.find_by(:user_id => params[:user_id], :name => @account_exchange.bname)
-        @bnames.delete(["#{@account_exchange.bname}","#{@account_exchange.bname}"])
-        @bnames.unshift(["#{@account_exchange.bname}","#{@account_exchange.bname}"])
-      elsif Credit.find_by(:user_id => params[:user_id], :name => @account_exchange.bname)
-        @bnames.delete(["#{@account_exchange.bname}","#{@account_exchange.bname}"])
-        @bnames.unshift(["#{@account_exchange.bname}","#{@account_exchange.bname}"])
+      account=Account.find_by(:user_id => params[:user_id], :name => @account_exchange.bname)
+      if account || @before_credit
+        @bnames_s=["#{@account_exchange.bname}","#{@account_exchange.bname}"]
       else
         flash.now[:danger]="この振替もとアカウントまたはカードは削除されています"
         render "index" and return
       end
 
       if Account.find_by(:user_id => params[:user_id], :name => @account_exchange.aname)
-        @anames.delete(["#{@account_exchange.aname}","#{@account_exchange.aname}"])
-        @anames.unshift(["#{@account_exchange.aname}","#{@account_exchange.aname}"])
+        @anames_s=["#{@account_exchange.aname}","#{@account_exchange.aname}"]
       else
         flash.now[:danger]="この振替先アカウントは削除されています"
         render "index" and return

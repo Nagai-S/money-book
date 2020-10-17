@@ -1,0 +1,43 @@
+<%= form_for :account_exchange, url:url, method: method do |f| %>
+<div class="form_wrapper">
+  <div class="row">
+    <div class="<%= @form_class %>">
+      <%= f.label :date, "日付を選択してください", class: "date_label"%>
+      <%= f.date_select :date, {selected: date}, class: "form-control", id: "date" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="<%= @form_class %>">
+      <%= f.label :bname, "振替もとアカウントを選択してください" %>
+      <%= f.select :bname, @bnames, {selected: bname}, class: "form-control", id: "select" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="<%= @form_class %>">
+      <%= f.label :aname, "振替先アカウントを入力してください" %>
+      <%= f.select :aname, @anames, {selected: aname}, class: "form-control", id: "select" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="<%= @form_class %>">
+      <%= f.label :value, "振替金額を入力してください" %>
+      <%= f.text_field :value, value: value, class: "form-control", id: "value" %>
+    </div>
+  </div>
+
+  <% if @before_credit %>
+  <div class="row">
+    <div class="<%= @form_class %>">
+      <%= f.label :pay_date, "引き落とし月を選択してください", class: "date_label" %>
+      <%= f.date_select :pay_date, {discard_day:true, selected: @account_exchange.pay_date}, class: "form-control", id: "date" %>
+    </div>
+  </div>
+  <% end %>
+
+  <%= f.submit "振替を追加", class: "btn btn-primary", role: "button" %>
+</div>
+
+<% end %>

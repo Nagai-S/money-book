@@ -231,24 +231,18 @@ class CreditsController < ApplicationController
         a=["#{account.name}", "#{account.name}"]
         @accounts << a
       end
+
       account=Account.find_by(:user_id => current_user.id, :name => @credit.account)
       if account
-        @accounts.delete(["#{account.name}", "#{account.name}"])
-        @accounts.unshift(["#{account.name}", "#{account.name}"])
+        @account=["#{account.name}", "#{account.name}"]
       else
         flash[:danger]="連携アカウントは削除されています"
       end
 
-      @pay_days=[]
-      @month_days=[]
+      @days=[]
       (1..31).each do |day|
         a=["#{day}", "#{day}"]
-        @pay_days << a
-        @month_days << a
+        @days << a
       end
-      @month_days.delete(["#{@credit.month_date}", "#{@credit.month_date}"])
-      @month_days.unshift(["#{@credit.month_date}", "#{@credit.month_date}"])
-      @pay_days.delete(["#{@credit.pay_date}", "#{@credit.pay_date}"])
-      @pay_days.unshift(["#{@credit.pay_date}", "#{@credit.pay_date}"])
     end
 end

@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     @search=params[:search]
     @iae=params[:iae]
 
+    @date_or_not=params[:date_or_not]
     month1=params["date1(2i)"]
     day1=params["date1(3i)"]
     if (month1=="4" || month1=="6" || month1=="9" || month1=="11") && day1=="31"
@@ -36,6 +37,7 @@ class EventsController < ApplicationController
 
     @genre=params[:genre]
     @account=params[:account]
+    @money_or_not=params[:money_or_not]
     @money1=params[:money1]
     @money2=params[:money2]
     search_event=current_user.events
@@ -49,7 +51,7 @@ class EventsController < ApplicationController
         search_event=search_event.where(iae: true)
       end
     end
-    if params[:date_or_not]=="1"
+    if @date_or_not=="1"
       search_event=search_event.where('date >= ? and date <= ?', @date1, @date2)
     end
     if @genre!="0"
@@ -58,7 +60,7 @@ class EventsController < ApplicationController
     if @account!="0"
       search_event=search_event.where(account: @account)
     end
-    if params[:money_or_not]=="1"
+    if @money_or_not=="1"
       search_event=search_event.where('value >= ? and value <= ?', @money1.to_i, @money2.to_i)
     end
     @events=search_event.paginate(page: params[:page])

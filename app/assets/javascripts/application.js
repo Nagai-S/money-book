@@ -77,9 +77,18 @@ $(function(){
       // 選択されているvalue属性値を取り出す
       var val = $('#select_js2').val();
       if (val=="0") {
-        $('.date_area').slideUp();
+        $('.date_area_none').slideUp();
       }else{
-        $('.date_area').slideDown();
+        $('.date_area_none').slideDown();
+      }
+    });
+    $('#select_js2').change(function() {
+      // 選択されているvalue属性値を取り出す
+      var val = $('#select_js2').val();
+      if (val=="0") {
+        $('.date_area_block').slideUp();
+      }else{
+        $('.date_area_block').slideDown();
       }
     });
 
@@ -105,9 +114,19 @@ $(function(){
     // 選択されているvalue属性値を取り出す
     var val = $('#select_js3').val();
     if (val=="0") {
-      $('.money_area').slideUp();
+      $('.money_area_none').slideUp();
     }else{
-      $('.money_area').slideDown();
+      $('.money_area_none').slideDown();
+    }
+  });
+
+  $('#select_js3').change(function() {
+    // 選択されているvalue属性値を取り出す
+    var val = $('#select_js3').val();
+    if (val=="0") {
+      $('.money_area_block').slideUp();
+    }else{
+      $('.money_area_block').slideDown();
     }
   });
 

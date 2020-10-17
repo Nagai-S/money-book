@@ -1,7 +1,17 @@
 <h1>履歴</h1>
 <div class="search-h">検索する</div>
 <div class="search_wrapper" id="search_close">
-  <%= render :partial => 'event_search', :locals => {search: "", iae: "0", genre: "0", account: "0", money1: "", money2: "", date1: Date.today, date2: Date.today} %>
+  <%= render :partial => 'event_search', :locals => {search: "",
+                                                      iae: "0",
+                                                      genre: "0",
+                                                      account: "0",
+                                                      money1: "",
+                                                      money2: "",
+                                                      date1: Date.today,
+                                                      date2: Date.today,
+                                                      date_or_not: "0",
+                                                      money_or_not: "0",
+                                                      css: "none"} %>
 </div>
 
 <%= render "event_index" %>

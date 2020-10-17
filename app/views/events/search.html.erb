@@ -1,7 +1,17 @@
 <h1>検索結果</h1>
 <div class="search-h_const">検索する</div>
 <div class="search_wrapper_const" id="search_close">
-  <%= render :partial => 'event_search', :locals => {search: @search, iae: @iae, genre: @genre, account: @account, money1: @money1, money2: @money2, date1: @date1, date2: @date2} %>
+  <%= render :partial => 'event_search', :locals => {search: @search,
+                                                      iae: @iae,
+                                                      genre: @genre,
+                                                      account: @account,
+                                                      money1: @money1,
+                                                      money2: @money2,
+                                                      date1: @date1,
+                                                      date2: @date2,
+                                                      date_or_not: @date_or_not,
+                                                      money_or_not: @money_or_not,
+                                                      css: "block"} %>
 </div>
 
 <%= render "event_index" %>

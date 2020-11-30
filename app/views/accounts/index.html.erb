@@ -109,7 +109,7 @@
       <% a=month_pm_genre[:year] %>
       <% end %>
 
-      <%= will_paginate @month_pm_paginate, param_name: :month %>
+      <%= paginate @month_pm_paginate, param_name: 'month' %>
     </table>
   </div>
 </div>
@@ -144,7 +144,7 @@
       </tbody>
 
       <% end %>
-      <%= will_paginate @year_pm_paginate, param_name: :year %>
+      <%= paginate @year_pm_paginate, param_name: 'year' %>
     </table>
   </div>
 

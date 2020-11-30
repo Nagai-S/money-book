@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     form_class
     change_pon
     search_variable
-    @events=current_user.events.paginate(page: params[:page])
+    @events=current_user.events.page(params[:page])
   end
 
   def search
@@ -63,7 +63,7 @@ class EventsController < ApplicationController
     if @money_or_not=="1"
       search_event=search_event.where('value >= ? and value <= ?', @money1.to_i, @money2.to_i)
     end
-    @events=search_event.paginate(page: params[:page])
+    @events=search_event.page(params[:page])
 
     @total=0
     search_event.each do |event|

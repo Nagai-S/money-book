@@ -5,7 +5,7 @@ class AccountExchangesController < ApplicationController
 
   def index
     form_class
-    @account_exchanges=current_user.account_exchanges.paginate(page: params[:page])
+    @account_exchanges=current_user.account_exchanges.page(params[:page])
   end
 
   def new
@@ -152,7 +152,7 @@ class AccountExchangesController < ApplicationController
     end
 
     def edit_variable
-      @account_exchanges=current_user.account_exchanges.paginate(page: params[:page])
+      @account_exchanges=current_user.account_exchanges.page(params[:page])
       @accounts=current_user.accounts
       @credits=current_user.credits
       @account_exchange=AccountExchange.find_by(:user_id => params[:user_id], :id => params[:id])

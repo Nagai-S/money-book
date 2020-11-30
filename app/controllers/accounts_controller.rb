@@ -125,7 +125,7 @@ class AccountsController < ApplicationController
       b=event.date.year
     end
     @month_pm << month_pm_genre
-    @month_pm_paginate=@month_pm.paginate(page: params[:month], per_page:5)
+    @month_pm_paginate=Kaminari.paginate_array(@month_pm).page(params[:month]).per(5)
 
     # 年ごとの収支
     a=0
@@ -173,7 +173,7 @@ class AccountsController < ApplicationController
       a=event.date.year
     end
     @year_pm << year_pm_genre
-    @year_pm_paginate=@year_pm.paginate(page: params[:year], per_page:3)
+    @year_pm_paginate=Kaminari.paginate_array(@year_pm).page(params[:year]).per(3)
 
   end
 

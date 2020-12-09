@@ -1,71 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MoneyBook</title>
-    <%= csrf_meta_tags %>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<head>
+  <title>MoneyBook</title>
+  <%= csrf_meta_tags %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <body>
-    <div class="wrapper">
-      <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
+
+<body>
+  <div class="wrapper">
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+
+    <header>
+      <% if user_signed_in? %>
+      <div class="menu close">=</div>
+      <div class="menu open">×</div>
+
+      <h1 class="headline">
+        <%= link_to "Money Book", user_events_path(current_user) %>
+      </h1>
+
+      <div class="header_list">
+        <ul>
+          <li><%= link_to "トップ", user_events_path(current_user) %></li>
+          <li><%= link_to "新規入力", new_user_event_path(current_user) %></li>
+          <li><%= link_to "残高", user_accounts_path(current_user) %></li>
+          <li><%= link_to "クレジットカード", user_credits_path(current_user) %></li>
+          <li><%= link_to "ジャンル", user_genres_path(current_user) %></li>
+          <li class="last"><%= link_to "登録情報", edit_user_registration_path %></li>
+        </ul>
+      </div>
+
+      <div class="dropdown_list" id="close">
+        <ul>
+          <li><%= link_to "トップ", user_events_path(current_user) %></li>
+          <li><%= link_to "新規入力", new_user_event_path(current_user) %></li>
+          <li><%= link_to "残高", user_accounts_path(current_user) %></li>
+          <li><%= link_to "クレジットカード", user_credits_path(current_user) %></li>
+          <li><%= link_to "ジャンル", user_genres_path(current_user) %></li>
+          <li class="last"><%= link_to "登録情報", edit_user_registration_path %></li>
+        </ul>
+      </div>
+
+      <% else %>
+
+      <h1 class="headline"><%= link_to "Money Book", root_path %></h1>
+
       <% end %>
+    </header>
 
-      <header>
-        <% if user_signed_in? %>
-          <div class="menu close">=</div>
-          <div class="menu open">×</div>
-
-          <h1 class="headline">
-            <%= link_to "Money Book", user_events_path(current_user) %>
-          </h1>
-
-          <div class="header_list">
-            <ul>
-              <li><%= link_to "トップ", user_events_path(current_user) %></li>
-              <li><%= link_to "新規入力", new_user_event_path(current_user) %></li>
-              <li><%= link_to "残高", user_accounts_path(current_user) %></li>
-              <li><%= link_to "クレジットカード", user_credits_path(current_user) %></li>
-              <li><%= link_to "ジャンル", user_genres_path(current_user) %></li>
-              <li class="last"><%= link_to "登録情報", edit_user_registration_path %></li>
-            </ul>
-          </div>
-
-          <div class="dropdown_list" id="close">
-            <ul>
-              <li><%= link_to "トップ", user_events_path(current_user) %></li>
-              <li><%= link_to "新規入力", new_user_event_path(current_user) %></li>
-              <li><%= link_to "残高", user_accounts_path(current_user) %></li>
-              <li><%= link_to "クレジットカード", user_credits_path(current_user) %></li>
-              <li><%= link_to "ジャンル", user_genres_path(current_user) %></li>
-              <li class="last"><%= link_to "登録情報", edit_user_registration_path %></li>
-            </ul>
-          </div>
-
-        <% else %>
-
-          <h1 class="headline"><%= link_to "Money Book", root_path %></h1>
-
-        <% end %>
-      </header>
-
-      <div class="container">
+    <div class="container">
       <div class="contents" id="contents">
 
-      <%= yield %>
+        <%= yield %>
 
       </div>
-      </div>
-      <footer>
+    </div>
+    <footer>
       <% if user_signed_in? %>
       <div class="footer_menu" id="login_footer">
         <div class="index1">
@@ -99,16 +100,21 @@
         </div>
       </div>
       <% end %>
-        <div class="footer_list">
-          <ul>
-            <li><%= link_to "プライバシーポリシー", "#" %></li>
-            <li><%= link_to "利用規約", "#" %></li>
-            <li><%= link_to "お問い合わせ", "#" %></li>
-            <li class="last"><%= link_to "管理者情報", "#" %></li>
-          </ul>
-        </div>
-        <p>© All rights reserved by S.N.</p>
-      </footer>
-    </div>
-  </body>
+      <div class="footer_list">
+        <ul>
+          <li><%= link_to "プライバシーポリシー", "https://kiyac.app/plivacypolicy/WYqhMfQeu1bYTZi2ta2A", target: :_blank %></li>
+          <%
+=begin%>
+ <li><%= link_to "利用規約", "#" %></li> 
+<%
+=end%>
+          <li><%= link_to "お問い合わせ", "https://docs.google.com/forms/d/e/1FAIpQLSfzP9iZYG32mfQXEHrdiLlpFTSBy7zJ-ct3f1VwkwkUJPzL7Q/viewform", target: :_blank %></li>
+          <li class="last"><%= link_to "管理者情報", "#" %></li>
+        </ul>
+      </div>
+      <p>© All rights reserved by S.N.</p>
+    </footer>
+  </div>
+</body>
+
 </html>

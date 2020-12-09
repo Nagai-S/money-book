@@ -32,8 +32,11 @@ class EventsController < ApplicationController
       day2=28
     end
 
-    @date1=Date.new(params["date1(1i)"].to_i,month1.to_i,day1.to_i)
-    @date2=Date.new(params["date2(1i)"].to_i,month2.to_i,day2.to_i)
+    if params["date1(1i)"]
+      @date1=Date.new(params["date1(1i)"].to_i,month1.to_i,day1.to_i)
+      @date2=Date.new(params["date2(1i)"].to_i,month2.to_i,day2.to_i)
+    end
+    
 
     @genre=params[:genre]
     @account=params[:account]
@@ -73,12 +76,12 @@ class EventsController < ApplicationController
         @total -= event.value
       end
     end
-    if @date_or_not=="0"
+    if @date_or_not=="0" || !@date_or_not
       @css1="none"
     else
       @css1="block"
     end
-    if @money_or_not=="0"
+    if @money_or_not=="0" || !@money_or_not
       @css2="none"
     else
       @css2="block"

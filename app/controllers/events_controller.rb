@@ -299,6 +299,16 @@ class EventsController < ApplicationController
         a=["#{credit.name}", "#{credit.name}"]
         @accounts_e << a
       end
+
+      income_recently_genre=current_user.events.where(iae: true).first.genre
+      income_recently_account=current_user.events.where(iae: true).first.account
+      @income_genre_s=["#{income_recently_genre}", "#{income_recently_genre}"]
+      @income_account_s=["#{income_recently_account}", "#{income_recently_account}"]
+
+      expense_recently_genre=current_user.events.where(iae: false).first.genre
+      expense_recently_account=current_user.events.where(iae: false).first.account
+      @expense_genre_s=["#{expense_recently_genre}", "#{expense_recently_genre}"]
+      @expense_account_s=["#{expense_recently_account}", "#{expense_recently_account}"]
     end
 
     def edit_variable

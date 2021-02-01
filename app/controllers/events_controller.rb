@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     day2=params["date2(3i)"]
     if (month2=="4" || month2=="6" || month2=="9" || month2=="11") && day2=="31"
       day2="30"
-    elsif month2=="2" && (day2>28)
+    elsif month2=="2" && (day2.to_i > 28)
       day2=28
     end
 

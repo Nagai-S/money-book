@@ -20,6 +20,7 @@ gem 'bootstrap-will_paginate'
 gem 'bootstrap'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3',      '1.3.13'

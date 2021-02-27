@@ -7,6 +7,10 @@ class EventsController < ApplicationController
     change_pon
     search_variable
     @events=current_user.events.page(params[:page])
+    respond_to do |format|
+      format.json { render json: @events }
+      format.html {}
+    end
   end
 
   def search

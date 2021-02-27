@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     search_variable
     @events=current_user.events.page(params[:page])
     respond_to do |format|
-      format.json { render json: @events }
+      format.json { render json: current_user.events }
       format.html {}
     end
   end

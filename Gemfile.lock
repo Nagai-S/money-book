@@ -131,7 +131,8 @@ GEM
     orm_adapter (0.5.0)
     pg (1.2.3)
     popper_js (1.16.0)
-    puma (3.9.1)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -263,7 +264,7 @@ DEPENDENCIES
   kaminari-bootstrap
   listen (= 3.1.5)
   pg
-  puma (= 3.9.1)
+  puma (= 4.3.8)
   rails (= 5.1.6)
   rails-i18n
   redis
